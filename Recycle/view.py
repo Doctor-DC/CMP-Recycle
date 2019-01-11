@@ -7,7 +7,7 @@ from rest_framework.utils import json
 from rest_framework.views import APIView
 # from json_schema_generator import SchemaGenerator
 # from asyn.tasks import task_response
-from resouces.connect.conn_server import conn_server
+from resouces.connect.select_conn import conn_server
 from resouces.connect.decorators import token_certify_decorator
 
 conn = None

@@ -2,13 +2,17 @@ import json
 import pymysql
 from django.http import JsonResponse
 
+from resouces.connect.config_para import sql_host ,sql_user,sql_password,sql_db,sql_port
+
+
 def getparams(orgCode,dc_code):
+    print(sql_host)
     db = pymysql.connect(
-        host="10.22.29.100",
-        user="root",
-        password="1qazXSW@",
-        db="cmp",
-        port=3306
+        host=sql_host,
+        user=sql_user,
+        password=sql_password,
+        db=sql_db,
+        port=sql_port
     )
 
     cursor = db.cursor()
