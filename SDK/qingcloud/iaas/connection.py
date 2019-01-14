@@ -545,6 +545,22 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
+    def cease_rdbs(self, rdbs,
+                  **ignore):
+        """ Stop one or more rdbs.
+        @param rdbs: the IDs of the rdbs you want to stop.
+        """
+        action = const.ACTION_CEASE_RDBs
+        valid_keys = ['rdbs']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                                             required_params=['rdbs'],
+                                             list_params=['rdbs']
+                                             ):
+            return None
+
+        return self.send_request(action, body)
+
     def describe_mongos(self, mongos=None,
                         status=None,
                         verbose=0,

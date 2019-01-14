@@ -7,7 +7,7 @@ from rest_framework.utils import json
 from rest_framework.views import APIView
 # from json_schema_generator import SchemaGenerator
 # from asyn.tasks import task_response
-from resouces.connect.select_conn import conn_server
+from resouces.connect.select_conn import conn_server,  unity
 from resouces.connect.decorators import token_certify_decorator
 
 conn = None
@@ -28,7 +28,8 @@ class instances(APIView):
     def get(self,request,conn):
         ins = conn_server(request,conn)
         # ins = conn.describe_instances(status=["terminated"],owner="usr-zHHGDyko")
-        return JsonResponse(ins,safe=False)
+        res = unity(request,ins)
+        return JsonResponse(res,safe=False)
 
 class ceaseinstances(APIView):
     """
@@ -66,7 +67,7 @@ class imageslist(APIView):
         ]
     )
     @method_decorator(token_certify_decorator)
-    def get(self,request,conn):
+    def get(self,request,conn):                          #request 必须，装饰器需要
         images = conn.describe_images(status='deleted'),
         return JsonResponse(images,safe=False)
 
@@ -130,4 +131,82 @@ class volumescease(APIView):
         volumes = request.GET.get('volumes')
         volumes = volumes.split()
         res = conn.cease_volumes(volumes)
+        return JsonResponse(res)
+
+class snapshotslist(APIView):
+    """
+    get:
+       获取回收站中的备份
+    """
+    schema = AutoSchema(
+        manual_fields=[
+            coreapi.Field (name='Authorization', required='True', location='header',
+                           description='Authentication header', type='string'),
+            coreapi.Field (name='DcCode', required='True', location='header', description='dccode header'),
+
+        ]
+    )
+    @method_decorator(token_certify_decorator)
+    def get(self,request,conn):
+        snapshots = conn.describe_snapshots(status=["deleted"]),
+        return JsonResponse(snapshots,safe=False)
+
+class snapshotscease(APIView):
+    """
+    put:
+        彻底删除备份
+    """
+    schema = AutoSchema(
+        manual_fields=[
+            coreapi.Field (name='Authorization', required='True', location='header',
+                           description='Authentication header', type='string'),
+            coreapi.Field (name='DcCode', required='True', location='header', description='dccode header'),
+            coreapi.Field(name='snapshots',required=True,location='query',description='备份id',)
+        ]
+    )
+
+    @method_decorator(token_certify_decorator)
+    def delete(self,request,conn):
+        snapshots = request.GET.get('snapshots')
+        snapshots = snapshots.split()
+        res = conn.cease_snapshots(snapshots)
+        return JsonResponse(res)
+
+class rdbslist(APIView):
+    """
+    get:
+       获取回收站中的rdb
+    """
+    schema = AutoSchema(
+        manual_fields=[
+            coreapi.Field (name='Authorization', required='True', location='header',
+                           description='Authentication header', type='string'),
+            coreapi.Field (name='DcCode', required='True', location='header', description='dccode header'),
+
+        ]
+    )
+    @method_decorator(token_certify_decorator)
+    def get(self,request,conn):
+        rdbs = conn.describe_rdbs(status=["deleted"]),
+        return JsonResponse(rdbs,safe=False)
+
+class rdbscease(APIView):
+    """
+    put:
+        彻底删除rdb
+    """
+    schema = AutoSchema(
+        manual_fields=[
+            coreapi.Field (name='Authorization', required='True', location='header',
+                           description='Authentication header', type='string'),
+            coreapi.Field (name='DcCode', required='True', location='header', description='dccode header'),
+            coreapi.Field(name='rdbs',required=True,location='query',description='rdbid',)
+        ]
+    )
+
+    @method_decorator(token_certify_decorator)
+    def delete(self,request,conn):
+        rdbs = request.GET.get('rdbs')
+        rdbs = rdbs.split()
+        res = conn.cease_rdbs(rdbs)
         return JsonResponse(res)

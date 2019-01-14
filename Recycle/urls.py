@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework_swagger.views import get_swagger_view
 
-from Recycle.view import instances, ceaseinstances, imageslist, imagescease,volumescease,volumeslist
+from Recycle.view import instances, ceaseinstances, imageslist, imagescease, volumescease, volumeslist, snapshotslist, \
+    snapshotscease, rdbslist, rdbscease
 
 schema_view = get_swagger_view(title="Recycle")
 
@@ -30,7 +31,11 @@ urlpatterns = [
     url (r'^images/list$', imageslist.as_view ()),
     url (r'^images/cease', imagescease.as_view ()),
     url (r'^volumes/list$', volumeslist.as_view ()),
-    url (r'^volumes/cease', volumescease.as_view ())
+    url (r'^volumes/cease', volumescease.as_view ()),
+    url (r'^snapshots/list$', snapshotslist.as_view ()),
+    url (r'^snapshots/cease$', snapshotscease.as_view ()),
+    url (r'^rdbs/list$', rdbslist.as_view ()),
+    url (r'^rdbs/cease$', rdbscease.as_view ()),
     # path('qingcloud/', include('resouces.qingcloud.urls')),
 
 ]

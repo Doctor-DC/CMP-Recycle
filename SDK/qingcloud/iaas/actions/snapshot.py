@@ -101,6 +101,23 @@ class SnapshotAction(object):
 
         return self.conn.send_request(action, body)
 
+    def cease_snapshots(self, snapshots,
+                         **ignore):
+        """ Delete snapshots.
+        @param snapshots: the IDs of snapshots you want to delete.
+        """
+        action = const.ACTION_CEASE_SNAPSHOTS
+        valid_keys = ['snapshots']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.conn.req_checker.check_params(body,
+                                                  required_params=["snapshots"],
+                                                  integer_params=[],
+                                                  list_params=["snapshots"]
+                                                  ):
+            return None
+
+        return self.conn.send_request(action, body)
+
     def apply_snapshots(self, snapshots,
                         **ignore):
         """ Apply snapshots.
