@@ -7,10 +7,14 @@ from rest_framework.utils import json
 from rest_framework.views import APIView
 # from json_schema_generator import SchemaGenerator
 # from asyn.tasks import task_response
-from resouces.connect.select_conn import conn_server,  unity
+from resouces.connect.select_conn import SnapshotUnity, InsUnity, EndResponse, ImageUnity, VolumeUnity, \
+    RdbUnity, conn_describe_ins, conn_cease_instanses
 from resouces.connect.decorators import token_certify_decorator
 
 conn = None
+
+
+
 
 class instances(APIView):
     """
@@ -26,32 +30,34 @@ class instances(APIView):
     )
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):
-        ins = conn_server(request,conn)
+        ins = conn_describe_ins(request,conn)
         # ins = conn.describe_instances(status=["terminated"],owner="usr-zHHGDyko")
-        res = unity(request,ins)
-        return JsonResponse(res,safe=False)
+        # res = InsUnity(request,ins)
+        end = EndResponse(ins,'获取回收站列表成功')
+        return JsonResponse(end,safe=False)
 
 class ceaseinstances(APIView):
     """
-    put:
+    delete:
     彻底删除instances
     """
     schema = AutoSchema(
         manual_fields=[
             coreapi.Field (name='Authorization', required='True', location='header',description='Authentication header', type='string'),
             coreapi.Field (name='DcCode', required='True', location='header', description='dccode header'),
-            coreapi.Field (name='instance', required=True, location="query", description='主机id')
+            coreapi.Field (name='instances', required=True, location="query", description='主机id')
         ]
 
     )
     @method_decorator(token_certify_decorator)
-    def put(self,request,conn):
+    def delete(self,request,conn):
         instances = request.GET.get('instances')
-        # print(type(instances))
+        print(instances)
         instances = instances.split()  #str 分割成列表 如hello world -》  ["hello","world"]
         # print(type(instances))
-        res = conn.cease_instances(instances)
-        return JsonResponse(res)
+        res = conn_cease_instanses(request,conn,instances)
+        end = EndResponse (res, '彻底删除成功')
+        return JsonResponse(end)
 
 class imageslist(APIView):
     """
@@ -69,11 +75,13 @@ class imageslist(APIView):
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):                          #request 必须，装饰器需要
         images = conn.describe_images(status='deleted'),
-        return JsonResponse(images,safe=False)
+        res = ImageUnity(request,images)
+        end = EndResponse (res, 'SUCCESS')
+        return JsonResponse(end,safe=False)
 
 class imagescease(APIView):
     """
-    put:
+    delete:
         彻底删除镜像
     """
     schema = AutoSchema(
@@ -90,7 +98,8 @@ class imagescease(APIView):
         imagesid = request.GET.get('images')
         imagesid = imagesid.split()
         res = conn.cease_images(imagesid)
-        return JsonResponse(res)
+        end = EndResponse(res,'删除镜像成功')
+        return JsonResponse(end)
 
 
 
@@ -110,7 +119,9 @@ class volumeslist(APIView):
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):
         volumes = conn.describe_volumes(status=["deleted"]),
-        return JsonResponse(volumes,safe=False)
+        res = VolumeUnity(request,volumes)
+        end = EndResponse(res,'SUCCESS')
+        return JsonResponse(end,safe=False)
 
 class volumescease(APIView):
     """
@@ -131,7 +142,8 @@ class volumescease(APIView):
         volumes = request.GET.get('volumes')
         volumes = volumes.split()
         res = conn.cease_volumes(volumes)
-        return JsonResponse(res)
+        end = EndResponse(res,'删除成功')
+        return JsonResponse(end)
 
 class snapshotslist(APIView):
     """
@@ -149,11 +161,13 @@ class snapshotslist(APIView):
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):
         snapshots = conn.describe_snapshots(status=["deleted"]),
-        return JsonResponse(snapshots,safe=False)
+        res = SnapshotUnity(request,snapshots)
+        end = EndResponse(res,"SUCCESS")
+        return JsonResponse(end,safe=False)
 
 class snapshotscease(APIView):
     """
-    put:
+    delete:
         彻底删除备份
     """
     schema = AutoSchema(
@@ -170,7 +184,10 @@ class snapshotscease(APIView):
         snapshots = request.GET.get('snapshots')
         snapshots = snapshots.split()
         res = conn.cease_snapshots(snapshots)
-        return JsonResponse(res)
+        # print(res)
+        end = EndResponse(res,"删除成功")
+        # print(end)
+        return JsonResponse(end,safe=False)
 
 class rdbslist(APIView):
     """
@@ -188,11 +205,13 @@ class rdbslist(APIView):
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):
         rdbs = conn.describe_rdbs(status=["deleted"]),
-        return JsonResponse(rdbs,safe=False)
+        res = RdbUnity(request,rdbs)
+        end = EndResponse(res,"SUCCESS")
+        return JsonResponse(end,safe=False)
 
 class rdbscease(APIView):
     """
-    put:
+    delete:
         彻底删除rdb
     """
     schema = AutoSchema(
@@ -209,4 +228,5 @@ class rdbscease(APIView):
         rdbs = request.GET.get('rdbs')
         rdbs = rdbs.split()
         res = conn.cease_rdbs(rdbs)
-        return JsonResponse(res)
+        end = EndResponse(res,"删除成功")
+        return JsonResponse(end)

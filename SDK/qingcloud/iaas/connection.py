@@ -19,6 +19,7 @@ import time
 import uuid
 
 from SDK.qingcloud.iaas.actions.instance import InstanceAction
+from SDK.qingcloud.iaas.actions.quota import QuotaAction
 from SDK.qingcloud.iaas.actions.volume import VolumeAction
 from SDK.qingcloud.iaas.actions.eip import EipAction
 from SDK.qingcloud.iaas.actions.router import RouterAction
@@ -92,13 +93,16 @@ class APIConnection(HttpConnection):
             AlarmPolicy(self),
             S2Action(self),
             ClusterAction(self),
+            QuotaAction(self),
         ]
 
     def send_request(self, action, body, url="/iaas/", verb="GET"):
         """ Send request
         """
         request = body
+        # print(request)
         request['action'] = action
+        # print(request)
         request.setdefault('zone', self.zone)
         if self.debug:
             print(json_dump(request))
