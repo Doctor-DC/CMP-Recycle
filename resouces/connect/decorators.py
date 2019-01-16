@@ -33,13 +33,14 @@ def token_certify_decorator(func):#验证token，zone，获取conn实例
             ak,sk = connect_valut(orgCode,dc_code)
         except TypeError:
             msg = ('dc_code无效')
-            resp = {'errorCode': 0, 'errorMessage': msg, 'content': {}, 'resultCode': 1, 'resultMessage': ''}
+            resp = {'errorCode': 0, 'errorMessage': msg, 'content': None, 'resultCode': 1, 'resultMessage': ''}
             return JsonResponse (resp, status=200)
 
         if dc_code == "S03-HB-002":
             conn = connect_qing(ak,sk)
         else:
             conn = create_connection(ak,sk)
+
 
         kwargs.update ({
             'conn': conn

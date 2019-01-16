@@ -74,8 +74,12 @@ class imageslist(APIView):
     )
     @method_decorator(token_certify_decorator)
     def get(self,request,conn):                          #request 必须，装饰器需要
-        images = conn.describe_images(status='deleted'),
-        res = ImageUnity(request,images)
+        try:
+            images = conn.describe_images(status='deleted')
+        except AttributeError:
+            resp = {'errorCode': 0, 'errorMessage': 'dc_code无效,openstack暂无此功能', 'content': None, 'resultCode': 1, 'resultMessage': ''}
+            return JsonResponse (resp, status=200)
+        res = ImageUnity (request, images)
         end = EndResponse (res, 'SUCCESS')
         return JsonResponse(end,safe=False)
 
@@ -125,7 +129,7 @@ class volumeslist(APIView):
 
 class volumescease(APIView):
     """
-    put:
+    delete:
         彻底删除硬盘
     """
     schema = AutoSchema(

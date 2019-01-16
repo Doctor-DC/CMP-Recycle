@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+
 
 def conn_describe_ins(request,conn):
     dc_code = request.META.get ('HTTP_DCCODE', None)
@@ -44,6 +46,7 @@ def conn_describe_ins(request,conn):
         Newdata = {}
         Newdata['list'] = data_set
         return Newdata
+
 
 def conn_cease_instanses(request,conn,instances):
     dc_code = request.META.get ('HTTP_DCCODE', None)
