@@ -1,19 +1,19 @@
 from django.conf.urls import url
 
-from Recycle.view import instances, ceaseinstances, imageslist, imagescease,volumeslist,volumescease,snapshotslist,snapshotscease
-from Recycle.view import rdbscease,rdbslist
+from Recycle.view import InstancesList, CeaseInstances, ImagesList, ImagesCease,VolumesList,VolumesCease,SnapshotsList,SnapshotsCease
+from Recycle.view import RdbsCease,RdbsList
 
 urlpatterns = [
-    url(r'^instances/list$',instances.as_view()),
-    url(r'^instances/cease$',ceaseinstances.as_view()),
-    url(r'^images/list$',imageslist.as_view()),
-    url(r'^images/cease$',imagescease.as_view()),
-    url (r'^volumes/list$', volumeslist.as_view ()),
-    url (r'^volumes/cease$', volumescease.as_view ()),
-    url (r'^snapshots/list$', snapshotslist.as_view ()),
-    url (r'^snapshots/cease$', snapshotscease.as_view ()),
-    url (r'^rdbs/list$', rdbslist.as_view ()),
-    url (r'^rdbs/cease$', rdbscease.as_view ()),
+    url(r'^instances/list$',InstancesList.as_view()),
+    url(r'^instances/cease$', CeaseInstances.as_view()),
+    url(r'^images/list$', ImagesList.as_view()),
+    url(r'^images/cease$', ImagesCease.as_view()),
+    url (r'^volumes/list$', VolumesList.as_view ()),
+    url (r'^volumes/cease$', VolumesCease.as_view ()),
+    url (r'^snapshots/list$', SnapshotsList.as_view ()),
+    url (r'^snapshots/cease$', SnapshotsCease.as_view ()),
+    url (r'^rdbs/list$', RdbsList.as_view ()),
+    url (r'^rdbs/cease$', RdbsCease.as_view ()),
 
 
 

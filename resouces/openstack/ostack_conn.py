@@ -1,8 +1,8 @@
 from SDK import openstack
-from resouces.connect.config_para import os_auth_url,os_project_name,os_region_name,os_domain_id
+from resouces.connect.config_para import os_auth_url, os_project_name, os_region_name, os_domain_id
 
 
-def create_connection(ak,sk):
+def create_connection(ak, sk):
 
     return openstack.connect(
         auth_url=os_auth_url,
@@ -19,4 +19,4 @@ def create_connection(ak,sk):
 
 # conn = create_connection(auth_url='http://10.19.137.110:20001/keystone/v3', project_name='CMP_DEV', region='FFFFF', username='cmp_dev', password='!QAZxsw2')
 # print(conn)
-#S01-HD-001
+# S01-HD-001
