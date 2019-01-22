@@ -4,7 +4,7 @@ from django.http import JsonResponse
 def conn_describe_ins(request,conn):
     dc_code = request.META.get ('HTTP_DCCODE', None)
     if dc_code =="S03-HB-002":
-        res = conn.describe_instances(status=["terminated"])
+        res = conn.describe_instances(status=["terminated"],limit=1,offset=10,)
 
         datalist = res['instance_set']
         print (type (res))

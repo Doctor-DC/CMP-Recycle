@@ -49,6 +49,7 @@ class ceaseinstances(APIView):
         ]
 
     )
+    # schema.get_link(method='delete')
     @method_decorator(token_certify_decorator)
     def delete(self,request,conn):
         instances = request.GET.get('instances')

@@ -1,0 +1,52 @@
+二.服务器部署：
+
+1.配置python3（3.6.5），sqlite，nginx，uwsgi。
+（sqlite报错：https://blog.csdn.net/yemazhuxing/article/details/80462112）
+
+2.创建并进入虚拟环境
+    python -m venv venv3 （/root/python/work/......）
+    cd venv3/
+        source bin/activate
+        (Scripts/activate.bat  #windows)
+
+    移植project文件
+
+    cd project
+        配置Python环境依赖
+        pip install -r requirements.txt
+
+3.配置uwsgi.ini地址
+
+[uwsgi]
+http = 0.0.0.0:8001
+chdir = /root/python/work/venv3/Recycle/   #project地址
+wsgi-file = Recycle/wsgi.py                         #project下wsgi.py地址
+master = true
+processes = 4
+static-map=/static=/root/python/work/venv3/Recycle/Recycle/AllStatic/
+stats=/root/python/work/venv3/Recycle/uwsgi/uwsgi.status
+pidfile=/root/python/work/venv3/Recycle/uwsgi/uwsgi.pid
+ # 日志
+ daemonize =/root/python/work/venv/s2/uwsgi/web_uwsgi.log
+
+4.配置读取参数文件地址
+    Recycle\resouces\connect\config_para.py：
+
+config = configparser.ConfigParser ()
+config.read("D:\\MyDownloads\Recycle\\resouces\\connect\\Config.ini") #window
+config.read ('/root/python/work/venv3/Recycle/resouces/connect/Config.ini')   #centos
+
+5.运行
+启动： uwsgi --ini uwsgi.ini
+停止：uwsgi --stop uwsgi.pid
+重启：uwsgi --reload uwsgi.pid
+强制停止：killall -9 uwsgi
+
+6.退出虚拟环境：
+    deactivate
+7.
+查看端口调用
+        `netstat -lnp|grep 8001`
+        `ps 进程号`
+杀掉进程
+         `kill -9 进程号`

@@ -3,6 +3,7 @@ import configparser
 # 读取配置文件
 config = configparser.ConfigParser ()
 config.read ("D:\\MyDownloads\Recycle\\resouces\\connect\\Config.ini")
+# config.read ('/root/python/work/venv3/Recycle/resouces/connect/Config.ini')
 
 # secs = config.sections()
 # print(secs)
