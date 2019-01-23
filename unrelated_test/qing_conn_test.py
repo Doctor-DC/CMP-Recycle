@@ -14,7 +14,7 @@ conn = new_connect_to_zone(
     lowercase=False,
 )
 
-
+print(type(conn))
 # res = conn.describe_instances ()
 # res = conn.describe_instances (limit=1, offset=10, )
 # datalist = res['instance_set']
@@ -51,17 +51,17 @@ def quota_list():
 
 
 # 输出内容:user=admin&password=admin
-header = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbXBfYWRtaW4iLCJwaG9uZSI6IiIsIm9yZ0NvZGUiOjEwMDAwMSwiZXhwIjoxNTM2ODMzNzgyLCJ1dWlkIjoiNDI3YWIwMDgtZTk4Zi00ZjUzLWIzZDctOTJkZTFhNGQ4OTNkIiwiZW1haWwiOiIiLCJhdXRob3JpdGllcyI6WyJST0xFX1NZUyIsIkNNUF9DTVBfQURNSU4iLCJCTVNfU1lTIl0sInJlc291cmNlQ29kZXMiOltdLCJ1c2VybmFtZSI6ImNtcF9hZG1pbiJ9.Qopxx0-ELTaRUjGwGuHGmhuAdmgwVR18hnqBGHXN1Yw-HxNtyDREkRQn1W3yWNpxLudlgaNkPQUJTHxpP6XFoA',
-          'DcCode': 'S03-HB-002'}
-url = 'http://10.22.29.100:8081/iaas/instance/'
-path = 'i-w1uqifnm'
-req = request.Request(url=url + path, headers=header)
-print(req)
-res2 = request.urlopen(req)
-print(type(res2))
-res2 = res2.read()
-res2 = json.loads(res2)
-# res2 = str(res2, encoding = "utf8")
-# res2 = eval(res2)
-print(res2)
-print(type(res2))
+# header = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbXBfYWRtaW4iLCJwaG9uZSI6IiIsIm9yZ0NvZGUiOjEwMDAwMSwiZXhwIjoxNTM2ODMzNzgyLCJ1dWlkIjoiNDI3YWIwMDgtZTk4Zi00ZjUzLWIzZDctOTJkZTFhNGQ4OTNkIiwiZW1haWwiOiIiLCJhdXRob3JpdGllcyI6WyJST0xFX1NZUyIsIkNNUF9DTVBfQURNSU4iLCJCTVNfU1lTIl0sInJlc291cmNlQ29kZXMiOltdLCJ1c2VybmFtZSI6ImNtcF9hZG1pbiJ9.Qopxx0-ELTaRUjGwGuHGmhuAdmgwVR18hnqBGHXN1Yw-HxNtyDREkRQn1W3yWNpxLudlgaNkPQUJTHxpP6XFoA',
+#           'DcCode': 'S03-HB-002'}
+# url = 'http://10.22.29.100:8081/iaas/instance/'
+# path = 'i-w1uqifnm'
+# req = request.Request(url=url + path, headers=header)
+# print(req)
+# res2 = request.urlopen(req)
+# print(type(res2))
+# res2 = res2.read()
+# res2 = json.loads(res2)
+# # res2 = str(res2, encoding = "utf8")
+# # res2 = eval(res2)
+# print(res2)
+# print(type(res2))

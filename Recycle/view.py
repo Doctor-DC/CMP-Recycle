@@ -7,8 +7,8 @@ from rest_framework.utils import json
 from rest_framework.views import APIView
 # from json_schema_generator import SchemaGenerator
 # from asyn.tasks import task_response
-from resouces.connect.select_conn import SnapshotUnity, InsUnity, EndResponse, ImageUnity, VolumeUnity, \
-    RdbUnity, conn_describe_ins, conn_cease_instanses
+from resouces.connect.select_conn import snapshot_unity, ins_unity, end_response, image_unity, volume_unity, \
+    rdb_unity, conn_describe_ins, conn_cease_instanses
 from resouces.connect.decorators import token_certify_decorator
 
 conn = None
@@ -38,7 +38,7 @@ class InstancesList(APIView):
         ins = conn_describe_ins(request, conn)
         # ins = conn.describe_instances(status=["terminated"],owner="usr-zHHGDyko")
         # res = InsUnity(request,ins)
-        end = EndResponse(ins, '获取回收站列表成功')
+        end = end_response(ins, '获取回收站列表成功')
         print(type(end))
         return JsonResponse(end, safe=False)
 
@@ -76,7 +76,7 @@ class CeaseInstances(APIView):
         instances = instances.split()
         # print(type(instances))
         res = conn_cease_instanses(request, conn, instances)
-        end = EndResponse(res, '彻底删除成功')
+        end = end_response(res, '彻底删除成功')
         return JsonResponse(end)
 
 
@@ -112,8 +112,8 @@ class ImagesList(APIView):
                 'resultCode': 1,
                 'resultMessage': ''}
             return JsonResponse(resp, status=200)
-        res = ImageUnity(request, images)
-        end = EndResponse(res, 'SUCCESS')
+        res = image_unity(request, images)
+        end = end_response(res, 'SUCCESS')
         return JsonResponse(end, safe=False)
 
 
@@ -147,7 +147,7 @@ class ImagesCease(APIView):
         imagesid = request.GET.get('images')
         imagesid = imagesid.split()
         res = conn.cease_images(imagesid)
-        end = EndResponse(res, '删除镜像成功')
+        end = end_response(res, '删除镜像成功')
         return JsonResponse(end)
 
 
@@ -174,8 +174,8 @@ class VolumesList(APIView):
     @method_decorator(token_certify_decorator)
     def get(self, request, conn):
         volumes = conn.describe_volumes(status=["deleted"]),
-        res = VolumeUnity(request, volumes)
-        end = EndResponse(res, 'SUCCESS')
+        res = volume_unity(request, volumes)
+        end = end_response(res, 'SUCCESS')
         return JsonResponse(end, safe=False)
 
 
@@ -209,7 +209,7 @@ class VolumesCease(APIView):
         volumes = request.GET.get('volumes')
         volumes = volumes.split()
         res = conn.cease_volumes(volumes)
-        end = EndResponse(res, '删除成功')
+        end = end_response(res, '删除成功')
         return JsonResponse(end)
 
 
@@ -236,8 +236,8 @@ class SnapshotsList(APIView):
     @method_decorator(token_certify_decorator)
     def get(self, request, conn):
         snapshots = conn.describe_snapshots(status=["deleted"]),
-        res = SnapshotUnity(request, snapshots)
-        end = EndResponse(res, "SUCCESS")
+        res = snapshot_unity(request, snapshots)
+        end = end_response(res, "SUCCESS")
         return JsonResponse(end, safe=False)
 
 
@@ -272,7 +272,7 @@ class SnapshotsCease(APIView):
         snapshots = snapshots.split()
         res = conn.cease_snapshots(snapshots)
         # print(res)
-        end = EndResponse(res, "删除成功")
+        end = end_response(res, "删除成功")
         # print(end)
         return JsonResponse(end, safe=False)
 
@@ -300,8 +300,8 @@ class RdbsList(APIView):
     @method_decorator(token_certify_decorator)
     def get(self, request, conn):
         rdbs = conn.describe_rdbs(status=["deleted"]),
-        res = RdbUnity(request, rdbs)
-        end = EndResponse(res, "SUCCESS")
+        res = rdb_unity(request, rdbs)
+        end = end_response(res, "SUCCESS")
         return JsonResponse(end, safe=False)
 
 
@@ -335,5 +335,5 @@ class RdbsCease(APIView):
         rdbs = request.GET.get('rdbs')
         rdbs = rdbs.split()
         res = conn.cease_rdbs(rdbs)
-        end = EndResponse(res, "删除成功")
+        end = end_response(res, "删除成功")
         return JsonResponse(end)

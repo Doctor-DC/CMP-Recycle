@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack._log import enable_logging  # noqa
-import openstack.config
-import openstack.connection
+from SDK.openstack._log import enable_logging  # noqa
+import SDK.openstack.config
+import SDK.openstack.connection
 
 __all__ = [
     'connect',
