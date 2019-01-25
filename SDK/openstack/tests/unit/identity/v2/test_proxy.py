@@ -10,11 +10,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.identity.v2 import _proxy
-from openstack.identity.v2 import role
-from openstack.identity.v2 import tenant
-from openstack.identity.v2 import user
-from openstack.tests.unit import test_proxy_base as test_proxy_base
+from SDK.openstack.identity.v2 import _proxy
+from SDK.openstack.identity.v2 import role
+from SDK.openstack.identity.v2 import tenant
+from SDK.openstack.identity.v2 import user
+from SDK.openstack.tests.unit import test_proxy_base as test_proxy_base
 
 
 class TestIdentityProxy(test_proxy_base.TestProxyBase):

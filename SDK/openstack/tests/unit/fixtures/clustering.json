@@ -16,7 +16,7 @@
             "media-types": [
                 {
                     "base": "application/json",
-                    "type": "application/vnd.openstack.clustering-v1+json"
+                    "type": "application/vnd.SDK.openstack.clustering-v1+json"
                 }
             ],
             "min_version": "1.0",

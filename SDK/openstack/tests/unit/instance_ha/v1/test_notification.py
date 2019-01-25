@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack.instance_ha.v1 import notification
-from openstack.tests.unit import base
+from SDK.openstack.instance_ha.v1 import notification
+from SDK.openstack.tests.unit import base
 
 FAKE_ID = "569429e9-7f14-41be-a38e-920277e637db"
 FAKE_UUID = "a0e70d3a-b3a2-4616-b65d-a7c03a2c85fc"

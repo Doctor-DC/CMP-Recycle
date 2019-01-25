@@ -12,8 +12,8 @@
 # under the License.
 
 
-from openstack.tests.unit import base
-from openstack.tests import fakes
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests import fakes
 
 
 _fake_zone_list = {

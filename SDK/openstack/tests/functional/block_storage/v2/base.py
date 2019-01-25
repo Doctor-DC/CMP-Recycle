@@ -12,7 +12,7 @@
 
 import os
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class BaseBlockStorageTest(base.BaseFunctionalTest):

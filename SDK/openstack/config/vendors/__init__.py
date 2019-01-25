@@ -20,12 +20,12 @@ from six.moves import urllib
 import requests
 import yaml
 
-from openstack.config import _util
-from openstack import exceptions
+from SDK.openstack.config import _util
+from SDK.openstack import exceptions
 
 _VENDORS_PATH = os.path.dirname(os.path.realpath(__file__))
 _VENDOR_DEFAULTS = {}
-_WELL_KNOWN_PATH = "{scheme}://{netloc}/.well-known/openstack/api"
+_WELL_KNOWN_PATH = "{scheme}://{netloc}/.well-known/SDK.openstack/api"
 
 
 def _get_vendor_defaults():

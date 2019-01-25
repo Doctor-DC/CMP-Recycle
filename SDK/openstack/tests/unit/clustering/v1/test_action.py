@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.clustering.v1 import action
+from SDK.openstack.clustering.v1 import action
 
 
 FAKE_ID = '633bd3c6-520b-420f-8e6a-dc2a47022b53'

@@ -22,7 +22,7 @@ import os
 
 from testscenarios import load_tests_apply_scenarios as load_tests  # noqa
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestDevstack(base.BaseFunctionalTest):

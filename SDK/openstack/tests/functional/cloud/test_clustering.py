@@ -19,7 +19,7 @@ Functional tests for `shade` clustering methods.
 
 from testtools import content
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 import time
 
@@ -60,7 +60,7 @@ def wait_for_create(client, client_args, check_interval=1, timeout=60):
      :param name: Name of the resource (for logging)
      :param check_interval: Interval between checks
      :param timeout: Time in seconds to wait for status to update.
-     :returns: True if openstack.exceptions.NotFoundException is caught
+     :returns: True if SDK.openstack.exceptions.NotFoundException is caught
      :raises: TimeoutException
 
      """
@@ -87,7 +87,7 @@ def wait_for_delete(client, client_args, check_interval=1, timeout=60):
     :param name: Name of the resource (for logging)
     :param check_interval: Interval between checks
     :param timeout: Time in seconds to wait for status to update.
-    :returns: True if openstack.exceptions.NotFoundException is caught
+    :returns: True if SDK.openstack.exceptions.NotFoundException is caught
     :raises: TimeoutException
 
     """

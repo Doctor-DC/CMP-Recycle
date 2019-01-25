@@ -13,17 +13,17 @@
 import uuid
 import mock
 
-from openstack.load_balancer.v2 import _proxy
-from openstack.load_balancer.v2 import health_monitor
-from openstack.load_balancer.v2 import l7_policy
-from openstack.load_balancer.v2 import l7_rule
-from openstack.load_balancer.v2 import listener
-from openstack.load_balancer.v2 import load_balancer as lb
-from openstack.load_balancer.v2 import member
-from openstack.load_balancer.v2 import pool
-from openstack.load_balancer.v2 import quota
-from openstack import proxy as proxy_base
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.load_balancer.v2 import _proxy
+from SDK.openstack.load_balancer.v2 import health_monitor
+from SDK.openstack.load_balancer.v2 import l7_policy
+from SDK.openstack.load_balancer.v2 import l7_rule
+from SDK.openstack.load_balancer.v2 import listener
+from SDK.openstack.load_balancer.v2 import load_balancer as lb
+from SDK.openstack.load_balancer.v2 import member
+from SDK.openstack.load_balancer.v2 import pool
+from SDK.openstack.load_balancer.v2 import quota
+from SDK.openstack import proxy as proxy_base
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
@@ -53,7 +53,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
         fake_load_balancer = mock.Mock()
         fake_load_balancer.id = "load_balancer_id"
         mock_get_resource.return_value = fake_load_balancer
-        self._verify2("openstack.proxy.Proxy._delete",
+        self._verify2("SDK.openstack.proxy.Proxy._delete",
                       self.proxy.delete_load_balancer,
                       method_args=["resource_or_id", True,
                                    False],
@@ -69,7 +69,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
         fake_load_balancer = mock.Mock()
         fake_load_balancer.id = "load_balancer_id"
         mock_get_resource.return_value = fake_load_balancer
-        self._verify2("openstack.proxy.Proxy._delete",
+        self._verify2("SDK.openstack.proxy.Proxy._delete",
                       self.proxy.delete_load_balancer,
                       method_args=["resource_or_id", True,
                                    True],
@@ -165,7 +165,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
                            expected_kwargs={'pool_id': self.POOL_ID})
 
     def test_member_find(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_member,
                       method_args=["MEMBER", self.POOL_ID],
                       expected_args=[member.Member, "MEMBER"],
@@ -173,7 +173,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
                                        "ignore_missing": True})
 
     def test_member_update(self):
-        self._verify2('openstack.proxy.Proxy._update',
+        self._verify2('SDK.openstack.proxy.Proxy._update',
                       self.proxy.update_member,
                       method_args=["MEMBER", self.POOL_ID],
                       expected_args=[member.Member, "MEMBER"],
@@ -256,7 +256,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
                            expected_kwargs={'l7policy_id': self.L7_POLICY_ID})
 
     def test_l7_rule_find(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_l7_rule,
                       method_args=["RULE", self.L7_POLICY_ID],
                       expected_args=[l7_rule.L7Rule, "RULE"],
@@ -264,7 +264,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
                                        "ignore_missing": True})
 
     def test_l7_rule_update(self):
-        self._verify2('openstack.proxy.Proxy._update',
+        self._verify2('SDK.openstack.proxy.Proxy._update',
                       self.proxy.update_l7_rule,
                       method_args=["RULE", self.L7_POLICY_ID],
                       expected_args=[l7_rule.L7Rule, "RULE"],
@@ -280,7 +280,7 @@ class TestLoadBalancerProxy(test_proxy_base.TestProxyBase):
         self.verify_update(self.proxy.update_quota, quota.Quota)
 
     def test_quota_default_get(self):
-        self._verify2("openstack.proxy.Proxy._get",
+        self._verify2("SDK.openstack.proxy.Proxy._get",
                       self.proxy.get_quota_default,
                       expected_args=[quota.QuotaDefault],
                       expected_kwargs={'requires_id': False})

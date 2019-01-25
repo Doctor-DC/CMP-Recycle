@@ -13,7 +13,7 @@
 # TODO(shade) Port this content back in from shade repo as tests don't have
 # references to ironic_client.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
 
 class TestShadeOperator(base.TestCase):

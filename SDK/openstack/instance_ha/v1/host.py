@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Host(resource.Resource):
@@ -33,8 +33,8 @@ class Host(resource.Resource):
     allow_delete = True
 
     # Properties
-    # Refer "https://github.com/openstack/masakari/blob/
-    # master/masakari/api/openstack/ha/schemas/hosts.py"
+    # Refer "https://github.com/SDK.openstack/masakari/blob/
+    # master/masakari/api/SDK.openstack/ha/schemas/hosts.py"
     # for properties of host API
 
     #: A ID of representing this host

@@ -13,9 +13,9 @@
 import copy
 import mock
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.block_storage.v2 import volume
+from SDK.openstack.block_storage.v2 import volume
 
 FAKE_ID = "6685584b-1eac-4da6-b5c3-555430cf68ff"
 IMAGE_METADATA = {

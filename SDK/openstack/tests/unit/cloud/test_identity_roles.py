@@ -13,8 +13,8 @@
 
 import testtools
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 from testtools import matchers
 
 
@@ -226,7 +226,7 @@ class TestIdentityRoles(base.TestCase):
                  status_code=403)
         ])
         with testtools.ExpectedException(
-            openstack.cloud.exc.OpenStackCloudHTTPError,
+            SDK.openstack.cloud.exc.OpenStackCloudHTTPError,
             "Failed to list role assignments"
         ):
             self.cloud.list_role_assignments()
@@ -292,7 +292,7 @@ class TestIdentityRoles(base.TestCase):
     def test_list_role_assignments_exception_v2(self):
         self.use_keystone_v2()
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Must provide project and user for keystone v2"
         ):
             self.cloud.list_role_assignments()
@@ -301,7 +301,7 @@ class TestIdentityRoles(base.TestCase):
     def test_list_role_assignments_exception_v2_no_project(self):
         self.use_keystone_v2()
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Must provide project and user for keystone v2"
         ):
             self.cloud.list_role_assignments(filters={'user': '12345'})

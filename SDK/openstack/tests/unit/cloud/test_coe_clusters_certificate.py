@@ -13,7 +13,7 @@
 
 import munch
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
 coe_cluster_ca_obj = munch.Munch(
     cluster_uuid="43e305ce-3a5f-412a-8a14-087834c34c8c",

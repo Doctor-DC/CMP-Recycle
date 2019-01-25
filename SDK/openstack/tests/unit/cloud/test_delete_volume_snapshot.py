@@ -17,10 +17,10 @@ test_delete_volume_snapshot
 Tests for the `delete_volume_snapshot` command.
 """
 
-from openstack.cloud import exc
-from openstack.cloud import meta
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.cloud import meta
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestDeleteVolumeSnapshot(base.TestCase):

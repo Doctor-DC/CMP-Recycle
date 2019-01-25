@@ -21,10 +21,10 @@ import uuid
 
 from testscenarios import load_tests_apply_scenarios as load_tests  # noqa
 
-from openstack.cloud import exc
-from openstack import exceptions
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack import exceptions
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestBaremetalNode(base.IronicTestCase):

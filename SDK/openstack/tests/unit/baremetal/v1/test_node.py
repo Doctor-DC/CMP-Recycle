@@ -13,10 +13,10 @@
 from keystoneauth1 import adapter
 import mock
 
-from openstack.baremetal.v1 import _common
-from openstack.baremetal.v1 import node
-from openstack import exceptions
-from openstack.tests.unit import base
+from SDK.openstack.baremetal.v1 import _common
+from SDK.openstack.baremetal.v1 import node
+from SDK.openstack import exceptions
+from SDK.openstack.tests.unit import base
 
 # NOTE: Sample data from api-ref doc
 FAKE = {

@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.network.v2 import flavor
+from SDK.openstack.network.v2 import flavor
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE_WITH_OPTIONAL = {

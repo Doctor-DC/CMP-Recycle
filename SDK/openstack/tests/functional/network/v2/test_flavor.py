@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.network.v2 import flavor
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import flavor
+from SDK.openstack.tests.functional import base
 
 
 class TestFlavor(base.BaseFunctionalTest):

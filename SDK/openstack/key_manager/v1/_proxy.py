@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.key_manager.v1 import container as _container
-from openstack.key_manager.v1 import order as _order
-from openstack.key_manager.v1 import secret as _secret
-from openstack import proxy
+from SDK.openstack.key_manager.v1 import container as _container
+from SDK.openstack.key_manager.v1 import order as _order
+from SDK.openstack.key_manager.v1 import secret as _secret
+from SDK.openstack import proxy
 
 
 class Proxy(proxy.Proxy):
@@ -22,11 +22,11 @@ class Proxy(proxy.Proxy):
         """Create a new container from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-               a :class:`~openstack.key_manager.v1.container.Container`,
+               a :class:`~SDK.openstack.key_manager.v1.container.Container`,
                comprised of the properties on the Container class.
 
         :returns: The results of container creation
-        :rtype: :class:`~openstack.key_manager.v1.container.Container`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.container.Container`
         """
         return self._create(_container.Container, **attrs)
 
@@ -34,10 +34,10 @@ class Proxy(proxy.Proxy):
         """Delete a container
 
         :param container: The value can be either the ID of a container or a
-               :class:`~openstack.key_manager.v1.container.Container`
+               :class:`~SDK.openstack.key_manager.v1.container.Container`
                instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the container does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent container.
@@ -52,11 +52,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a container.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.key_manager.v1.container.Container`
+        :returns: One :class:`~SDK.openstack.key_manager.v1.container.Container`
                   or None
         """
         return self._find(_container.Container, name_or_id,
@@ -66,11 +66,11 @@ class Proxy(proxy.Proxy):
         """Get a single container
 
         :param container: The value can be the ID of a container or a
-                      :class:`~openstack.key_manager.v1.container.Container`
+                      :class:`~SDK.openstack.key_manager.v1.container.Container`
                       instance.
 
-        :returns: One :class:`~openstack.key_manager.v1.container.Container`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.key_manager.v1.container.Container`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_container.Container, container)
@@ -82,7 +82,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :returns: A generator of container objects
-        :rtype: :class:`~openstack.key_manager.v1.container.Container`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.container.Container`
         """
         return self._list(_container.Container, paginated=False, **query)
 
@@ -90,13 +90,13 @@ class Proxy(proxy.Proxy):
         """Update a container
 
         :param container: Either the id of a container or a
-                      :class:`~openstack.key_manager.v1.container.Container`
+                      :class:`~SDK.openstack.key_manager.v1.container.Container`
                       instance.
         :attrs kwargs: The attributes to update on the container represented
                        by ``value``.
 
         :returns: The updated container
-        :rtype: :class:`~openstack.key_manager.v1.container.Container`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.container.Container`
         """
         return self._update(_container.Container, container, **attrs)
 
@@ -104,11 +104,11 @@ class Proxy(proxy.Proxy):
         """Create a new order from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.key_manager.v1.order.Order`,
+                           a :class:`~SDK.openstack.key_manager.v1.order.Order`,
                            comprised of the properties on the Order class.
 
         :returns: The results of order creation
-        :rtype: :class:`~openstack.key_manager.v1.order.Order`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.order.Order`
         """
         return self._create(_order.Order, **attrs)
 
@@ -116,10 +116,10 @@ class Proxy(proxy.Proxy):
         """Delete an order
 
         :param order: The value can be either the ID of a order or a
-                      :class:`~openstack.key_manager.v1.order.Order`
+                      :class:`~SDK.openstack.key_manager.v1.order.Order`
                       instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the order does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent order.
@@ -133,11 +133,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a order.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.key_manager.v1.order.Order` or None
+        :returns: One :class:`~SDK.openstack.key_manager.v1.order.Order` or None
         """
         return self._find(_order.Order, name_or_id,
                           ignore_missing=ignore_missing)
@@ -146,11 +146,11 @@ class Proxy(proxy.Proxy):
         """Get a single order
 
         :param order: The value can be the ID of an order or a
-                      :class:`~openstack.key_manager.v1.order.Order`
+                      :class:`~SDK.openstack.key_manager.v1.order.Order`
                       instance.
 
-        :returns: One :class:`~openstack.key_manager.v1.order.Order`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.key_manager.v1.order.Order`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_order.Order, order)
@@ -162,7 +162,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :returns: A generator of order objects
-        :rtype: :class:`~openstack.key_manager.v1.order.Order`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.order.Order`
         """
         return self._list(_order.Order, paginated=False, **query)
 
@@ -170,13 +170,13 @@ class Proxy(proxy.Proxy):
         """Update a order
 
         :param order: Either the id of a order or a
-                      :class:`~openstack.key_manager.v1.order.Order`
+                      :class:`~SDK.openstack.key_manager.v1.order.Order`
                       instance.
         :attrs kwargs: The attributes to update on the order represented
                        by ``value``.
 
         :returns: The updated order
-        :rtype: :class:`~openstack.key_manager.v1.order.Order`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.order.Order`
         """
         return self._update(_order.Order, order, **attrs)
 
@@ -184,11 +184,11 @@ class Proxy(proxy.Proxy):
         """Create a new secret from attributes
 
         :param dict attrs: Keyword arguments which will be used to create a
-                           :class:`~openstack.key_manager.v1.secret.Secret`,
+                           :class:`~SDK.openstack.key_manager.v1.secret.Secret`,
                            comprised of the properties on the Order class.
 
         :returns: The results of secret creation
-        :rtype: :class:`~openstack.key_manager.v1.secret.Secret`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.secret.Secret`
         """
         return self._create(_secret.Secret, **attrs)
 
@@ -196,10 +196,10 @@ class Proxy(proxy.Proxy):
         """Delete a secret
 
         :param secret: The value can be either the ID of a secret or a
-                       :class:`~openstack.key_manager.v1.secret.Secret`
+                       :class:`~SDK.openstack.key_manager.v1.secret.Secret`
                        instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the secret does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent secret.
@@ -213,11 +213,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a secret.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.key_manager.v1.secret.Secret` or
+        :returns: One :class:`~SDK.openstack.key_manager.v1.secret.Secret` or
                   None
         """
         return self._find(_secret.Secret, name_or_id,
@@ -227,11 +227,11 @@ class Proxy(proxy.Proxy):
         """Get a single secret
 
         :param secret: The value can be the ID of a secret or a
-                       :class:`~openstack.key_manager.v1.secret.Secret`
+                       :class:`~SDK.openstack.key_manager.v1.secret.Secret`
                        instance.
 
-        :returns: One :class:`~openstack.key_manager.v1.secret.Secret`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.key_manager.v1.secret.Secret`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_secret.Secret, secret)
@@ -243,7 +243,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :returns: A generator of secret objects
-        :rtype: :class:`~openstack.key_manager.v1.secret.Secret`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.secret.Secret`
         """
         return self._list(_secret.Secret, paginated=False, **query)
 
@@ -251,12 +251,12 @@ class Proxy(proxy.Proxy):
         """Update a secret
 
         :param secret: Either the id of a secret or a
-                       :class:`~openstack.key_manager.v1.secret.Secret`
+                       :class:`~SDK.openstack.key_manager.v1.secret.Secret`
                        instance.
         :attrs kwargs: The attributes to update on the secret represented
                        by ``value``.
 
         :returns: The updated secret
-        :rtype: :class:`~openstack.key_manager.v1.secret.Secret`
+        :rtype: :class:`~SDK.openstack.key_manager.v1.secret.Secret`
         """
         return self._update(_secret.Secret, secret, **attrs)

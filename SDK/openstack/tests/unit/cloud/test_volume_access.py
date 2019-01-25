@@ -15,8 +15,8 @@
 
 import testtools
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 class TestVolumeAccess(base.TestCase):
@@ -187,7 +187,7 @@ class TestVolumeAccess(base.TestCase):
                      qs_elements=['is_public=None']),
                  json={'volume_types': [volume_type]})])
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "VolumeType not found: MISSING"):
             self.cloud.add_volume_type_access(
                 "MISSING", project_001['project_id'])

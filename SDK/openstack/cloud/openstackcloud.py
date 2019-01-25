@@ -28,7 +28,7 @@ import threading
 import time
 # import types so that we can reference ListType in sphinx param declarations.
 # We can't just use list, because sphinx gets confused by
-# openstack.resource.Resource.list and openstack.resource2.Resource.list
+# SDK.openstack.resource.Resource.list and SDK.openstack.resource2.Resource.list
 import types  # noqa
 import warnings
 
@@ -41,18 +41,18 @@ from six.moves import urllib
 import keystoneauth1.exceptions
 import keystoneauth1.session
 
-from openstack import _adapter
-from openstack import _log
-from openstack import exceptions
-from openstack.cloud import exc
-from openstack.cloud._heat import event_utils
-from openstack.cloud._heat import template_utils
-from openstack.cloud import _normalize
-from openstack.cloud import meta
-from openstack.cloud import _utils
-import openstack.config
-import openstack.config.defaults
-from openstack import utils
+from SDK.openstack import _adapter
+from SDK.openstack import _log
+from SDK.openstack import exceptions
+from SDK.openstack.cloud import exc
+from SDK.openstack.cloud._heat import event_utils
+from SDK.openstack.cloud._heat import template_utils
+from SDK.openstack.cloud import _normalize
+from SDK.openstack.cloud import meta
+from SDK.openstack.cloud import _utils
+import SDK.openstack.config
+import SDK.openstack.config.defaults
+from SDK.openstack import utils
 
 # Rackspace returns this for intermittent import errors
 IMAGE_ERROR_396 = "Image cannot be imported. Error code: '396'"
@@ -63,7 +63,7 @@ DEFAULT_SERVER_AGE = 5
 DEFAULT_PORT_AGE = 5
 DEFAULT_FLOAT_AGE = 5
 _CONFIG_DOC_URL = (
-    "https://docs.openstack.org/openstacksdk/latest/"
+    "https://docs.SDK.openstack.org/openstacksdk/latest/"
     "user/config/configuration.html")
 
 
@@ -115,9 +115,9 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
     _OBJECT_SHA256_KEY = 'x-object-meta-x-sdk-sha256'
     _OBJECT_AUTOCREATE_KEY = 'x-object-meta-x-sdk-autocreated'
     _OBJECT_AUTOCREATE_CONTAINER = 'images'
-    _IMAGE_MD5_KEY = 'owner_specified.openstack.md5'
-    _IMAGE_SHA256_KEY = 'owner_specified.openstack.sha256'
-    _IMAGE_OBJECT_KEY = 'owner_specified.openstack.object'
+    _IMAGE_MD5_KEY = 'owner_specified.SDK.openstack.md5'
+    _IMAGE_SHA256_KEY = 'owner_specified.SDK.openstack.sha256'
+    _IMAGE_OBJECT_KEY = 'owner_specified.SDK.openstack.object'
     # NOTE(shade) shade keys were x-object-meta-x-shade-md5 - we need to check
     #             those in freshness checks so that a shade->sdk transition
     #             doesn't result in a re-upload
@@ -133,7 +133,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
 
     def __init__(self):
 
-        self.log = _log.setup_logging('openstack')
+        self.log = _log.setup_logging('SDK.openstack')
 
         self.name = self.config.name
         self.auth = self.config.get_auth_args()
@@ -276,7 +276,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
 
         .. code-block:: python
 
-          conn = openstack.connect(cloud='example')
+          conn = SDK.openstack.connect(cloud='example')
           # Work normally
           servers = conn.list_servers()
           conn2 = conn.connect_as(username='different-user', password='')
@@ -293,7 +293,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
             config = self.config._openstack_config
         else:
             # TODO(mordred) Replace this with from_session
-            config = openstack.config.OpenStackConfig(
+            config = SDK.openstack.config.OpenStackConfig(
                 app_name=self.config._app_name,
                 app_version=self.config._app_version,
                 load_yaml_config=False)
@@ -358,7 +358,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
 
         .. code-block:: python
 
-          cloud = openstack.connect(cloud='example')
+          cloud = SDK.openstack.connect(cloud='example')
           # Work normally
           servers = cloud.list_servers()
           cloud2 = cloud.connect_as_project('different-project')
@@ -428,11 +428,11 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
         #             we need to make sure we can still support it in the shade
         #             compat layer.
         # NOTE(mordred) This logic for versions is slightly different
-        # than the ksa Adapter constructor logic. openstack.cloud knows the
+        # than the ksa Adapter constructor logic. SDK.openstack.cloud knows the
         # versions it knows, and uses them when it detects them. However, if
         # a user requests a version, and it's not found, and a different one
-        # openstack.cloud does know about is found, that's a warning in
-        # openstack.cloud.
+        # SDK.openstack.cloud does know about is found, that's a warning in
+        # SDK.openstack.cloud.
         if config_version:
             if min_major and config_major < min_major:
                 raise exc.OpenStackCloudException(
@@ -444,7 +444,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
             elif max_major and config_major > max_major:
                 raise exc.OpenStackCloudException(
                     "Version {config_version} requested for {service_type}"
-                    " but openstack.cloud understands a maximum of"
+                    " but SDK.openstack.cloud understands a maximum of"
                     " {max_version}".format(
                         config_version=config_version,
                         service_type=service_type,
@@ -500,7 +500,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
             warnings.warn(warning_msg)
         return adapter
 
-    # TODO(shade) This should be replaced with using openstack Connection
+    # TODO(shade) This should be replaced with using SDK.openstack Connection
     #             object.
     def _get_raw_client(
             self, service_type, api_version=None, endpoint_override=None):
@@ -1899,7 +1899,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
         :param get_extra: Whether or not to fetch extra specs for each flavor.
                           Defaults to True. Default behavior value can be
                           overridden in clouds.yaml by setting
-                          openstack.cloud.get_extra_specs to False.
+                          SDK.openstack.cloud.get_extra_specs to False.
         :returns: A list of flavor ``munch.Munch``.
 
         """
@@ -4746,7 +4746,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
         if not disk_format:
             disk_format = self.config.config['image_format']
         if not container_format:
-            # https://docs.openstack.org/image-guide/image-formats.html
+            # https://docs.SDK.openstack.org/image-guide/image-formats.html
             container_format = 'bare'
 
         if volume:
@@ -5100,7 +5100,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
         if not img_props:
             return False
         headers = {
-            'Content-Type': 'application/openstack-images-v2.1-json-patch'}
+            'Content-Type': 'application/SDK.openstack-images-v2.1-json-patch'}
         patch = sorted(list(jsonpatch.JsonPatch.from_diff(
             image.properties, img_props)), key=operator.itemgetter('value'))
 
@@ -10032,7 +10032,7 @@ class _OpenStackCloudMixin(_normalize.Normalizer):
         :param bool for_deploy: If ``True``, validate readiness for deployment,
                                 otherwise validate only the power management
                                 properties.
-        :raises: :exc:`~openstack.exceptions.ValidationException`
+        :raises: :exc:`~SDK.openstack.exceptions.ValidationException`
         """
         if for_deploy:
             ifaces = ('boot', 'deploy', 'management', 'power')

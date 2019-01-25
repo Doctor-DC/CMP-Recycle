@@ -18,10 +18,10 @@ import uuid
 
 import six
 
-from openstack.cloud import exc
-from openstack.cloud import meta
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.cloud import meta
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 CINDER_URL = 'https://volume.example.com/v2/1c36b64c840a42cd9e9b931a369337f0'
@@ -316,9 +316,9 @@ class TestImage(BaseTestImage):
                          u'container_format': u'bare',
                          u'disk_format': u'qcow2',
                          u'name': self.image_name,
-                         u'owner_specified.openstack.md5': fakes.NO_MD5,
-                         u'owner_specified.openstack.object': self.object_name,
-                         u'owner_specified.openstack.sha256': fakes.NO_SHA256,
+                         u'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                         u'owner_specified.SDK.openstack.object': self.object_name,
+                         u'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
                          u'visibility': u'private'})
                  ),
             dict(method='PUT',
@@ -354,9 +354,9 @@ class TestImage(BaseTestImage):
         )
 
         image_no_checksums = self.fake_image_dict.copy()
-        del(image_no_checksums['owner_specified.openstack.md5'])
-        del(image_no_checksums['owner_specified.openstack.sha256'])
-        del(image_no_checksums['owner_specified.openstack.object'])
+        del(image_no_checksums['owner_specified.SDK.openstack.md5'])
+        del(image_no_checksums['owner_specified.SDK.openstack.sha256'])
+        del(image_no_checksums['owner_specified.SDK.openstack.object'])
 
         self.register_uris([
             dict(method='GET',
@@ -442,15 +442,15 @@ class TestImage(BaseTestImage):
                           u'value': '{container}/{object}'.format(
                               container=self.container_name,
                               object=self.image_name),
-                          u'path': u'/owner_specified.openstack.object'},
+                          u'path': u'/owner_specified.SDK.openstack.object'},
                          {u'op': u'add', u'value': fakes.NO_MD5,
-                          u'path': u'/owner_specified.openstack.md5'},
+                          u'path': u'/owner_specified.SDK.openstack.md5'},
                          {u'op': u'add', u'value': fakes.NO_SHA256,
-                          u'path': u'/owner_specified.openstack.sha256'}],
+                          u'path': u'/owner_specified.SDK.openstack.sha256'}],
                          key=operator.itemgetter('value')),
                      headers={
                          'Content-Type':
-                             'application/openstack-images-v2.1-json-patch'})
+                             'application/SDK.openstack-images-v2.1-json-patch'})
                  ),
             dict(method='HEAD',
                  uri='{endpoint}/{container}/{object}'.format(
@@ -591,9 +591,9 @@ class TestImage(BaseTestImage):
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': 'qcow2',
                 'properties': {
-                    'owner_specified.openstack.md5': fakes.NO_MD5,
-                    'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                    'owner_specified.openstack.object': 'images/{name}'.format(
+                    'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                    'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                    'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                         name=self.image_name),
                     'is_public': False}}
 
@@ -630,9 +630,9 @@ class TestImage(BaseTestImage):
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': 'qcow2',
                 'properties': {
-                    'owner_specified.openstack.md5': fakes.NO_MD5,
-                    'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                    'owner_specified.openstack.object': 'images/{name}'.format(
+                    'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                    'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                    'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                         name=self.image_name),
                     'is_public': False}}
 
@@ -674,9 +674,9 @@ class TestImage(BaseTestImage):
 
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': 'qcow2',
-                'owner_specified.openstack.md5': fakes.NO_MD5,
-                'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                'owner_specified.openstack.object': 'images/{name}'.format(
+                'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                     name=self.image_name),
                 'visibility': 'private'}
 
@@ -686,7 +686,7 @@ class TestImage(BaseTestImage):
 
         self.cloud.update_image_properties(
             image=self._image_dict(ret),
-            **{'owner_specified.openstack.object': 'images/{name}'.format(
+            **{'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                 name=self.image_name)})
 
         self.assert_calls()
@@ -696,9 +696,9 @@ class TestImage(BaseTestImage):
 
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': 'qcow2',
-                'owner_specified.openstack.md5': fakes.NO_MD5,
-                'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                'owner_specified.openstack.object': 'images/{name}'.format(
+                'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                     name=self.image_name),
                 'visibility': 'private'}
 
@@ -756,9 +756,9 @@ class TestImage(BaseTestImage):
 
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': u'qcow2',
-                'owner_specified.openstack.md5': fakes.NO_MD5,
-                'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                'owner_specified.openstack.object': 'images/{name}'.format(
+                'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                     name=self.image_name),
                 'int_v': '12345',
                 'visibility': 'private',
@@ -799,9 +799,9 @@ class TestImage(BaseTestImage):
 
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': u'qcow2',
-                'owner_specified.openstack.md5': fakes.NO_MD5,
-                'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                'owner_specified.openstack.object': 'images/{name}'.format(
+                'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                     name=self.image_name),
                 'int_v': 12345,
                 'visibility': 'private',
@@ -842,9 +842,9 @@ class TestImage(BaseTestImage):
 
         args = {'name': self.image_name,
                 'container_format': 'bare', 'disk_format': u'qcow2',
-                'owner_specified.openstack.md5': fakes.NO_MD5,
-                'owner_specified.openstack.sha256': fakes.NO_SHA256,
-                'owner_specified.openstack.object': 'images/{name}'.format(
+                'owner_specified.SDK.openstack.md5': fakes.NO_MD5,
+                'owner_specified.SDK.openstack.sha256': fakes.NO_SHA256,
+                'owner_specified.SDK.openstack.object': 'images/{name}'.format(
                     name=self.image_name),
                 'int_v': '12345',
                 'protected': False,

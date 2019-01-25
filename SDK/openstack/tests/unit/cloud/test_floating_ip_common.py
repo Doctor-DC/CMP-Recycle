@@ -21,10 +21,10 @@ Tests floating IP resource methods for Neutron and Nova-network.
 
 from mock import patch
 
-from openstack.cloud import meta
-from openstack.cloud import openstackcloud
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import meta
+from SDK.openstack.cloud import openstackcloud
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestFloatingIP(base.TestCase):

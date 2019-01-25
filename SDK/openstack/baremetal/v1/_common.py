@@ -33,7 +33,7 @@ PROVISIONING_VERSIONS = {
 """API microversions introducing provisioning verbs."""
 
 
-# Based on https://docs.openstack.org/ironic/latest/contributor/states.html
+# Based on https://docs.SDK.openstack.org/ironic/latest/contributor/states.html
 EXPECTED_STATES = {
     'active': 'active',
     'adopt': 'available',
@@ -70,13 +70,13 @@ class ListMixin(object):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
         :param bool details: Whether to return detailed node records
         :param dict params: These keyword arguments are passed through the
-            :meth:`~openstack.resource.QueryParameter._transpose` method
+            :meth:`~SDK.openstack.resource.QueryParameter._transpose` method
             to find if any of them match expected query parameters to be
             sent in the *params* argument to
             :meth:`~keystoneauth1.adapter.Adapter.get`.
 
-        :return: A generator of :class:`openstack.resource.Resource` objects.
-        :raises: :exc:`~openstack.exceptions.InvalidResourceQuery` if query
+        :return: A generator of :class:`SDK.openstack.resource.Resource` objects.
+        :raises: :exc:`~SDK.openstack.exceptions.InvalidResourceQuery` if query
                  contains invalid params.
         """
         base_path = cls.base_path

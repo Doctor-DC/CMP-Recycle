@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.identity.v2 import role
+from SDK.openstack.identity.v2 import role
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

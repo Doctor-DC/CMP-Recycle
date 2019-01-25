@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.baremetal import version
+from SDK.openstack.baremetal import version
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

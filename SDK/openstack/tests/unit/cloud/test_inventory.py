@@ -12,10 +12,10 @@
 
 import mock
 
-from openstack.cloud import inventory
-import openstack.config
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import inventory
+import SDK.openstack.config
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestInventory(base.TestCase):
@@ -23,29 +23,29 @@ class TestInventory(base.TestCase):
     def setUp(self):
         super(TestInventory, self).setUp()
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test__init(self, mock_cloud, mock_config):
         mock_config.return_value.get_all.return_value = [{}]
 
         inv = inventory.OpenStackInventory()
 
         mock_config.assert_called_once_with(
-            config_files=openstack.config.loader.CONFIG_FILES
+            config_files=SDK.openstack.config.loader.CONFIG_FILES
         )
         self.assertIsInstance(inv.clouds, list)
         self.assertEqual(1, len(inv.clouds))
         self.assertTrue(mock_config.return_value.get_all.called)
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test__init_one_cloud(self, mock_cloud, mock_config):
         mock_config.return_value.get_one.return_value = [{}]
 
         inv = inventory.OpenStackInventory(cloud='supercloud')
 
         mock_config.assert_called_once_with(
-            config_files=openstack.config.loader.CONFIG_FILES
+            config_files=SDK.openstack.config.loader.CONFIG_FILES
         )
         self.assertIsInstance(inv.clouds, list)
         self.assertEqual(1, len(inv.clouds))
@@ -53,8 +53,8 @@ class TestInventory(base.TestCase):
         mock_config.return_value.get_one.assert_called_once_with(
             'supercloud')
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test_list_hosts(self, mock_cloud, mock_config):
         mock_config.return_value.get_all.return_value = [{}]
 
@@ -72,8 +72,8 @@ class TestInventory(base.TestCase):
         self.assertFalse(inv.clouds[0].get_openstack_vars.called)
         self.assertEqual([server], ret)
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test_list_hosts_no_detail(self, mock_cloud, mock_config):
         mock_config.return_value.get_all.return_value = [{}]
 
@@ -91,8 +91,8 @@ class TestInventory(base.TestCase):
         inv.clouds[0].list_servers.assert_called_once_with(detailed=False)
         self.assertFalse(inv.clouds[0].get_openstack_vars.called)
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test_search_hosts(self, mock_cloud, mock_config):
         mock_config.return_value.get_all.return_value = [{}]
 
@@ -107,8 +107,8 @@ class TestInventory(base.TestCase):
         ret = inv.search_hosts('server_id')
         self.assertEqual([server], ret)
 
-    @mock.patch("openstack.config.loader.OpenStackConfig")
-    @mock.patch("openstack.connection.Connection")
+    @mock.patch("SDK.openstack.config.loader.OpenStackConfig")
+    @mock.patch("SDK.openstack.connection.Connection")
     def test_get_host(self, mock_cloud, mock_config):
         mock_config.return_value.get_all.return_value = [{}]
 

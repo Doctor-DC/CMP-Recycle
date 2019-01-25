@@ -9,8 +9,8 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from openstack import resource
-from openstack import utils
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class Backup(resource.Resource):
@@ -77,7 +77,7 @@ class Backup(resource.Resource):
     def restore(self, session, volume_id=None, name=None):
         """Restore current backup to volume
 
-        :param session: openstack session
+        :param session: SDK.openstack session
         :param volume_id: The ID of the volume to restore the backup to.
         :param name: The name for new volume creation to restore.
         :return:

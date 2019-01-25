@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.network.v2 import address_scope as _address_scope
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import address_scope as _address_scope
+from SDK.openstack.tests.functional import base
 
 
 class TestAddressScope(base.BaseFunctionalTest):

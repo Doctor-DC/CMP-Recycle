@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.image.v1 import image as _image
-from openstack import proxy
+from SDK.openstack.image.v1 import image as _image
+from SDK.openstack import proxy
 
 
 class Proxy(proxy.Proxy):
@@ -20,11 +20,11 @@ class Proxy(proxy.Proxy):
         """Upload a new image from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.image.v1.image.Image`,
+                           a :class:`~SDK.openstack.image.v1.image.Image`,
                            comprised of the properties on the Image class.
 
         :returns: The results of image creation
-        :rtype: :class:`~openstack.image.v1.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v1.image.Image`
         """
         return self._create(_image.Image, **attrs)
 
@@ -32,9 +32,9 @@ class Proxy(proxy.Proxy):
         """Delete an image
 
         :param image: The value can be either the ID of an image or a
-                      :class:`~openstack.image.v1.image.Image` instance.
+                      :class:`~SDK.openstack.image.v1.image.Image` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the image does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent image.
@@ -48,11 +48,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a image.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.image.v1.image.Image` or None
+        :returns: One :class:`~SDK.openstack.image.v1.image.Image` or None
         """
         return self._find(_image.Image, name_or_id,
                           ignore_missing=ignore_missing)
@@ -61,10 +61,10 @@ class Proxy(proxy.Proxy):
         """Get a single image
 
         :param image: The value can be the ID of an image or a
-                      :class:`~openstack.image.v1.image.Image` instance.
+                      :class:`~SDK.openstack.image.v1.image.Image` instance.
 
-        :returns: One :class:`~openstack.image.v1.image.Image`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.image.v1.image.Image`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_image.Image, image)
@@ -76,7 +76,7 @@ class Proxy(proxy.Proxy):
                                the resources being returned.
 
         :returns: A generator of image objects
-        :rtype: :class:`~openstack.image.v1.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v1.image.Image`
         """
         return self._list(_image.Image, paginated=True, **query)
 
@@ -84,11 +84,11 @@ class Proxy(proxy.Proxy):
         """Update a image
 
         :param image: Either the ID of a image or a
-                      :class:`~openstack.image.v1.image.Image` instance.
+                      :class:`~SDK.openstack.image.v1.image.Image` instance.
         :attrs kwargs: The attributes to update on the image represented
                        by ``value``.
 
         :returns: The updated image
-        :rtype: :class:`~openstack.image.v1.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v1.image.Image`
         """
         return self._update(_image.Image, image, **attrs)

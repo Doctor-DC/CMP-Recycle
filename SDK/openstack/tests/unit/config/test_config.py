@@ -21,11 +21,11 @@ import fixtures
 import testtools
 import yaml
 
-from openstack import config
-from openstack.config import cloud_region
-from openstack.config import defaults
-from openstack import exceptions
-from openstack.tests.unit.config import base
+from SDK.openstack import config
+from SDK.openstack.config import cloud_region
+from SDK.openstack.config import defaults
+from SDK.openstack import exceptions
+from SDK.openstack.tests.unit.config import base
 
 
 def prompt_for_password(prompt=None):
@@ -112,7 +112,7 @@ class TestConfig(base.TestCase):
         })
         self.register_uris([
             dict(method='GET',
-                 uri='https://example.com/.well-known/openstack/api',
+                 uri='https://example.com/.well-known/SDK.openstack/api',
                  json={
                      "name": "example",
                      "profile": {
@@ -448,7 +448,7 @@ class TestConfig(base.TestCase):
 
 
 class TestExcludedFormattedConfigValue(base.TestCase):
-    # verify https://storyboard.openstack.org/#!/story/1635696
+    # verify https://storyboard.SDK.openstack.org/#!/story/1635696
     #
     # get_one_cloud() and get_one_cloud_osc() iterate over config
     # values and try to expand any variables in those values by

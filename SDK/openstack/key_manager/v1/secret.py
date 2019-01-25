@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.key_manager.v1 import _format
-from openstack import resource
-from openstack import utils
+from SDK.openstack.key_manager.v1 import _format
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class Secret(resource.Resource):

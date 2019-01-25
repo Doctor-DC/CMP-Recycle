@@ -18,8 +18,8 @@ import json
 import sys
 import yaml
 
-import openstack.cloud
-import openstack.cloud.inventory
+import SDK.openstack.cloud
+import SDK.openstack.cloud.inventory
 
 
 def output_format_dict(data, use_yaml):
@@ -51,8 +51,8 @@ def parse_args():
 def main():
     args = parse_args()
     try:
-        openstack.enable_logging(debug=args.debug)
-        inventory = openstack.cloud.inventory.OpenStackInventory(
+        SDK.openstack.enable_logging(debug=args.debug)
+        inventory = SDK.openstack.cloud.inventory.OpenStackInventory(
             refresh=args.refresh, private=args.private,
             cloud=args.cloud)
         if args.list:
@@ -60,7 +60,7 @@ def main():
         elif args.host:
             output = inventory.get_host(args.host)
         print(output_format_dict(output, args.yaml))
-    except openstack.cloud.OpenStackCloudException as e:
+    except SDK.openstack.cloud.OpenStackCloudException as e:
         sys.stderr.write(e.message + '\n')
         sys.exit(1)
     sys.exit(0)

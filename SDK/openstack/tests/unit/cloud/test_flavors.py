@@ -11,9 +11,9 @@
 # under the License.
 
 
-import openstack.cloud
-from openstack.tests import fakes
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestFlavors(base.TestCase):
@@ -78,7 +78,7 @@ class TestFlavors(base.TestCase):
                      endpoint=fakes.COMPUTE_ENDPOINT, id=fakes.FLAVOR_ID),
                  status_code=503)])
 
-        self.assertRaises(openstack.cloud.OpenStackCloudException,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudException,
                           self.cloud.delete_flavor, 'vanilla')
 
     def test_list_flavors(self):
@@ -177,7 +177,7 @@ class TestFlavors(base.TestCase):
                      endpoint=fakes.COMPUTE_ENDPOINT),
                  json={'flavors': []})])
         self.assertRaises(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             self.cloud.get_flavor_by_ram,
             ram=100)
 

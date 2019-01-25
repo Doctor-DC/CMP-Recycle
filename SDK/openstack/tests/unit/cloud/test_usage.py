@@ -14,7 +14,7 @@
 import datetime
 import uuid
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
 
 class TestUsage(base.TestCase):

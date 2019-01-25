@@ -12,11 +12,11 @@
 
 import mock
 import munch
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack import exceptions
-from openstack import proxy
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class DeleteableResource(resource.Resource):

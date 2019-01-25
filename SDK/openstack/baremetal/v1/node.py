@@ -10,14 +10,14 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import _log
-from openstack.baremetal.v1 import _common
-from openstack import exceptions
-from openstack import resource
-from openstack import utils
+from SDK.openstack import _log
+from SDK.openstack.baremetal.v1 import _common
+from SDK.openstack import exceptions
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 
 
 class ValidationResult(object):
@@ -74,7 +74,7 @@ class Node(_common.ListMixin, resource.Resource):
     driver = resource.Body("driver")
     #: All the metadata required by the driver to manage this node. List of
     #: fields varies between drivers, and can be retrieved from the
-    #: :class:`openstack.baremetal.v1.driver.Driver` resource.
+    #: :class:`SDK.openstack.baremetal.v1.driver.Driver` resource.
     driver_info = resource.Body("driver_info", type=dict)
     #: Internal metadata set and stored by node's driver. This is read-only.
     driver_internal_info = resource.Body("driver_internal_info", type=dict)
@@ -207,7 +207,7 @@ class Node(_common.ListMixin, resource.Resource):
         :return: This :class:`Resource` instance.
         :raises: ValueError if the Node's ``provision_state`` is not one of
             ``None``, ``enroll``, ``manageable`` or ``available``.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if
             the ``provision_state`` cannot be reached with any API version
             supported by the server.
         """
@@ -268,7 +268,7 @@ class Node(_common.ListMixin, resource.Resource):
             See the Bare Metal service documentation for available actions.
         :param config_drive: Config drive to pass to the node, only valid
             for ``active` and ``rebuild`` targets. You can use functions from
-            :mod:`openstack.baremetal.configdrive` to build it.
+            :mod:`SDK.openstack.baremetal.configdrive` to build it.
         :param clean_steps: Clean steps to execute, only valid for ``clean``
             target.
         :param rescue_password: Password for the rescue operation, only valid
@@ -459,7 +459,7 @@ class Node(_common.ListMixin, resource.Resource):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
         :param string vif_id: Backend-specific VIF ID.
         :return: ``None``
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         session = self._get_session(session)
@@ -492,11 +492,11 @@ class Node(_common.ListMixin, resource.Resource):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
         :param string vif_id: Backend-specific VIF ID.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the VIF does not exist. Otherwise, ``False``
                     is returned.
         :return: ``True`` if the VIF was detached, otherwise ``False``.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         session = self._get_session(session)
@@ -530,7 +530,7 @@ class Node(_common.ListMixin, resource.Resource):
         :param session: The session to use for making this request.
         :type session: :class:`~keystoneauth1.adapter.Adapter`
         :return: List of VIF IDs as strings.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         session = self._get_session(session)
@@ -559,7 +559,7 @@ class Node(_common.ListMixin, resource.Resource):
 
         :return: dict mapping interface names to :class:`ValidationResult`
             objects.
-        :raises: :exc:`~openstack.exceptions.ValidationException` if validation
+        :raises: :exc:`~SDK.openstack.exceptions.ValidationException` if validation
             fails for a required interface.
         """
         session = self._get_session(session)

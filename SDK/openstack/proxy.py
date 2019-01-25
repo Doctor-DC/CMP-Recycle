@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import _adapter
-from openstack import exceptions
-from openstack import resource
+from SDK.openstack import _adapter
+from SDK.openstack import exceptions
+from SDK.openstack import resource
 
 
 # The _check_resource decorator is used on Proxy methods to ensure that
@@ -61,7 +61,7 @@ class Proxy(_adapter.OpenStackSDKAdapter):
 
         :param resource_type: The type of resource to operate on. This should
                               be a subclass of
-                              :class:`~openstack.resource.Resource` with a
+                              :class:`~SDK.openstack.resource.Resource` with a
                               ``from_id`` method.
         :param value: The ID of a resource or an object of ``resource_type``
                       class if using an existing instance, or ``munch.Munch``,
@@ -107,12 +107,12 @@ class Proxy(_adapter.OpenStackSDKAdapter):
 
         :param name_or_id: The name or ID of a resource to find.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.find`
+                           :meth:`~SDK.openstack.resource.Resource.find`
                            method, such as query parameters.
 
         :returns: An instance of ``resource_type`` or None
@@ -126,25 +126,25 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """Delete a resource
 
         :param resource_type: The type of resource to delete. This should
-                              be a :class:`~openstack.resource.Resource`
+                              be a :class:`~SDK.openstack.resource.Resource`
                               subclass with a ``from_id`` method.
         :param value: The value to delete. Can be either the ID of a
-                      resource or a :class:`~openstack.resource.Resource`
+                      resource or a :class:`~SDK.openstack.resource.Resource`
                       subclass.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent resource.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.delete`
+                           :meth:`~SDK.openstack.resource.Resource.delete`
                            method, such as the ID of a parent resource.
 
         :returns: The result of the ``delete``
         :raises: ``ValueError`` if ``value`` is a
-                 :class:`~openstack.resource.Resource` that doesn't match
+                 :class:`~SDK.openstack.resource.Resource` that doesn't match
                  the ``resource_type``.
-                 :class:`~openstack.exceptions.ResourceNotFound` when
+                 :class:`~SDK.openstack.exceptions.ResourceNotFound` when
                  ignore_missing if ``False`` and a nonexistent resource
                  is attempted to be deleted.
 
@@ -165,19 +165,19 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """Update a resource
 
         :param resource_type: The type of resource to update.
-        :type resource_type: :class:`~openstack.resource.Resource`
+        :type resource_type: :class:`~SDK.openstack.resource.Resource`
         :param value: The resource to update. This must either be a
-                      :class:`~openstack.resource.Resource` or an id
+                      :class:`~SDK.openstack.resource.Resource` or an id
                       that corresponds to a resource.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.update`
+                           :meth:`~SDK.openstack.resource.Resource.update`
                            method to be updated. These should correspond
-                           to either :class:`~openstack.resource.Body`
-                           or :class:`~openstack.resource.Header`
+                           to either :class:`~SDK.openstack.resource.Body`
+                           or :class:`~SDK.openstack.resource.Header`
                            values on this resource.
 
         :returns: The result of the ``update``
-        :rtype: :class:`~openstack.resource.Resource`
+        :rtype: :class:`~SDK.openstack.resource.Resource`
         """
         res = self._get_resource(resource_type, value, **attrs)
         return res.commit(self)
@@ -186,18 +186,18 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """Create a resource from attributes
 
         :param resource_type: The type of resource to create.
-        :type resource_type: :class:`~openstack.resource.Resource`
+        :type resource_type: :class:`~SDK.openstack.resource.Resource`
         :param path_args: A dict containing arguments for forming the request
                           URL, if needed.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.create`
+                           :meth:`~SDK.openstack.resource.Resource.create`
                            method to be created. These should correspond
-                           to either :class:`~openstack.resource.Body`
-                           or :class:`~openstack.resource.Header`
+                           to either :class:`~SDK.openstack.resource.Body`
+                           or :class:`~SDK.openstack.resource.Header`
                            values on this resource.
 
         :returns: The result of the ``create``
-        :rtype: :class:`~openstack.resource.Resource`
+        :rtype: :class:`~SDK.openstack.resource.Resource`
         """
         res = resource_type.new(**attrs)
         return res.create(self)
@@ -207,19 +207,19 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """Fetch a resource
 
         :param resource_type: The type of resource to get.
-        :type resource_type: :class:`~openstack.resource.Resource`
+        :type resource_type: :class:`~SDK.openstack.resource.Resource`
         :param value: The value to get. Can be either the ID of a
-                      resource or a :class:`~openstack.resource.Resource`
+                      resource or a :class:`~SDK.openstack.resource.Resource`
                       subclass.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.get`
+                           :meth:`~SDK.openstack.resource.Resource.get`
                            method. These should correspond
-                           to either :class:`~openstack.resource.Body`
-                           or :class:`~openstack.resource.Header`
+                           to either :class:`~SDK.openstack.resource.Body`
+                           or :class:`~SDK.openstack.resource.Header`
                            values on this resource.
 
         :returns: The result of the ``fetch``
-        :rtype: :class:`~openstack.resource.Resource`
+        :rtype: :class:`~SDK.openstack.resource.Resource`
         """
         res = self._get_resource(resource_type, value, **attrs)
 
@@ -232,23 +232,23 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """List a resource
 
         :param resource_type: The type of resource to delete. This should
-                              be a :class:`~openstack.resource.Resource`
+                              be a :class:`~SDK.openstack.resource.Resource`
                               subclass with a ``from_id`` method.
         :param value: The resource to list. It can be the ID of a resource, or
-                      a :class:`~openstack.resource.Resource` object. When set
+                      a :class:`~SDK.openstack.resource.Resource` object. When set
                       to None, a new bare resource is created.
         :param bool paginated: When set to ``False``, expect all of the data
                                to be returned in one response. When set to
                                ``True``, the resource supports data being
                                returned across multiple pages.
         :param dict attrs: Attributes to be passed onto the
-            :meth:`~openstack.resource.Resource.list` method. These should
-            correspond to either :class:`~openstack.resource.URI` values
-            or appear in :data:`~openstack.resource.Resource._query_mapping`.
+            :meth:`~SDK.openstack.resource.Resource.list` method. These should
+            correspond to either :class:`~SDK.openstack.resource.URI` values
+            or appear in :data:`~SDK.openstack.resource.Resource._query_mapping`.
 
         :returns: A generator of Resource objects.
         :raises: ``ValueError`` if ``value`` is a
-                 :class:`~openstack.resource.Resource` that doesn't match
+                 :class:`~SDK.openstack.resource.Resource` that doesn't match
                  the ``resource_type``.
         """
         res = self._get_resource(resource_type, value, **attrs)
@@ -258,18 +258,18 @@ class Proxy(_adapter.OpenStackSDKAdapter):
         """Retrieve a resource's header
 
         :param resource_type: The type of resource to retrieve.
-        :type resource_type: :class:`~openstack.resource.Resource`
+        :type resource_type: :class:`~SDK.openstack.resource.Resource`
         :param value: The value of a specific resource to retreive headers
                       for. Can be either the ID of a resource,
-                      a :class:`~openstack.resource.Resource` subclass,
+                      a :class:`~SDK.openstack.resource.Resource` subclass,
                       or ``None``.
         :param dict attrs: Attributes to be passed onto the
-                           :meth:`~openstack.resource.Resource.head` method.
+                           :meth:`~SDK.openstack.resource.Resource.head` method.
                            These should correspond to
-                           :class:`~openstack.resource.URI` values.
+                           :class:`~SDK.openstack.resource.URI` values.
 
         :returns: The result of the ``head`` call
-        :rtype: :class:`~openstack.resource.Resource`
+        :rtype: :class:`~SDK.openstack.resource.Resource`
         """
         res = self._get_resource(resource_type, value, **attrs)
         return res.head(self)

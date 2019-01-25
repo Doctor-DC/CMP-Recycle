@@ -12,8 +12,8 @@
 
 import json
 
-from openstack.object_store.v1 import container
-from openstack.tests.unit import base
+from SDK.openstack.object_store.v1 import container
+from SDK.openstack.tests.unit import base
 
 
 class TestContainer(base.TestCase):

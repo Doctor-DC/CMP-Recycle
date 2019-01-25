@@ -14,9 +14,9 @@ import copy
 
 from keystoneauth1 import adapter
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.compute.v2 import limits
+from SDK.openstack.compute.v2 import limits
 
 ABSOLUTE_LIMITS = {
     "maxImageMeta": 128,

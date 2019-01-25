@@ -14,8 +14,8 @@
 # under the License.
 
 
-from openstack.network.v2 import firewall_rule
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import firewall_rule
+from SDK.openstack.tests.functional import base
 
 
 class TestFirewallRule(base.BaseFunctionalTest):

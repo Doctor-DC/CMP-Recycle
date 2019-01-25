@@ -14,7 +14,7 @@
 
 import sys
 
-from openstack.config.loader import OpenStackConfig  # noqa
+from SDK.openstack.config.loader import OpenStackConfig  # noqa
 
 
 def get_cloud_region(

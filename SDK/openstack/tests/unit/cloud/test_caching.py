@@ -15,13 +15,13 @@ import time
 import testtools
 from testscenarios import load_tests_apply_scenarios as load_tests  # noqa
 
-import openstack
-import openstack.cloud
-from openstack.cloud import meta
-from openstack import exceptions
-from openstack.tests import fakes
-from openstack.tests.unit import base
-from openstack.tests.unit.cloud import test_port
+import SDK.openstack
+import SDK.openstack.cloud
+from SDK.openstack.cloud import meta
+from SDK.openstack import exceptions
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests.unit.cloud import test_port
 
 
 # Mock out the gettext function so that the task schema can be copypasta
@@ -105,7 +105,7 @@ class TestMemoryCache(base.TestCase):
         return self.cloud._normalize_images([fake_image])
 
     def test_openstack_cloud(self):
-        self.assertIsInstance(self.cloud, openstack.connection.Connection)
+        self.assertIsInstance(self.cloud, SDK.openstack.connection.Connection)
 
     def test_list_projects_v3(self):
         project_one = self._get_project_data()
@@ -644,5 +644,5 @@ class TestBogusAuth(base.TestCase):
 
     def test_get_auth_bogus(self):
         with testtools.ExpectedException(exceptions.ConfigException):
-            openstack.connect(
+            SDK.openstack.connect(
                 cloud='_bogus_test_', config=self.config)

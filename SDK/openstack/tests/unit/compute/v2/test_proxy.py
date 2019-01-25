@@ -10,20 +10,20 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.compute.v2 import _proxy
-from openstack.compute.v2 import availability_zone as az
-from openstack.compute.v2 import extension
-from openstack.compute.v2 import flavor
-from openstack.compute.v2 import hypervisor
-from openstack.compute.v2 import image
-from openstack.compute.v2 import keypair
-from openstack.compute.v2 import limits
-from openstack.compute.v2 import server
-from openstack.compute.v2 import server_group
-from openstack.compute.v2 import server_interface
-from openstack.compute.v2 import server_ip
-from openstack.compute.v2 import service
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.compute.v2 import _proxy
+from SDK.openstack.compute.v2 import availability_zone as az
+from SDK.openstack.compute.v2 import extension
+from SDK.openstack.compute.v2 import flavor
+from SDK.openstack.compute.v2 import hypervisor
+from SDK.openstack.compute.v2 import image
+from SDK.openstack.compute.v2 import keypair
+from SDK.openstack.compute.v2 import limits
+from SDK.openstack.compute.v2 import server
+from SDK.openstack.compute.v2 import server_group
+from SDK.openstack.compute.v2 import server_interface
+from SDK.openstack.compute.v2 import server_ip
+from SDK.openstack.compute.v2 import service
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestComputeProxy(test_proxy_base.TestProxyBase):
@@ -126,7 +126,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
         test_interface.server_id = server_id
 
         # Case1: ServerInterface instance is provided as value
-        self._verify2("openstack.proxy.Proxy._delete",
+        self._verify2("SDK.openstack.proxy.Proxy._delete",
                       self.proxy.delete_server_interface,
                       method_args=[test_interface],
                       method_kwargs={"server": server_id},
@@ -136,7 +136,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                        "ignore_missing": True})
 
         # Case2: ServerInterface ID is provided as value
-        self._verify2("openstack.proxy.Proxy._delete",
+        self._verify2("SDK.openstack.proxy.Proxy._delete",
                       self.proxy.delete_server_interface,
                       method_args=[interface_id],
                       method_kwargs={"server": server_id},
@@ -163,7 +163,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
         test_interface.server_id = server_id
 
         # Case1: ServerInterface instance is provided as value
-        self._verify2('openstack.proxy.Proxy._get',
+        self._verify2('SDK.openstack.proxy.Proxy._get',
                       self.proxy.get_server_interface,
                       method_args=[test_interface],
                       method_kwargs={"server": server_id},
@@ -172,7 +172,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                        "server_id": server_id})
 
         # Case2: ServerInterface ID is provided as value
-        self._verify2('openstack.proxy.Proxy._get',
+        self._verify2('SDK.openstack.proxy.Proxy._get',
                       self.proxy.get_server_interface,
                       method_args=[interface_id],
                       method_kwargs={"server": server_id},
@@ -209,7 +209,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
         self.verify_delete(self.proxy.delete_server, server.Server, True)
 
     def test_server_force_delete(self):
-        self._verify("openstack.compute.v2.server.Server.force_delete",
+        self._verify("SDK.openstack.compute.v2.server.Server.force_delete",
                      self.proxy.delete_server,
                      method_args=["value", False, True])
 
@@ -245,18 +245,18 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
             expected_args=[value, 'ACTIVE', ['ERROR'], 2, 120])
 
     def test_server_resize(self):
-        self._verify("openstack.compute.v2.server.Server.resize",
+        self._verify("SDK.openstack.compute.v2.server.Server.resize",
                      self.proxy.resize_server,
                      method_args=["value", "test-flavor"],
                      expected_args=["test-flavor"])
 
     def test_server_confirm_resize(self):
-        self._verify("openstack.compute.v2.server.Server.confirm_resize",
+        self._verify("SDK.openstack.compute.v2.server.Server.confirm_resize",
                      self.proxy.confirm_server_resize,
                      method_args=["value"])
 
     def test_server_revert_resize(self):
-        self._verify("openstack.compute.v2.server.Server.revert_resize",
+        self._verify("SDK.openstack.compute.v2.server.Server.revert_resize",
                      self.proxy.revert_server_resize,
                      method_args=["value"])
 
@@ -267,7 +267,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
         # Case1: image object is provided
         # NOTE: Inside of Server.rebuild is where image_obj gets converted
         # to an ID instead of object.
-        self._verify('openstack.compute.v2.server.Server.rebuild',
+        self._verify('SDK.openstack.compute.v2.server.Server.rebuild',
                      self.proxy.rebuild_server,
                      method_args=["value", "test_server", "test_pass"],
                      method_kwargs={"metadata": {"k1": "v1"},
@@ -277,7 +277,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                       "image": image_obj})
 
         # Case2: image name or id is provided
-        self._verify('openstack.compute.v2.server.Server.rebuild',
+        self._verify('SDK.openstack.compute.v2.server.Server.rebuild',
                      self.proxy.rebuild_server,
                      method_args=["value", "test_server", "test_pass"],
                      method_kwargs={"metadata": {"k1": "v1"},
@@ -287,100 +287,100 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                       "image": id})
 
     def test_add_fixed_ip_to_server(self):
-        self._verify("openstack.compute.v2.server.Server.add_fixed_ip",
+        self._verify("SDK.openstack.compute.v2.server.Server.add_fixed_ip",
                      self.proxy.add_fixed_ip_to_server,
                      method_args=["value", "network-id"],
                      expected_args=["network-id"])
 
     def test_fixed_ip_from_server(self):
-        self._verify("openstack.compute.v2.server.Server.remove_fixed_ip",
+        self._verify("SDK.openstack.compute.v2.server.Server.remove_fixed_ip",
                      self.proxy.remove_fixed_ip_from_server,
                      method_args=["value", "address"],
                      expected_args=["address"])
 
     def test_floating_ip_to_server(self):
-        self._verify("openstack.compute.v2.server.Server.add_floating_ip",
+        self._verify("SDK.openstack.compute.v2.server.Server.add_floating_ip",
                      self.proxy.add_floating_ip_to_server,
                      method_args=["value", "floating-ip"],
                      expected_args=["floating-ip"],
                      expected_kwargs={'fixed_address': None})
 
     def test_add_floating_ip_to_server_with_fixed_addr(self):
-        self._verify("openstack.compute.v2.server.Server.add_floating_ip",
+        self._verify("SDK.openstack.compute.v2.server.Server.add_floating_ip",
                      self.proxy.add_floating_ip_to_server,
                      method_args=["value", "floating-ip", 'fixed-addr'],
                      expected_args=["floating-ip"],
                      expected_kwargs={'fixed_address': 'fixed-addr'})
 
     def test_remove_floating_ip_from_server(self):
-        self._verify("openstack.compute.v2.server.Server.remove_floating_ip",
+        self._verify("SDK.openstack.compute.v2.server.Server.remove_floating_ip",
                      self.proxy.remove_floating_ip_from_server,
                      method_args=["value", "address"],
                      expected_args=["address"])
 
     def test_server_backup(self):
-        self._verify("openstack.compute.v2.server.Server.backup",
+        self._verify("SDK.openstack.compute.v2.server.Server.backup",
                      self.proxy.backup_server,
                      method_args=["value", "name", "daily", 1],
                      expected_args=["name", "daily", 1])
 
     def test_server_pause(self):
-        self._verify("openstack.compute.v2.server.Server.pause",
+        self._verify("SDK.openstack.compute.v2.server.Server.pause",
                      self.proxy.pause_server,
                      method_args=["value"])
 
     def test_server_unpause(self):
-        self._verify("openstack.compute.v2.server.Server.unpause",
+        self._verify("SDK.openstack.compute.v2.server.Server.unpause",
                      self.proxy.unpause_server,
                      method_args=["value"])
 
     def test_server_suspend(self):
-        self._verify("openstack.compute.v2.server.Server.suspend",
+        self._verify("SDK.openstack.compute.v2.server.Server.suspend",
                      self.proxy.suspend_server,
                      method_args=["value"])
 
     def test_server_resume(self):
-        self._verify("openstack.compute.v2.server.Server.resume",
+        self._verify("SDK.openstack.compute.v2.server.Server.resume",
                      self.proxy.resume_server,
                      method_args=["value"])
 
     def test_server_lock(self):
-        self._verify("openstack.compute.v2.server.Server.lock",
+        self._verify("SDK.openstack.compute.v2.server.Server.lock",
                      self.proxy.lock_server,
                      method_args=["value"])
 
     def test_server_unlock(self):
-        self._verify("openstack.compute.v2.server.Server.unlock",
+        self._verify("SDK.openstack.compute.v2.server.Server.unlock",
                      self.proxy.unlock_server,
                      method_args=["value"])
 
     def test_server_rescue(self):
-        self._verify("openstack.compute.v2.server.Server.rescue",
+        self._verify("SDK.openstack.compute.v2.server.Server.rescue",
                      self.proxy.rescue_server,
                      method_args=["value"],
                      expected_kwargs={"admin_pass": None, "image_ref": None})
 
     def test_server_rescue_with_options(self):
-        self._verify("openstack.compute.v2.server.Server.rescue",
+        self._verify("SDK.openstack.compute.v2.server.Server.rescue",
                      self.proxy.rescue_server,
                      method_args=["value", 'PASS', 'IMG'],
                      expected_kwargs={"admin_pass": 'PASS',
                                       "image_ref": 'IMG'})
 
     def test_server_unrescue(self):
-        self._verify("openstack.compute.v2.server.Server.unrescue",
+        self._verify("SDK.openstack.compute.v2.server.Server.unrescue",
                      self.proxy.unrescue_server,
                      method_args=["value"])
 
     def test_server_evacuate(self):
-        self._verify("openstack.compute.v2.server.Server.evacuate",
+        self._verify("SDK.openstack.compute.v2.server.Server.evacuate",
                      self.proxy.evacuate_server,
                      method_args=["value"],
                      expected_kwargs={"host": None, "admin_pass": None,
                                       "force": None})
 
     def test_server_evacuate_with_options(self):
-        self._verify("openstack.compute.v2.server.Server.evacuate",
+        self._verify("SDK.openstack.compute.v2.server.Server.evacuate",
                      self.proxy.evacuate_server,
                      method_args=["value", 'HOST2', 'NEW_PASS', True],
                      expected_kwargs={"host": "HOST2",
@@ -388,32 +388,32 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                       "force": True})
 
     def test_server_start(self):
-        self._verify("openstack.compute.v2.server.Server.start",
+        self._verify("SDK.openstack.compute.v2.server.Server.start",
                      self.proxy.start_server,
                      method_args=["value"])
 
     def test_server_stop(self):
-        self._verify("openstack.compute.v2.server.Server.stop",
+        self._verify("SDK.openstack.compute.v2.server.Server.stop",
                      self.proxy.stop_server,
                      method_args=["value"])
 
     def test_server_shelve(self):
-        self._verify("openstack.compute.v2.server.Server.shelve",
+        self._verify("SDK.openstack.compute.v2.server.Server.shelve",
                      self.proxy.shelve_server,
                      method_args=["value"])
 
     def test_server_unshelve(self):
-        self._verify("openstack.compute.v2.server.Server.unshelve",
+        self._verify("SDK.openstack.compute.v2.server.Server.unshelve",
                      self.proxy.unshelve_server,
                      method_args=["value"])
 
     def test_get_server_output(self):
-        self._verify("openstack.compute.v2.server.Server.get_console_output",
+        self._verify("SDK.openstack.compute.v2.server.Server.get_console_output",
                      self.proxy.get_server_console_output,
                      method_args=["value"],
                      expected_kwargs={"length": None})
 
-        self._verify("openstack.compute.v2.server.Server.get_console_output",
+        self._verify("SDK.openstack.compute.v2.server.Server.get_console_output",
                      self.proxy.get_server_console_output,
                      method_args=["value", 1],
                      expected_kwargs={"length": 1})
@@ -431,7 +431,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                          method_kwargs={"details": True})
 
     def test_get_all_server_metadata(self):
-        self._verify2("openstack.compute.v2.server.Server.get_metadata",
+        self._verify2("SDK.openstack.compute.v2.server.Server.get_metadata",
                       self.proxy.get_server_metadata,
                       method_args=["value"],
                       method_result=server.Server(id="value", metadata={}),
@@ -441,7 +441,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
     def test_set_server_metadata(self):
         kwargs = {"a": "1", "b": "2"}
         id = "an_id"
-        self._verify2("openstack.compute.v2.server.Server.set_metadata",
+        self._verify2("SDK.openstack.compute.v2.server.Server.set_metadata",
                       self.proxy.set_server_metadata,
                       method_args=[id],
                       method_kwargs=kwargs,
@@ -452,7 +452,7 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                       expected_result=kwargs)
 
     def test_delete_server_metadata(self):
-        self._verify2("openstack.compute.v2.server.Server.delete_metadata",
+        self._verify2("SDK.openstack.compute.v2.server.Server.delete_metadata",
                       self.proxy.delete_server_metadata,
                       expected_result=None,
                       method_args=["value", "key"],
@@ -506,25 +506,25 @@ class TestComputeProxy(test_proxy_base.TestProxyBase):
                                    paginated=False)
 
     def test_enable_service(self):
-        self._verify('openstack.compute.v2.service.Service.enable',
+        self._verify('SDK.openstack.compute.v2.service.Service.enable',
                      self.proxy.enable_service,
                      method_args=["value", "host1", "nova-compute"],
                      expected_args=["host1", "nova-compute"])
 
     def test_disable_service(self):
-        self._verify('openstack.compute.v2.service.Service.disable',
+        self._verify('SDK.openstack.compute.v2.service.Service.disable',
                      self.proxy.disable_service,
                      method_args=["value", "host1", "nova-compute"],
                      expected_args=["host1", "nova-compute", None])
 
     def test_force_service_down(self):
-        self._verify('openstack.compute.v2.service.Service.force_down',
+        self._verify('SDK.openstack.compute.v2.service.Service.force_down',
                      self.proxy.force_service_down,
                      method_args=["value", "host1", "nova-compute"],
                      expected_args=["host1", "nova-compute"])
 
     def test_live_migrate_server(self):
-        self._verify('openstack.compute.v2.server.Server.live_migrate',
+        self._verify('SDK.openstack.compute.v2.server.Server.live_migrate',
                      self.proxy.live_migrate_server,
                      method_args=["value", "host1", False],
                      expected_args=["host1"],

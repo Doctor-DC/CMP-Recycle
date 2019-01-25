@@ -17,7 +17,7 @@ test_aggregate
 Functional tests for `shade` aggregate resource.
 """
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestAggregate(base.BaseFunctionalTest):

@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import exceptions
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack import exceptions
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestMicroversions(base.TestCase):

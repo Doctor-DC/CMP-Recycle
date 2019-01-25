@@ -14,8 +14,8 @@ import uuid
 
 import testtools
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 class TestUsers(base.TestCase):
@@ -124,7 +124,7 @@ class TestUsers(base.TestCase):
         user_data = self._get_user_data(domain_id=uuid.uuid4().hex,
                                         email='test@example.com')
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "User or project creation requires an explicit"
                 " domain_id argument."
         ):

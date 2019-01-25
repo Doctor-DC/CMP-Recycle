@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import proxy
-from openstack.workflow.v2 import execution as _execution
-from openstack.workflow.v2 import workflow as _workflow
+from SDK.openstack import proxy
+from SDK.openstack.workflow.v2 import execution as _execution
+from SDK.openstack.workflow.v2 import workflow as _workflow
 
 
 class Proxy(proxy.Proxy):
@@ -21,11 +21,11 @@ class Proxy(proxy.Proxy):
         """Create a new workflow from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.workflow.v2.workflow.Workflow`,
+                           a :class:`~SDK.openstack.workflow.v2.workflow.Workflow`,
                            comprised of the properties on the Workflow class.
 
         :returns: The results of workflow creation
-        :rtype: :class:`~openstack.workflow.v2.workflow.Workflow`
+        :rtype: :class:`~SDK.openstack.workflow.v2.workflow.Workflow`
         """
         return self._create(_workflow.Workflow, **attrs)
 
@@ -33,10 +33,10 @@ class Proxy(proxy.Proxy):
         """Get a workflow
 
         :param workflow: The value can be the name of a workflow or
-             :class:`~openstack.workflow.v2.workflow.Workflow` instance.
+             :class:`~SDK.openstack.workflow.v2.workflow.Workflow` instance.
 
-        :returns: One :class:`~openstack.workflow.v2.workflow.Workflow`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.workflow.v2.workflow.Workflow`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
              workflow matching the name could be found.
         """
         return self._get(_workflow.Workflow, *attrs)
@@ -63,10 +63,10 @@ class Proxy(proxy.Proxy):
         """Delete a workflow
 
         :param value: The value can be either the name of a workflow or a
-                      :class:`~openstack.workflow.v2.workflow.Workflow`
+                      :class:`~SDK.openstack.workflow.v2.workflow.Workflow`
                       instance.
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will
             be raised when the workflow does not exist.
             When set to ``True``, no exception will be set when
             attempting to delete a nonexistent workflow.
@@ -81,11 +81,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of an workflow.
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
             raised when the resource does not exist.
             When set to ``True``, None will be returned when
             attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.compute.v2.workflow.Extension` or
+        :returns: One :class:`~SDK.openstack.compute.v2.workflow.Extension` or
             None
         """
         return self._find(_workflow.Workflow, name_or_id,
@@ -96,11 +96,11 @@ class Proxy(proxy.Proxy):
 
         :param workflow_name: The name of target workflow to execute.
         :param dict attrs: Keyword arguments which will be used to create
-            a :class:`~openstack.workflow.v2.execution.Execution`,
+            a :class:`~SDK.openstack.workflow.v2.execution.Execution`,
             comprised of the properties on the Execution class.
 
         :returns: The results of execution creation
-        :rtype: :class:`~openstack.workflow.v2.execution.Execution`
+        :rtype: :class:`~SDK.openstack.workflow.v2.execution.Execution`
         """
         return self._create(_execution.Execution, **attrs)
 
@@ -109,10 +109,10 @@ class Proxy(proxy.Proxy):
 
         :param workflow_name: The name of target workflow to execute.
         :param execution: The value can be either the ID of a execution or a
-            :class:`~openstack.workflow.v2.execution.Execution` instance.
+            :class:`~SDK.openstack.workflow.v2.execution.Execution` instance.
 
-        :returns: One :class:`~openstack.workflow.v2.execution.Execution`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.workflow.v2.execution.Execution`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             execution matching the criteria could be found.
         """
         return self._get(_execution.Execution, *attrs)
@@ -139,10 +139,10 @@ class Proxy(proxy.Proxy):
         """Delete an execution
 
         :param value: The value can be either the name of a execution or a
-                      :class:`~openstack.workflow.v2.execute.Execution`
+                      :class:`~SDK.openstack.workflow.v2.execute.Execution`
                       instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the execution does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent execution.
@@ -157,11 +157,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of an execution.
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
             raised when the resource does not exist.
             When set to ``True``, None will be returned when
             attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.compute.v2.execution.Execution` or
+        :returns: One :class:`~SDK.openstack.compute.v2.execution.Execution` or
             None
         """
         return self._find(_execution.Execution, name_or_id,

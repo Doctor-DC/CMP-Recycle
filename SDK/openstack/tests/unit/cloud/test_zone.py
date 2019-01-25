@@ -13,8 +13,8 @@
 import copy
 import testtools
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 zone_dict = {
@@ -62,7 +62,7 @@ class TestZone(base.TestCase):
                  status_code=500)
         ])
         with testtools.ExpectedException(
-            openstack.cloud.exc.OpenStackCloudHTTPError,
+            SDK.openstack.cloud.exc.OpenStackCloudHTTPError,
             "Unable to create zone example.net."
         ):
             self.cloud.create_zone('example.net.')

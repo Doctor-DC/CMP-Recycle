@@ -10,11 +10,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.key_manager.v1 import _proxy
-from openstack.key_manager.v1 import container
-from openstack.key_manager.v1 import order
-from openstack.key_manager.v1 import secret
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.key_manager.v1 import _proxy
+from SDK.openstack.key_manager.v1 import container
+from SDK.openstack.key_manager.v1 import order
+from SDK.openstack.key_manager.v1 import secret
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestKeyManagerProxy(test_proxy_base.TestProxyBase):
@@ -83,7 +83,7 @@ class TestKeyManagerProxy(test_proxy_base.TestProxyBase):
         self.verify_get(self.proxy.get_secret, secret.Secret)
         self.verify_get_overrided(
             self.proxy, secret.Secret,
-            'openstack.key_manager.v1.secret.Secret')
+            'SDK.openstack.key_manager.v1.secret.Secret')
 
     def test_secrets(self):
         self.verify_list(self.proxy.secrets, secret.Secret, paginated=False)

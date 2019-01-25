@@ -17,7 +17,7 @@ test_coe_clusters
 Functional tests for `shade` COE clusters methods.
 """
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestCompute(base.BaseFunctionalTest):

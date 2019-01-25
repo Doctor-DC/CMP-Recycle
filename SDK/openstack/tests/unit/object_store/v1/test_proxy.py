@@ -12,12 +12,12 @@
 
 import six
 
-from openstack.object_store.v1 import _proxy
-from openstack.object_store.v1 import account
-from openstack.object_store.v1 import container
-from openstack.object_store.v1 import obj
-from openstack.tests.unit.cloud import test_object as base_test_object
-from openstack.tests.unit import test_proxy_base2
+from SDK.openstack.object_store.v1 import _proxy
+from SDK.openstack.object_store.v1 import account
+from SDK.openstack.object_store.v1 import container
+from SDK.openstack.object_store.v1 import obj
+from SDK.openstack.tests.unit.cloud import test_object as base_test_object
+from SDK.openstack.tests.unit import test_proxy_base2
 
 
 class TestObjectStoreProxy(test_proxy_base2.TestProxyBase):
@@ -60,7 +60,7 @@ class TestObjectStoreProxy(test_proxy_base2.TestProxyBase):
             "container": "name",
         }
 
-        self._verify2("openstack.proxy.Proxy._delete",
+        self._verify2("SDK.openstack.proxy.Proxy._delete",
                       self.proxy.delete_object,
                       method_args=["resource"],
                       method_kwargs=expected_kwargs,
@@ -76,7 +76,7 @@ class TestObjectStoreProxy(test_proxy_base2.TestProxyBase):
     def test_object_create_attrs(self):
         kwargs = {"name": "test", "data": "data", "container": "name"}
 
-        self._verify2("openstack.proxy.Proxy._create",
+        self._verify2("SDK.openstack.proxy.Proxy._create",
                       self.proxy.upload_object,
                       method_kwargs=kwargs,
                       expected_args=[obj.Object],

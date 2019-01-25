@@ -14,10 +14,10 @@
 
 import functools
 
-from openstack.config import loader
-from openstack import connection
-from openstack import exceptions
-from openstack.cloud import _utils
+from SDK.openstack.config import loader
+from SDK.openstack import connection
+from SDK.openstack import exceptions
+from SDK.openstack.cloud import _utils
 
 __all__ = ['OpenStackInventory']
 

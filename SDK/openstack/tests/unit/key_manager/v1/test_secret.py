@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.key_manager.v1 import secret
+from SDK.openstack.key_manager.v1 import secret
 
 ID_VAL = "123"
 IDENTIFIER = 'http://localhost:9311/v1/secrets/%s' % ID_VAL

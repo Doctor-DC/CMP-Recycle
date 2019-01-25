@@ -12,7 +12,7 @@
 
 from six.moves.urllib import parse
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Template(resource.Resource):

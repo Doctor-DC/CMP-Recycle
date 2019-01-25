@@ -11,10 +11,10 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.orchestration.v1 import stack_files as sf
-from openstack import resource
+from SDK.openstack.orchestration.v1 import stack_files as sf
+from SDK.openstack import resource
 
 FAKE = {
     'stack_id': 'ID',

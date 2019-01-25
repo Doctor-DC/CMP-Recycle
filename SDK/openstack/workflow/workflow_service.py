@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import service_description
-from openstack.workflow.v2 import _proxy
+from SDK.openstack import service_description
+from SDK.openstack.workflow.v2 import _proxy
 
 
 class WorkflowService(service_description.ServiceDescription):

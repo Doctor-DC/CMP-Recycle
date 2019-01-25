@@ -12,19 +12,19 @@
 
 import uuid
 
-from openstack.identity.v3 import _proxy
-from openstack.identity.v3 import credential
-from openstack.identity.v3 import domain
-from openstack.identity.v3 import endpoint
-from openstack.identity.v3 import group
-from openstack.identity.v3 import policy
-from openstack.identity.v3 import project
-from openstack.identity.v3 import region
-from openstack.identity.v3 import role
-from openstack.identity.v3 import service
-from openstack.identity.v3 import trust
-from openstack.identity.v3 import user
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.identity.v3 import _proxy
+from SDK.openstack.identity.v3 import credential
+from SDK.openstack.identity.v3 import domain
+from SDK.openstack.identity.v3 import endpoint
+from SDK.openstack.identity.v3 import group
+from SDK.openstack.identity.v3 import policy
+from SDK.openstack.identity.v3 import project
+from SDK.openstack.identity.v3 import region
+from SDK.openstack.identity.v3 import role
+from SDK.openstack.identity.v3 import service
+from SDK.openstack.identity.v3 import trust
+from SDK.openstack.identity.v3 import user
+from SDK.openstack.tests.unit import test_proxy_base
 
 USER_ID = 'user-id-' + uuid.uuid4().hex
 

@@ -15,7 +15,7 @@
 
 import testtools
 
-from openstack.network.v2 import firewall_group
+from SDK.openstack.network.v2 import firewall_group
 
 IDENTIFIER = 'IDENTIFIER'
 

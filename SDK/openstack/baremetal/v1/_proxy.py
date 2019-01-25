@@ -10,18 +10,18 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import _log
-from openstack.baremetal.v1 import _common
-from openstack.baremetal.v1 import chassis as _chassis
-from openstack.baremetal.v1 import driver as _driver
-from openstack.baremetal.v1 import node as _node
-from openstack.baremetal.v1 import port as _port
-from openstack.baremetal.v1 import port_group as _portgroup
-from openstack import proxy
-from openstack import utils
+from SDK.openstack import _log
+from SDK.openstack.baremetal.v1 import _common
+from SDK.openstack.baremetal.v1 import chassis as _chassis
+from SDK.openstack.baremetal.v1 import driver as _driver
+from SDK.openstack.baremetal.v1 import node as _node
+from SDK.openstack.baremetal.v1 import port as _port
+from SDK.openstack.baremetal.v1 import port_group as _portgroup
+from SDK.openstack import proxy
+from SDK.openstack import utils
 
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 
 
 class Proxy(proxy.Proxy):
@@ -67,11 +67,11 @@ class Proxy(proxy.Proxy):
         """Create a new chassis from attributes.
 
         :param dict attrs: Keyword arguments that will be used to create a
-             :class:`~openstack.baremetal.v1.chassis.Chassis`, it comprised
+             :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`, it comprised
              of the properties on the ``Chassis`` class.
 
         :returns: The results of chassis creation.
-        :rtype: :class:`~openstack.baremetal.v1.chassis.Chassis`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`.
         """
         return self._create(_chassis.Chassis, **attrs)
 
@@ -80,10 +80,10 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a chassis.
         :param bool ignore_missing: When set to ``False``, an exception of
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the chassis does not exist.  When set to `True``, None will
             be returned when attempting to find a nonexistent chassis.
-        :returns: One :class:`~openstack.baremetal.v1.chassis.Chassis` object
+        :returns: One :class:`~SDK.openstack.baremetal.v1.chassis.Chassis` object
             or None.
         """
         return self._find(_chassis.Chassis, name_or_id,
@@ -93,10 +93,10 @@ class Proxy(proxy.Proxy):
         """Get a specific chassis.
 
         :param chassis: The value can be the name or ID of a chassis or a
-            :class:`~openstack.baremetal.v1.chassis.Chassis` instance.
+            :class:`~SDK.openstack.baremetal.v1.chassis.Chassis` instance.
 
-        :returns: One :class:`~openstack.baremetal.v1.chassis.Chassis`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             chassis matching the name or ID could be found.
         """
         return self._get(_chassis.Chassis, chassis)
@@ -105,12 +105,12 @@ class Proxy(proxy.Proxy):
         """Update a chassis.
 
         :param chassis: Either the name or the ID of a chassis, or an instance
-            of :class:`~openstack.baremetal.v1.chassis.Chassis`.
+            of :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`.
         :param dict attrs: The attributes to update on the chassis represented
             by the ``chassis`` parameter.
 
         :returns: The updated chassis.
-        :rtype: :class:`~openstack.baremetal.v1.chassis.Chassis`
+        :rtype: :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`
         """
         return self._update(_chassis.Chassis, chassis, **attrs)
 
@@ -118,15 +118,15 @@ class Proxy(proxy.Proxy):
         """Delete a chassis.
 
         :param chassis: The value can be either the name or ID of a chassis or
-            a :class:`~openstack.baremetal.v1.chassis.Chassis` instance.
+            a :class:`~SDK.openstack.baremetal.v1.chassis.Chassis` instance.
         :param bool ignore_missing: When set to ``False``, an exception
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the chassis could not be found. When set to ``True``, no
             exception will be raised when attempting to delete a non-existent
             chassis.
 
         :returns: The instance of the chassis which was deleted.
-        :rtype: :class:`~openstack.baremetal.v1.chassis.Chassis`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.chassis.Chassis`.
         """
         return self._delete(_chassis.Chassis, chassis,
                             ignore_missing=ignore_missing)
@@ -149,10 +149,10 @@ class Proxy(proxy.Proxy):
         """Get a specific driver.
 
         :param driver: The value can be the name of a driver or a
-            :class:`~openstack.baremetal.v1.driver.Driver` instance.
+            :class:`~SDK.openstack.baremetal.v1.driver.Driver` instance.
 
-        :returns: One :class:`~openstack.baremetal.v1.driver.Driver`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.baremetal.v1.driver.Driver`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             driver matching the name could be found.
         """
         return self._get(_driver.Driver, driver)
@@ -197,7 +197,7 @@ class Proxy(proxy.Proxy):
                     direction of the server attribute that is provided as the
                     ``sort_key``.
 
-        :returns: A generator of :class:`~openstack.baremetal.v1.node.Node`
+        :returns: A generator of :class:`~SDK.openstack.baremetal.v1.node.Node`
         """
         return _node.Node.list(self, details=details, **query)
 
@@ -205,11 +205,11 @@ class Proxy(proxy.Proxy):
         """Create a new node from attributes.
 
         :param dict attrs: Keyword arguments that will be used to create a
-             :class:`~openstack.baremetal.v1.node.Node`, it comprised
+             :class:`~SDK.openstack.baremetal.v1.node.Node`, it comprised
              of the properties on the ``Node`` class.
 
         :returns: The results of node creation.
-        :rtype: :class:`~openstack.baremetal.v1.node.Node`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.node.Node`.
         """
         return self._create(_node.Node, **attrs)
 
@@ -218,10 +218,10 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a node.
         :param bool ignore_missing: When set to ``False``, an exception of
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the node does not exist.  When set to `True``, None will
             be returned when attempting to find a nonexistent node.
-        :returns: One :class:`~openstack.baremetal.v1.node.Node` object
+        :returns: One :class:`~SDK.openstack.baremetal.v1.node.Node` object
             or None.
         """
         return self._find(_node.Node, name_or_id,
@@ -231,10 +231,10 @@ class Proxy(proxy.Proxy):
         """Get a specific node.
 
         :param node: The value can be the name or ID of a chassis or a
-            :class:`~openstack.baremetal.v1.node.Node` instance.
+            :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
 
-        :returns: One :class:`~openstack.baremetal.v1.node.Node`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.baremetal.v1.node.Node`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             node matching the name or ID could be found.
         """
         return self._get(_node.Node, node)
@@ -243,7 +243,7 @@ class Proxy(proxy.Proxy):
         """Update a node.
 
         :param chassis: Either the name or the ID of a node or an instance
-            of :class:`~openstack.baremetal.v1.node.Node`.
+            of :class:`~SDK.openstack.baremetal.v1.node.Node`.
         :param bool retry_on_conflict: Whether to retry HTTP CONFLICT error.
             Most of the time it can be retried, since it is caused by the node
             being locked. However, when setting ``instance_id``, this is
@@ -252,7 +252,7 @@ class Proxy(proxy.Proxy):
             by the ``node`` parameter.
 
         :returns: The updated node.
-        :rtype: :class:`~openstack.baremetal.v1.node.Node`
+        :rtype: :class:`~SDK.openstack.baremetal.v1.node.Node`
         """
         res = self._get_resource(_node.Node, node, **attrs)
         return res.commit(self, retry_on_conflict=retry_on_conflict)
@@ -266,12 +266,12 @@ class Proxy(proxy.Proxy):
         Metal service acknowledges the request.
 
         :param node: The value can be the name or ID of a node or a
-            :class:`~openstack.baremetal.v1.node.Node` instance.
+            :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param target: Provisioning action, e.g. ``active``, ``provide``.
             See the Bare Metal service documentation for available actions.
         :param config_drive: Config drive to pass to the node, only valid
             for ``active` and ``rebuild`` targets. You can use functions from
-            :mod:`openstack.baremetal.configdrive` to build it.
+            :mod:`SDK.openstack.baremetal.configdrive` to build it.
         :param clean_steps: Clean steps to execute, only valid for ``clean``
             target.
         :param rescue_password: Password for the rescue operation, only valid
@@ -283,7 +283,7 @@ class Proxy(proxy.Proxy):
             seconds) to wait for the expected state to be reached. The value of
             ``None`` (the default) means no client-side timeout.
 
-        :returns: The updated :class:`~openstack.baremetal.v1.node.Node`
+        :returns: The updated :class:`~SDK.openstack.baremetal.v1.node.Node`
         :raises: ValueError if ``config_drive``, ``clean_steps`` or
             ``rescue_password`` are provided with an invalid ``target``.
         """
@@ -299,7 +299,7 @@ class Proxy(proxy.Proxy):
         """Wait for the nodes to reach the expected state.
 
         :param nodes: List of nodes - name, ID or
-            :class:`~openstack.baremetal.v1.node.Node` instance.
+            :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param expected_state: The expected provisioning state to reach.
         :param timeout: If ``wait`` is set to ``True``, specifies how much (in
             seconds) to wait for the expected state to be reached. The value of
@@ -309,7 +309,7 @@ class Proxy(proxy.Proxy):
             expected one. Note that the failure state for ``enroll`` ->
             ``manageable`` transition is ``enroll`` again.
 
-        :return: The list of :class:`~openstack.baremetal.v1.node.Node`
+        :return: The list of :class:`~SDK.openstack.baremetal.v1.node.Node`
             instances that reached the requested state.
         """
         log_nodes = ', '.join(n.id if isinstance(n, _node.Node) else n
@@ -356,11 +356,11 @@ class Proxy(proxy.Proxy):
         Returns immediately if there is no reservation on the node.
 
         :param node: The value can be the name or ID of a node or a
-            :class:`~openstack.baremetal.v1.node.Node` instance.
+            :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param timeout: How much (in seconds) to wait for the lock to be
             released. The value of ``None`` (the default) means no timeout.
 
-        :returns: The updated :class:`~openstack.baremetal.v1.node.Node`
+        :returns: The updated :class:`~SDK.openstack.baremetal.v1.node.Node`
         """
         res = self._get_resource(_node.Node, node)
         return res.wait_for_reservation(self, timeout=timeout)
@@ -369,14 +369,14 @@ class Proxy(proxy.Proxy):
         """Validate required information on a node.
 
         :param node: The value can be either the name or ID of a node or
-            a :class:`~openstack.baremetal.v1.node.Node` instance.
+            a :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param required: List of interfaces that are required to pass
             validation. The default value is the list of minimum required
             interfaces for provisioning.
 
         :return: dict mapping interface names to
-            :class:`~openstack.baremetal.v1.node.ValidationResult` objects.
-        :raises: :exc:`~openstack.exceptions.ValidationException` if validation
+            :class:`~SDK.openstack.baremetal.v1.node.ValidationResult` objects.
+        :raises: :exc:`~SDK.openstack.exceptions.ValidationException` if validation
             fails for a required interface.
         """
         res = self._get_resource(_node.Node, node)
@@ -386,15 +386,15 @@ class Proxy(proxy.Proxy):
         """Delete a node.
 
         :param node: The value can be either the name or ID of a node or
-            a :class:`~openstack.baremetal.v1.node.Node` instance.
+            a :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param bool ignore_missing: When set to ``False``, an exception
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the node could not be found. When set to ``True``, no
             exception will be raised when attempting to delete a non-existent
             node.
 
         :returns: The instance of the node which was deleted.
-        :rtype: :class:`~openstack.baremetal.v1.node.Node`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.node.Node`.
         """
         return self._delete(_node.Node, node, ignore_missing=ignore_missing)
 
@@ -447,11 +447,11 @@ class Proxy(proxy.Proxy):
         """Create a new port from attributes.
 
         :param dict attrs: Keyword arguments that will be used to create a
-             :class:`~openstack.baremetal.v1.port.Port`, it comprises of the
+             :class:`~SDK.openstack.baremetal.v1.port.Port`, it comprises of the
              properties on the ``Port`` class.
 
         :returns: The results of port creation.
-        :rtype: :class:`~openstack.baremetal.v1.port.Port`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port.Port`.
         """
         return self._create(_port.Port, **attrs)
 
@@ -460,10 +460,10 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a port.
         :param bool ignore_missing: When set to ``False``, an exception of
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the port does not exist.  When set to `True``, None will
             be returned when attempting to find a nonexistent port.
-        :returns: One :class:`~openstack.baremetal.v1.port.Port` object
+        :returns: One :class:`~SDK.openstack.baremetal.v1.port.Port` object
             or None.
         """
         return self._find(_port.Port, name_or_id,
@@ -473,7 +473,7 @@ class Proxy(proxy.Proxy):
         """Get a specific port.
 
         :param port: The value can be the name or ID of a chassis or a
-            :class:`~openstack.baremetal.v1.port.Port` instance.
+            :class:`~SDK.openstack.baremetal.v1.port.Port` instance.
         :param dict query: Optional query parameters to be sent to restrict
             the port properties returned. Available parameters include:
 
@@ -481,8 +481,8 @@ class Proxy(proxy.Proxy):
                     in the response. This may lead to some performance gain
                     because other fields of the resource are not refreshed.
 
-        :returns: One :class:`~openstack.baremetal.v1.port.Port`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.baremetal.v1.port.Port`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             port matching the name or ID could be found.
         """
         return self._get(_port.Port, port, **query)
@@ -491,12 +491,12 @@ class Proxy(proxy.Proxy):
         """Update a port.
 
         :param chassis: Either the name or the ID of a port or an instance
-            of :class:`~openstack.baremetal.v1.port.Port`.
+            of :class:`~SDK.openstack.baremetal.v1.port.Port`.
         :param dict attrs: The attributes to update on the port represented
             by the ``port`` parameter.
 
         :returns: The updated port.
-        :rtype: :class:`~openstack.baremetal.v1.port.Port`
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port.Port`
         """
         return self._update(_port.Port, port, **attrs)
 
@@ -504,15 +504,15 @@ class Proxy(proxy.Proxy):
         """Delete a port.
 
         :param port: The value can be either the name or ID of a port or
-            a :class:`~openstack.baremetal.v1.port.Port` instance.
+            a :class:`~SDK.openstack.baremetal.v1.port.Port` instance.
         :param bool ignore_missing: When set to ``False``, an exception
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the port could not be found. When set to ``True``, no
             exception will be raised when attempting to delete a non-existent
             port.
 
         :returns: The instance of the port which was deleted.
-        :rtype: :class:`~openstack.baremetal.v1.port.Port`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port.Port`.
         """
         return self._delete(_port.Port, port, ignore_missing=ignore_missing)
 
@@ -559,11 +559,11 @@ class Proxy(proxy.Proxy):
         """Create a new portgroup from attributes.
 
         :param dict attrs: Keyword arguments that will be used to create a
-             :class:`~openstack.baremetal.v1.port_group.PortGroup`, it
+             :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`, it
              comprises of the properties on the ``PortGroup`` class.
 
         :returns: The results of portgroup creation.
-        :rtype: :class:`~openstack.baremetal.v1.port_group.PortGroup`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`.
         """
         return self._create(_portgroup.PortGroup, **attrs)
 
@@ -572,10 +572,10 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a portgroup.
         :param bool ignore_missing: When set to ``False``, an exception of
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the port group does not exist.  When set to `True``, None will
             be returned when attempting to find a nonexistent port group.
-        :returns: One :class:`~openstack.baremetal.v1.port_group.PortGroup`
+        :returns: One :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`
             object or None.
         """
         return self._find(_portgroup.PortGroup, name_or_id,
@@ -585,7 +585,7 @@ class Proxy(proxy.Proxy):
         """Get a specific port group.
 
         :param port_group: The value can be the name or ID of a chassis or a
-            :class:`~openstack.baremetal.v1.port_group.PortGroup` instance.
+            :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup` instance.
         :param dict query: Optional query parameters to be sent to restrict
             the port group properties returned. Available parameters include:
 
@@ -593,8 +593,8 @@ class Proxy(proxy.Proxy):
                     in the response. This may lead to some performance gain
                     because other fields of the resource are not refreshed.
 
-        :returns: One :class:`~openstack.baremetal.v1.port_group.PortGroup`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             port group matching the name or ID could be found.
         """
         return self._get(_portgroup.PortGroup, port_group, **query)
@@ -604,12 +604,12 @@ class Proxy(proxy.Proxy):
 
         :param chassis: Either the name or the ID of a port group or
             an instance of
-            :class:`~openstack.baremetal.v1.port_group.PortGroup`.
+            :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`.
         :param dict attrs: The attributes to update on the port group
             represented by the ``port_group`` parameter.
 
         :returns: The updated port group.
-        :rtype: :class:`~openstack.baremetal.v1.port_group.PortGroup`
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`
         """
         return self._update(_portgroup.PortGroup, port_group, **attrs)
 
@@ -618,16 +618,16 @@ class Proxy(proxy.Proxy):
 
         :param port_group: The value can be either the name or ID of
             a port group or a
-            :class:`~openstack.baremetal.v1.port_group.PortGroup`
+            :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`
             instance.
         :param bool ignore_missing: When set to ``False``, an exception
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the port group could not be found. When set to ``True``, no
             exception will be raised when attempting to delete a non-existent
             port group.
 
         :returns: The instance of the port group which was deleted.
-        :rtype: :class:`~openstack.baremetal.v1.port_group.PortGroup`.
+        :rtype: :class:`~SDK.openstack.baremetal.v1.port_group.PortGroup`.
         """
         return self._delete(_portgroup.PortGroup, port_group,
                             ignore_missing=ignore_missing)
@@ -641,10 +641,10 @@ class Proxy(proxy.Proxy):
         at a time.
 
         :param node: The value can be either the name or ID of a node or
-            a :class:`~openstack.baremetal.v1.node.Node` instance.
+            a :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param string vif_id: Backend-specific VIF ID.
         :return: ``None``
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         res = self._get_resource(_node.Node, node)
@@ -658,14 +658,14 @@ class Proxy(proxy.Proxy):
         (NOT a Bare Metal port) ID.
 
         :param node: The value can be either the name or ID of a node or
-            a :class:`~openstack.baremetal.v1.node.Node` instance.
+            a :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :param string vif_id: Backend-specific VIF ID.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the VIF does not exist. Otherwise, ``False``
                     is returned.
         :return: ``True`` if the VIF was detached, otherwise ``False``.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         res = self._get_resource(_node.Node, node)
@@ -679,9 +679,9 @@ class Proxy(proxy.Proxy):
         (NOT a Bare Metal port) ID.
 
         :param node: The value can be either the name or ID of a node or
-            a :class:`~openstack.baremetal.v1.node.Node` instance.
+            a :class:`~SDK.openstack.baremetal.v1.node.Node` instance.
         :return: List of VIF IDs as strings.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the server
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the server
             does not support the VIF API.
         """
         res = self._get_resource(_node.Node, node)

@@ -13,10 +13,10 @@
 
 import testtools
 
-import openstack.cloud
-from openstack.cloud import meta
-from openstack.tests import fakes
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.cloud import meta
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestVolume(base.TestCase):
@@ -60,7 +60,7 @@ class TestVolume(base.TestCase):
                          'volumeId': vol['id']}})
                  )])
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudURINotFound,
+            SDK.openstack.cloud.OpenStackCloudURINotFound,
             "Error attaching volume %s to server %s" % (
                 volume['id'], server['id'])
         ):
@@ -126,7 +126,7 @@ class TestVolume(base.TestCase):
                  json={'volumes': [errored_volume]})])
 
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Error in attaching volume %s" % errored_volume['id']
         ):
             self.cloud.attach_volume(server, volume)
@@ -137,7 +137,7 @@ class TestVolume(base.TestCase):
         volume = dict(id='volume001', status='error', attachments=[])
 
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Volume %s is not available. Status is '%s'" % (
                 volume['id'], volume['status'])
         ):
@@ -153,7 +153,7 @@ class TestVolume(base.TestCase):
                       ])
 
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Volume %s already attached to server %s on device %s" % (
                 volume['id'], server['id'], device_id)
         ):
@@ -189,7 +189,7 @@ class TestVolume(base.TestCase):
                              'os-volume_attachments', volume['id']]),
                  status_code=404)])
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudURINotFound,
+            SDK.openstack.cloud.OpenStackCloudURINotFound,
             "Error detaching volume %s from server %s" % (
                 volume['id'], server['id'])
         ):
@@ -238,7 +238,7 @@ class TestVolume(base.TestCase):
                      'volumev2', 'public', append=['volumes', 'detail']),
                  json={'volumes': [errored_volume]})])
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Error in detaching volume %s" % errored_volume['id']
         ):
             self.cloud.detach_volume(server, volume)

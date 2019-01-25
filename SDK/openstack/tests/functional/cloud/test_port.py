@@ -22,8 +22,8 @@ Functional tests for `shade` port resource.
 import string
 import random
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestPort(base.BaseFunctionalTest):

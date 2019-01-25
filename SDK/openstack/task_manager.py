@@ -22,10 +22,10 @@ import keystoneauth1.exceptions
 import six
 from six.moves import queue
 
-import openstack._log
-from openstack import exceptions
+from SDK.openstack import _log
+from SDK.openstack import exceptions
 
-_log = openstack._log.setup_logging('openstack.task_manager')
+_log = _log.setup_logging('SDK.openstack.task_manager')
 
 
 class Task(object):

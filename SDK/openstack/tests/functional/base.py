@@ -11,20 +11,20 @@
 # under the License.
 
 import os
-import openstack.config
+import SDK.openstack.config
 
 from keystoneauth1 import discover
 from keystoneauth1 import exceptions as _exceptions
-from openstack import connection
-from openstack.tests import base
+from SDK.openstack import connection
+from SDK.openstack.tests import base
 
 
 #: Defines the OpenStack Client Config (OCC) cloud key in your OCC config
-#: file, typically in $HOME/.config/openstack/clouds.yaml. That configuration
+#: file, typically in $HOME/.config/SDK.openstack/clouds.yaml. That configuration
 #: will determine where the functional tests will be run and what resource
 #: defaults will be used to run the functional tests.
 TEST_CLOUD_NAME = os.getenv('OS_CLOUD', 'devstack-admin')
-TEST_CLOUD_REGION = openstack.config.get_cloud_region(cloud=TEST_CLOUD_NAME)
+TEST_CLOUD_REGION = SDK.openstack.config.get_cloud_region(cloud=TEST_CLOUD_NAME)
 
 
 def _get_resource_value(resource_key, default):
@@ -63,7 +63,7 @@ class BaseFunctionalTest(base.TestCase):
         self._op_name = os.environ.get(
             'OPENSTACKSDK_OPERATOR_CLOUD', 'devstack-admin')
 
-        self.config = openstack.config.OpenStackConfig()
+        self.config = SDK.openstack.config.OpenStackConfig()
         self._set_user_cloud()
         self._set_operator_cloud()
 

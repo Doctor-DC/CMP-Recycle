@@ -15,15 +15,15 @@ import warnings
 
 import os_service_types
 
-from openstack import _log
-from openstack import exceptions
-from openstack import proxy
+from SDK.openstack import _log
+from SDK.openstack import exceptions
+from SDK.openstack import proxy
 
 __all__ = [
     'ServiceDescription',
 ]
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 _service_type_manager = os_service_types.ServiceTypes()
 
 
@@ -45,8 +45,8 @@ class ServiceDescription(object):
         to provide an object interface.
 
         Instances of ServiceDescription can be passed to
-        `openstack.connection.Connection.add_service`, or a list can be
-        passed to the `openstack.connection.Connection` constructor in
+        `SDK.openstack.connection.Connection.add_service`, or a list can be
+        passed to the `SDK.openstack.connection.Connection` constructor in
         the ``extra_services`` argument.
 
         All three parameters can be provided at instantation time, or
@@ -56,9 +56,9 @@ class ServiceDescription(object):
         :param string service_type:
             service_type to look for in the keystone catalog
         :param proxy.Proxy proxy_class:
-            subclass of :class:`~openstack.proxy.Proxy` implementing
+            subclass of :class:`~SDK.openstack.proxy.Proxy` implementing
             an interface for this service. Defaults to
-            :class:`~openstack.proxy.Proxy` which provides REST operations
+            :class:`~SDK.openstack.proxy.Proxy` which provides REST operations
             but no additional features.
         :param list aliases:
             Optional list of aliases, if there is more than one name that might
@@ -85,7 +85,7 @@ class ServiceDescription(object):
         """Create a Proxy for the service in question.
 
         :param instance:
-          The `openstack.connection.Connection` we're working with.
+          The `SDK.openstack.connection.Connection` we're working with.
         """
         config = instance.config
 

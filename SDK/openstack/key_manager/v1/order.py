@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.key_manager.v1 import _format
-from openstack import resource
+from SDK.openstack.key_manager.v1 import _format
+from SDK.openstack import resource
 
 
 class Order(resource.Resource):

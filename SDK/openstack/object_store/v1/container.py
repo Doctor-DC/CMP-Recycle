@@ -11,8 +11,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import _base
-from openstack import resource
+from SDK.openstack.object_store.v1 import _base
+from SDK.openstack import resource
 
 
 class Container(_base.BaseResource):
@@ -119,7 +119,7 @@ class Container(_base.BaseResource):
                             request. Default to True.
 
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_create` is not set to ``True``.
         """
         request = self._prepare_request(

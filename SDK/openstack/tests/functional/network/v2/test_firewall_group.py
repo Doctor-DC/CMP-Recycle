@@ -14,8 +14,8 @@
 # under the License.
 
 
-from openstack.network.v2 import firewall_group
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import firewall_group
+from SDK.openstack.tests.functional import base
 
 
 class TestFirewallGroup(base.BaseFunctionalTest):

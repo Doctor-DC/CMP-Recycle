@@ -13,10 +13,10 @@
 import mock
 import testtools
 
-from openstack.cloud import exc
-from openstack.config import cloud_region
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.config import cloud_region
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestOperatorCloud(base.TestCase):

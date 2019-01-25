@@ -13,10 +13,10 @@
 # under the License.
 
 
-from openstack import config
-from openstack.config import cloud_region
-from openstack import exceptions
-from openstack.tests.unit.config import base
+from SDK.openstack import config
+from SDK.openstack.config import cloud_region
+from SDK.openstack import exceptions
+from SDK.openstack.tests.unit.config import base
 
 import fixtures
 
@@ -45,7 +45,7 @@ class TestEnviron(base.TestCase):
         c = config.OpenStackConfig(config_files=[self.cloud_yaml],
                                    vendor_files=[self.vendor_yaml])
         self.assertRaises(
-            exceptions.ConfigException, c.get_one, 'openstack')
+            exceptions.ConfigException, c.get_one, 'SDK.openstack')
 
     def test_envvar_name_override(self):
         self.useFixture(

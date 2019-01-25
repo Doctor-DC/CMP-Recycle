@@ -15,10 +15,10 @@ import operator
 from keystoneauth1 import adapter
 import mock
 import requests
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack import exceptions
-from openstack.image.v2 import image
+from SDK.openstack import exceptions
+from SDK.openstack.image.v2 import image
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {
@@ -278,7 +278,7 @@ class TestImage(base.TestCase):
 
         self.sess.get.side_effect = [resp1, resp2]
 
-        with self.assertLogs(logger='openstack', level="WARNING") as log:
+        with self.assertLogs(logger='SDK.openstack', level="WARNING") as log:
             rv = sot.download(self.sess)
 
             self.assertEqual(len(log.records), 1,
@@ -318,7 +318,7 @@ class TestImage(base.TestCase):
         resp = mock.Mock()
         resp.content = b"abc"
         headers = {
-            'Content-Type': 'application/openstack-images-v2.1-json-patch',
+            'Content-Type': 'application/SDK.openstack-images-v2.1-json-patch',
             'Accept': '',
         }
         resp.headers = headers

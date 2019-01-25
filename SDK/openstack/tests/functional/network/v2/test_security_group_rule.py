@@ -11,9 +11,9 @@
 # under the License.
 
 
-from openstack.network.v2 import security_group
-from openstack.network.v2 import security_group_rule
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import security_group
+from SDK.openstack.network.v2 import security_group_rule
+from SDK.openstack.tests.functional import base
 
 
 class TestSecurityGroupRule(base.BaseFunctionalTest):

@@ -11,10 +11,10 @@
 # under the License.
 
 import mock
-from openstack import exceptions
-from openstack.tests.unit import base
+from SDK.openstack import exceptions
+from SDK.openstack.tests.unit import base
 
-from openstack.compute.v2 import server
+from SDK.openstack.compute.v2 import server
 
 IDENTIFIER = 'IDENTIFIER'
 

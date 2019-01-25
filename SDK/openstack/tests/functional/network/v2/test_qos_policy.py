@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.network.v2 import qos_policy as _qos_policy
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import qos_policy as _qos_policy
+from SDK.openstack.tests.functional import base
 
 
 class TestQoSPolicy(base.BaseFunctionalTest):

@@ -11,10 +11,10 @@
 # under the License.
 
 
-from openstack.network.v2 import network
-from openstack.network.v2 import port
-from openstack.network.v2 import subnet
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import network
+from SDK.openstack.network.v2 import port
+from SDK.openstack.network.v2 import subnet
+from SDK.openstack.tests.functional import base
 
 
 class TestNetworkIPAvailability(base.BaseFunctionalTest):

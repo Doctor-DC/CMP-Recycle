@@ -13,8 +13,8 @@
 
 import uuid
 
-from openstack.tests.unit import base
-from openstack.tests import fakes
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests import fakes
 
 
 class TestServerGroup(base.TestCase):

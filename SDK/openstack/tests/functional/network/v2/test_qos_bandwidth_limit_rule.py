@@ -11,9 +11,9 @@
 # under the License.
 
 
-from openstack.network.v2 import (qos_bandwidth_limit_rule as
+from SDK.openstack.network.v2 import (qos_bandwidth_limit_rule as
                                   _qos_bandwidth_limit_rule)
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestQoSBandwidthLimitRule(base.BaseFunctionalTest):

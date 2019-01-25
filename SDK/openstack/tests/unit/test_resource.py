@@ -18,10 +18,10 @@ import munch
 import requests
 import six
 
-from openstack import exceptions
-from openstack import format
-from openstack import resource
-from openstack.tests.unit import base
+from SDK.openstack import exceptions
+from SDK.openstack import format
+from SDK.openstack import resource
+from SDK.openstack.tests.unit import base
 
 
 class FakeResponse(object):
@@ -473,7 +473,7 @@ class TestResource(base.TestCase):
 
         # Don't test the arguments all together since the dictionary order
         # they're rendered in can't be depended on, nor does it matter.
-        self.assertIn("openstack.tests.unit.test_resource.Test", the_repr)
+        self.assertIn("SDK.openstack.tests.unit.test_resource.Test", the_repr)
         self.assertIn("a=1", the_repr)
         self.assertIn("b=2", the_repr)
         self.assertIn("c=3", the_repr)

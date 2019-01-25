@@ -11,10 +11,10 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 import uuid
 
-from openstack.load_balancer.v2 import load_balancer
+from SDK.openstack.load_balancer.v2 import load_balancer
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

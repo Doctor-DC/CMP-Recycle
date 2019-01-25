@@ -13,9 +13,9 @@
 
 import munch
 
-import openstack.cloud
+import SDK.openstack.cloud
 import testtools
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
 
 cluster_template_obj = munch.Munch(
@@ -191,7 +191,7 @@ class TestClusterTemplates(base.TestCase):
         # match the more specific HTTPError, even though it's a subclass
         # of OpenStackCloudException.
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudHTTPError):
+                SDK.openstack.cloud.OpenStackCloudHTTPError):
             self.cloud.create_cluster_template('fake-cluster-template')
         self.assert_calls()
 

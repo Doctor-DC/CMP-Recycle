@@ -15,12 +15,12 @@ import uuid
 
 import testtools
 
-from openstack.cloud import openstackcloud
-from openstack.cloud import exc
-from openstack import connection
-from openstack.tests import fakes
-from openstack.tests.unit import base
-from openstack import utils
+from SDK.openstack.cloud import openstackcloud
+from SDK.openstack.cloud import exc
+from SDK.openstack import connection
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
+from SDK.openstack import utils
 
 
 RANGE_DATA = [
@@ -428,7 +428,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "Multinic",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "NMN",
                 "description": "Multiple network support."
             },
@@ -436,7 +436,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "DiskConfig",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "OS-DCF",
                 "description": "Disk Management Extension."
             },
@@ -473,7 +473,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "Multinic",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "NMN",
                 "description": "Multiple network support."
             },
@@ -481,7 +481,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "DiskConfig",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "OS-DCF",
                 "description": "Disk Management Extension."
             },
@@ -502,7 +502,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "Multinic",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "NMN",
                 "description": "Multiple network support."
             },
@@ -510,7 +510,7 @@ class TestShade(base.TestCase):
                 "updated": "2014-12-03T00:00:00Z",
                 "name": "DiskConfig",
                 "links": [],
-                "namespace": "http://openstack.org/compute/ext/fake_xml",
+                "namespace": "http://SDK.openstack.org/compute/ext/fake_xml",
                 "alias": "OS-DCF",
                 "description": "Disk Management Extension."
             },

@@ -13,9 +13,9 @@
 import testtools
 from testtools import matchers
 
-import openstack.cloud
-import openstack.cloud._utils
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+import SDK.openstack.cloud._utils
+from SDK.openstack.tests.unit import base
 
 
 class TestProject(base.TestCase):
@@ -76,7 +76,7 @@ class TestProject(base.TestCase):
 
     def test_create_project_v3_no_domain(self):
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "User or project creation requires an explicit"
                 " domain_id argument."
         ):
@@ -126,7 +126,7 @@ class TestProject(base.TestCase):
         # shade will raise an attribute error instead of the proper
         # project not found exception.
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "Project %s not found." % project_data.project_id
         ):
             self.cloud.update_project(project_data.project_id)

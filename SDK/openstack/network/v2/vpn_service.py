@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 # NOTE: The VPN service is unmaintained, need to consider remove it

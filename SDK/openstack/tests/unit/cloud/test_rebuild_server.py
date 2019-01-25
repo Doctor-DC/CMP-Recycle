@@ -21,9 +21,9 @@ Tests for the `rebuild_server` command.
 
 import uuid
 
-from openstack.cloud import exc
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestRebuildServer(base.TestCase):

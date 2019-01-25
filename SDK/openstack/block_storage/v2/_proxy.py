@@ -10,14 +10,14 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.block_storage.v2 import backup as _backup
-from openstack.block_storage.v2 import snapshot as _snapshot
-from openstack.block_storage.v2 import stats as _stats
-from openstack.block_storage.v2 import type as _type
-from openstack.block_storage.v2 import volume as _volume
-from openstack import exceptions
-from openstack import proxy
-from openstack import resource
+from SDK.openstack.block_storage.v2 import backup as _backup
+from SDK.openstack.block_storage.v2 import snapshot as _snapshot
+from SDK.openstack.block_storage.v2 import stats as _stats
+from SDK.openstack.block_storage.v2 import type as _type
+from SDK.openstack.block_storage.v2 import volume as _volume
+from SDK.openstack import exceptions
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -26,11 +26,11 @@ class Proxy(proxy.Proxy):
         """Get a single snapshot
 
         :param snapshot: The value can be the ID of a snapshot or a
-                         :class:`~openstack.volume.v2.snapshot.Snapshot`
+                         :class:`~SDK.openstack.volume.v2.snapshot.Snapshot`
                          instance.
 
-        :returns: One :class:`~openstack.volume.v2.snapshot.Snapshot`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.volume.v2.snapshot.Snapshot`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_snapshot.Snapshot, snapshot)
@@ -39,9 +39,9 @@ class Proxy(proxy.Proxy):
         """Retrieve a generator of snapshots
 
         :param bool details: When set to ``False``
-                    :class:`~openstack.block_storage.v2.snapshot.Snapshot`
+                    :class:`~SDK.openstack.block_storage.v2.snapshot.Snapshot`
                     objects will be returned. The default, ``True``, will cause
-                    :class:`~openstack.block_storage.v2.snapshot.SnapshotDetail`
+                    :class:`~SDK.openstack.block_storage.v2.snapshot.SnapshotDetail`
                     objects to be returned.
         :param kwargs query: Optional query parameters to be sent to limit
             the snapshots being returned.  Available parameters include:
@@ -61,11 +61,11 @@ class Proxy(proxy.Proxy):
         """Create a new snapshot from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.volume.v2.snapshot.Snapshot`,
+                           a :class:`~SDK.openstack.volume.v2.snapshot.Snapshot`,
                            comprised of the properties on the Snapshot class.
 
         :returns: The results of snapshot creation
-        :rtype: :class:`~openstack.volume.v2.snapshot.Snapshot`
+        :rtype: :class:`~SDK.openstack.volume.v2.snapshot.Snapshot`
         """
         return self._create(_snapshot.Snapshot, **attrs)
 
@@ -73,10 +73,10 @@ class Proxy(proxy.Proxy):
         """Delete a snapshot
 
         :param snapshot: The value can be either the ID of a snapshot or a
-                         :class:`~openstack.volume.v2.snapshot.Snapshot`
+                         :class:`~SDK.openstack.volume.v2.snapshot.Snapshot`
                          instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the snapshot does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent snapshot.
@@ -90,10 +90,10 @@ class Proxy(proxy.Proxy):
         """Get a single type
 
         :param type: The value can be the ID of a type or a
-                     :class:`~openstack.volume.v2.type.Type` instance.
+                     :class:`~SDK.openstack.volume.v2.type.Type` instance.
 
-        :returns: One :class:`~openstack.volume.v2.type.Type`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.volume.v2.type.Type`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_type.Type, type)
@@ -109,11 +109,11 @@ class Proxy(proxy.Proxy):
         """Create a new type from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.volume.v2.type.Type`,
+                           a :class:`~SDK.openstack.volume.v2.type.Type`,
                            comprised of the properties on the Type class.
 
         :returns: The results of type creation
-        :rtype: :class:`~openstack.volume.v2.type.Type`
+        :rtype: :class:`~SDK.openstack.volume.v2.type.Type`
         """
         return self._create(_type.Type, **attrs)
 
@@ -121,9 +121,9 @@ class Proxy(proxy.Proxy):
         """Delete a type
 
         :param type: The value can be either the ID of a type or a
-                     :class:`~openstack.volume.v2.type.Type` instance.
+                     :class:`~SDK.openstack.volume.v2.type.Type` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the type does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent type.
@@ -136,10 +136,10 @@ class Proxy(proxy.Proxy):
         """Get a single volume
 
         :param volume: The value can be the ID of a volume or a
-                       :class:`~openstack.volume.v2.volume.Volume` instance.
+                       :class:`~SDK.openstack.volume.v2.volume.Volume` instance.
 
-        :returns: One :class:`~openstack.volume.v2.volume.Volume`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.volume.v2.volume.Volume`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_volume.Volume, volume)
@@ -148,9 +148,9 @@ class Proxy(proxy.Proxy):
         """Retrieve a generator of volumes
 
         :param bool details: When set to ``False``
-                    :class:`~openstack.block_storage.v2.volume.Volume` objects
+                    :class:`~SDK.openstack.block_storage.v2.volume.Volume` objects
                     will be returned. The default, ``True``, will cause
-                    :class:`~openstack.block_storage.v2.volume.VolumeDetail`
+                    :class:`~SDK.openstack.block_storage.v2.volume.VolumeDetail`
                     objects to be returned.
         :param kwargs query: Optional query parameters to be sent to limit
             the volumes being returned.  Available parameters include:
@@ -169,11 +169,11 @@ class Proxy(proxy.Proxy):
         """Create a new volume from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.volume.v2.volume.Volume`,
+                           a :class:`~SDK.openstack.volume.v2.volume.Volume`,
                            comprised of the properties on the Volume class.
 
         :returns: The results of volume creation
-        :rtype: :class:`~openstack.volume.v2.volume.Volume`
+        :rtype: :class:`~SDK.openstack.volume.v2.volume.Volume`
         """
         return self._create(_volume.Volume, **attrs)
 
@@ -181,9 +181,9 @@ class Proxy(proxy.Proxy):
         """Delete a volume
 
         :param volume: The value can be either the ID of a volume or a
-                       :class:`~openstack.volume.v2.volume.Volume` instance.
+                       :class:`~SDK.openstack.volume.v2.volume.Volume` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the volume does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent volume.
@@ -196,7 +196,7 @@ class Proxy(proxy.Proxy):
         """Extend a volume
 
         :param volume: The value can be either the ID of a volume or a
-                       :class:`~openstack.volume.v2.volume.Volume` instance.
+                       :class:`~SDK.openstack.volume.v2.volume.Volume` instance.
         :param size: New volume size
 
         :returns: None
@@ -215,9 +215,9 @@ class Proxy(proxy.Proxy):
         """Retrieve a generator of backups
 
         :param bool details: When set to ``False``
-            :class:`~openstack.block_storage.v2.backup.Backup` objects
+            :class:`~SDK.openstack.block_storage.v2.backup.Backup` objects
             will be returned. The default, ``True``, will cause
-            :class:`~openstack.block_storage.v2.backup.BackupDetail`
+            :class:`~SDK.openstack.block_storage.v2.backup.BackupDetail`
             objects to be returned.
         :param dict query: Optional query parameters to be sent to limit the
             resources being returned:
@@ -246,11 +246,11 @@ class Proxy(proxy.Proxy):
         """Get a backup
 
         :param backup: The value can be the ID of a backup
-            or a :class:`~openstack.block_storage.v2.backup.Backup`
+            or a :class:`~SDK.openstack.block_storage.v2.backup.Backup`
             instance.
 
         :returns: Backup instance
-        :rtype: :class:`~openstack.block_storage.v2.backup.Backup`
+        :rtype: :class:`~SDK.openstack.block_storage.v2.backup.Backup`
         """
         if not self._connection.has_service('object-store'):
             raise exceptions.SDKException(
@@ -262,11 +262,11 @@ class Proxy(proxy.Proxy):
         """Create a new Backup from attributes with native API
 
         :param dict attrs: Keyword arguments which will be used to create
-            a :class:`~openstack.block_storage.v2.backup.Backup`
+            a :class:`~SDK.openstack.block_storage.v2.backup.Backup`
             comprised of the properties on the Backup class.
 
         :returns: The results of Backup creation
-        :rtype: :class:`~openstack.block_storage.v2.backup.Backup`
+        :rtype: :class:`~SDK.openstack.block_storage.v2.backup.Backup`
         """
         if not self._connection.has_service('object-store'):
             raise exceptions.SDKException(
@@ -278,9 +278,9 @@ class Proxy(proxy.Proxy):
         """Delete a CloudBackup
 
         :param backup: The value can be the ID of a backup or a
-            :class:`~openstack.block_storage.v2.backup.Backup` instance
+            :class:`~SDK.openstack.block_storage.v2.backup.Backup` instance
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised when
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised when
             the zone does not exist.
             When set to ``True``, no exception will be set when attempting to
             delete a nonexistent zone.
@@ -298,12 +298,12 @@ class Proxy(proxy.Proxy):
         """Restore a Backup to volume
 
         :param backup: The value can be the ID of a backup or a
-            :class:`~openstack.block_storage.v2.backup.Backup` instance
+            :class:`~SDK.openstack.block_storage.v2.backup.Backup` instance
         :param volume_id: The ID of the volume to restore the backup to.
         :param name: The name for new volume creation to restore.
 
         :returns: Updated backup instance
-        :rtype: :class:`~openstack.block_storage.v2.backup.Backup`
+        :rtype: :class:`~SDK.openstack.block_storage.v2.backup.Backup`
         """
         if not self._connection.has_service('object-store'):
             raise exceptions.SDKException(
@@ -318,7 +318,7 @@ class Proxy(proxy.Proxy):
 
         :param res: The resource to wait on to reach the specified status.
                     The resource must have a ``status`` attribute.
-        :type resource: A :class:`~openstack.resource.Resource` object.
+        :type resource: A :class:`~SDK.openstack.resource.Resource` object.
         :param status: Desired status.
         :param failures: Statuses that would be interpreted as failures.
         :type failures: :py:class:`list`
@@ -327,9 +327,9 @@ class Proxy(proxy.Proxy):
         :param wait: Maximum number of seconds to wait before the change.
                      Default to 120.
         :returns: The resource is returned on success.
-        :raises: :class:`~openstack.exceptions.ResourceTimeout` if transition
+        :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` if transition
                  to the desired status failed to occur in specified seconds.
-        :raises: :class:`~openstack.exceptions.ResourceFailure` if the resource
+        :raises: :class:`~SDK.openstack.exceptions.ResourceFailure` if the resource
                  has transited to one of the failure statuses.
         :raises: :class:`~AttributeError` if the resource does not have a
                 ``status`` attribute.
@@ -342,13 +342,13 @@ class Proxy(proxy.Proxy):
         """Wait for a resource to be deleted.
 
         :param res: The resource to wait on to be deleted.
-        :type resource: A :class:`~openstack.resource.Resource` object.
+        :type resource: A :class:`~SDK.openstack.resource.Resource` object.
         :param interval: Number of seconds to wait before to consecutive
                          checks. Default to 2.
         :param wait: Maximum number of seconds to wait before the change.
                      Default to 120.
         :returns: The resource is returned on success.
-        :raises: :class:`~openstack.exceptions.ResourceTimeout` if transition
+        :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` if transition
                  to delete failed to occur in the specified seconds.
         """
         return resource.wait_for_delete(self, res, interval, wait)

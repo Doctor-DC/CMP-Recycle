@@ -11,9 +11,9 @@
 # under the License.
 
 import copy
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.orchestration.v1 import stack_template
+from SDK.openstack.orchestration.v1 import stack_template
 
 
 FAKE = {

@@ -12,10 +12,10 @@
 
 import copy
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 import uuid
 
-from openstack.message.v2 import claim
+from SDK.openstack.message.v2 import claim
 
 
 FAKE1 = {

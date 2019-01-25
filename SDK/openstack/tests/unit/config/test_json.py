@@ -19,8 +19,8 @@ import os
 import jsonschema
 from testtools import content
 
-from openstack.config import defaults
-from openstack.tests.unit.config import base
+from SDK.openstack.config import defaults
+from SDK.openstack.tests.unit.config import base
 
 
 class TestConfig(base.TestCase):

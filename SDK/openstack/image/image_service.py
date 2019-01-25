@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.image.v1 import _proxy as _proxy_v1
-from openstack.image.v2 import _proxy as _proxy_v2
-from openstack import service_description
+from SDK.openstack.image.v1 import _proxy as _proxy_v1
+from SDK.openstack.image.v2 import _proxy as _proxy_v2
+from SDK.openstack import service_description
 
 
 class ImageService(service_description.ServiceDescription):

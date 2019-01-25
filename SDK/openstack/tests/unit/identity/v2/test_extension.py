@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.identity.v2 import extension
+from SDK.openstack.identity.v2 import extension
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

@@ -16,8 +16,8 @@ import time
 import keystoneauth1
 from keystoneauth1 import discover
 
-from openstack import _log
-from openstack import exceptions
+from SDK.openstack import _log
+from SDK.openstack import exceptions
 
 
 def urljoin(*args):
@@ -38,7 +38,7 @@ def iterate_timeout(timeout, message, wait=2):
     with <message>.
 
     """
-    log = _log.setup_logging('openstack.iterate_timeout')
+    log = _log.setup_logging('SDK.openstack.iterate_timeout')
 
     try:
         # None as a wait winds up flowing well in the per-resource cache
@@ -166,7 +166,7 @@ def maximum_supported_microversion(adapter, client_maximum):
         endpoint_data = None
 
     if endpoint_data is None:
-        log = _log.setup_logging('openstack')
+        log = _log.setup_logging('SDK.openstack')
         log.warning('Cannot determine endpoint data for service %s',
                     adapter.service_type or adapter.service_name)
         return None

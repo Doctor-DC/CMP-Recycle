@@ -11,8 +11,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import exceptions
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack import resource
 
 
 class BaseResource(resource.Resource):

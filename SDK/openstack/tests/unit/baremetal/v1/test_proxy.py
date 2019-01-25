@@ -12,15 +12,15 @@
 
 import mock
 
-from openstack.baremetal.v1 import _proxy
-from openstack.baremetal.v1 import chassis
-from openstack.baremetal.v1 import driver
-from openstack.baremetal.v1 import node
-from openstack.baremetal.v1 import port
-from openstack.baremetal.v1 import port_group
-from openstack import exceptions
-from openstack.tests.unit import base
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.baremetal.v1 import _proxy
+from SDK.openstack.baremetal.v1 import chassis
+from SDK.openstack.baremetal.v1 import driver
+from SDK.openstack.baremetal.v1 import node
+from SDK.openstack.baremetal.v1 import port
+from SDK.openstack.baremetal.v1 import port_group
+from SDK.openstack import exceptions
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestBaremetalProxy(test_proxy_base.TestProxyBase):

@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class AbsoluteLimits(resource.Resource):
@@ -83,7 +83,7 @@ class Limits(resource.Resource):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
 
         :returns: A Limits instance
-        :rtype: :class:`~openstack.compute.v2.limits.Limits`
+        :rtype: :class:`~SDK.openstack.compute.v2.limits.Limits`
         """
         # TODO(mordred) We shouldn't have to subclass just to declare
         # requires_id = False.

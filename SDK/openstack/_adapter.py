@@ -24,8 +24,8 @@ except ImportError:
 from six.moves import urllib
 from keystoneauth1 import adapter
 
-from openstack import exceptions
-from openstack import task_manager as _task_manager
+from SDK.openstack import exceptions
+from SDK.openstack import task_manager as _task_manager
 
 
 def _extract_name(url, service_type=None):

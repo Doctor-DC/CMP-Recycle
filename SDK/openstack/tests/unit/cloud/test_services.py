@@ -19,9 +19,9 @@ test_cloud_services
 Tests Keystone services commands.
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.cloud.exc import OpenStackCloudUnavailableFeature
-from openstack.tests.unit import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.cloud.exc import OpenStackCloudUnavailableFeature
+from SDK.openstack.tests.unit import base
 from testtools import matchers
 
 

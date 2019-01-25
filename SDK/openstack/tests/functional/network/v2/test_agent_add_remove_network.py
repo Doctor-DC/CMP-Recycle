@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.network.v2 import network
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import network
+from SDK.openstack.tests.functional import base
 
 
 class TestAgentNetworks(base.BaseFunctionalTest):

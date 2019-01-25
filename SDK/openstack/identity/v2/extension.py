@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Extension(resource.Resource):
@@ -36,7 +36,7 @@ class Extension(resource.Resource):
     name = resource.Body('name')
     #: The second unique identifier of the extension after the alias.
     #: It is usually a URL which will be used. Example:
-    #: "http://docs.openstack.org/identity/api/ext/s3tokens/v1.0"
+    #: "http://docs.SDK.openstack.org/identity/api/ext/s3tokens/v1.0"
     #: *Type: string*
     namespace = resource.Body('namespace')
     #: The last time the extension has been modified (update date).

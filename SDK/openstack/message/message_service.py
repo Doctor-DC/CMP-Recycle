@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.message.v2 import _proxy
-from openstack import service_description
+from SDK.openstack.message.v2 import _proxy
+from SDK.openstack import service_description
 
 
 class MessageService(service_description.ServiceDescription):

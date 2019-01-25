@@ -19,9 +19,9 @@ test_floating_ip_pool
 Test floating IP pool resource (managed by nova)
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.unit import base
-from openstack.tests import fakes
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests import fakes
 
 
 class TestFloatingIPPool(base.TestCase):
@@ -39,7 +39,7 @@ class TestFloatingIPPool(base.TestCase):
                      u'name': u'FloatingIpPools',
                      u'links': [],
                      u'namespace':
-                     u'http://docs.openstack.org/compute/ext/fake_xml',
+                     u'http://docs.SDK.openstack.org/compute/ext/fake_xml',
                      u'description': u'Floating IPs support.'}]}),
             dict(method='GET',
                  uri='{endpoint}/os-floating-ip-pools'.format(
@@ -65,7 +65,7 @@ class TestFloatingIPPool(base.TestCase):
                      u'name': u'FloatingIpPools',
                      u'links': [],
                      u'namespace':
-                     u'http://docs.openstack.org/compute/ext/fake_xml',
+                     u'http://docs.SDK.openstack.org/compute/ext/fake_xml',
                      u'description': u'Floating IPs support.'}]}),
             dict(method='GET',
                  uri='{endpoint}/os-floating-ip-pools'.format(

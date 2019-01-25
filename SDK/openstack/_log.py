@@ -103,7 +103,7 @@ def enable_logging(
         file_handler.setFormatter(formatter)
         handlers.append(file_handler)
 
-    setup_logging('openstack', handlers=handlers, level=level)
+    setup_logging('SDK.openstack', handlers=handlers, level=level)
     setup_logging('keystoneauth', handlers=handlers, level=level)
 
     # Turn off logging on these so that if loggers higher in the tree

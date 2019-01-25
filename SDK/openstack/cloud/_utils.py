@@ -28,9 +28,9 @@ import uuid
 
 from decorator import decorator
 
-from openstack import _log
-from openstack.cloud import exc
-from openstack.cloud import meta
+from SDK.openstack import _log
+from SDK.openstack.cloud import exc
+from SDK.openstack.cloud import meta
 
 _decorated_methods = []
 
@@ -93,10 +93,10 @@ def _filter_list(data, name_or_id, filters):
         OR
         A string containing a jmespath expression for further filtering.
     """
-    # The logger is openstack.cloud.fmmatch to allow a user/operator to
+    # The logger is SDK.openstack.cloud.fmmatch to allow a user/operator to
     # configure logging not to communicate about fnmatch misses
     # (they shouldn't be too spammy, but one never knows)
-    log = _log.setup_logging('openstack.fnmatch')
+    log = _log.setup_logging('SDK.openstack.fnmatch')
     if name_or_id:
         # name_or_id might already be unicode
         name_or_id = _make_unicode(name_or_id)

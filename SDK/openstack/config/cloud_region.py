@@ -22,12 +22,12 @@ import os_service_types
 import requestsexceptions
 from six.moves import urllib
 
-from openstack import _adapter
-from openstack import version as openstack_version
-from openstack import _log
-from openstack.config import _util
-from openstack.config import defaults as config_defaults
-from openstack import exceptions
+from SDK.openstack import _adapter
+from SDK.openstack import version as openstack_version
+from SDK.openstack import _log
+from SDK.openstack.config import _util
+from SDK.openstack.config import defaults as config_defaults
+from SDK.openstack import exceptions
 
 
 def _make_key(key, service_type):
@@ -101,7 +101,7 @@ class CloudRegion(object):
         self.region_name = region_name
         self.config = _util.normalize_keys(config)
         self._extra_config = extra_config or {}
-        self.log = _log.setup_logging('openstack.config')
+        self.log = _log.setup_logging('SDK.openstack.config')
         self._force_ipv4 = force_ipv4
         self._auth = auth_plugin
         self._openstack_config = openstack_config
@@ -340,7 +340,7 @@ class CloudRegion(object):
 
         Normal consumers of SDK should use app_name and app_version. However,
         if someone else writes a subclass of
-        :class:`~openstack.config.cloud_region.CloudRegion` it may be
+        :class:`~SDK.openstack.config.cloud_region.CloudRegion` it may be
         desirable.
         """
         self._keystone_session.additional_user_agent.append(

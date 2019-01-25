@@ -15,7 +15,7 @@
 import collections
 import time
 
-from openstack.cloud import meta
+from SDK.openstack.cloud import meta
 
 
 def get_events(cloud, stack_id, event_args, marker=None, limit=None):

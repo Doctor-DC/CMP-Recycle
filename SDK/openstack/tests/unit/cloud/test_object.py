@@ -16,10 +16,10 @@ import tempfile
 
 import testtools
 
-import openstack.cloud
-import openstack.cloud.openstackcloud as oc_oc
-from openstack.cloud import exc
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+import SDK.openstack.cloud.openstackcloud as oc_oc
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.unit import base
 
 
 class BaseTestObject(base.TestCase):
@@ -144,7 +144,7 @@ class TestObject(BaseTestObject):
             dict(method='DELETE', uri=self.container_endpoint,
                  status_code=409)])
         self.assertRaises(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             self.cloud.delete_container, self.container)
         self.assert_calls()
 
@@ -171,7 +171,7 @@ class TestObject(BaseTestObject):
             dict(method='POST', uri=self.container_endpoint,
                  status_code=409)])
         self.assertRaises(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             self.cloud.update_container, self.container, dict(foo='bar'))
         self.assert_calls()
 
@@ -205,7 +205,7 @@ class TestObject(BaseTestObject):
 
     def test_set_container_access_invalid(self):
         self.assertRaises(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             self.cloud.set_container_access, self.container, 'invalid')
 
     def test_get_container_access(self):
@@ -418,7 +418,7 @@ class TestObject(BaseTestObject):
                                  status_code=416)])
 
         self.assertRaises(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             self.cloud.get_object,
             self.container, self.object)
 

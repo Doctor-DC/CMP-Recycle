@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 from examples import connect
 from examples.network import create as network_create

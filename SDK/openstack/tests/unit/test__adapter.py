@@ -12,8 +12,8 @@
 
 from testscenarios import load_tests_apply_scenarios as load_tests  # noqa
 
-from openstack import _adapter
-from openstack.tests.unit import base
+from SDK.openstack import _adapter
+from SDK.openstack.tests.unit import base
 
 
 class TestExtractName(base.TestCase):

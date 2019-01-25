@@ -76,7 +76,7 @@ class HttpException(SDKException, _rex.HTTPError):
         _rex.HTTPError.__init__(self, message, response=response)
 
         if response is not None:
-            self.request_id = response.headers.get('x-openstack-request-id')
+            self.request_id = response.headers.get('x-SDK.openstack-request-id')
             self.status_code = response.status_code
         else:
             self.request_id = request_id
@@ -222,7 +222,7 @@ def raise_from_response(response, error_message=None):
         details = response.reason if response.reason else response.text
 
     http_status = response.status_code
-    request_id = response.headers.get('x-openstack-request-id')
+    request_id = response.headers.get('x-SDK.openstack-request-id')
 
     raise cls(
         message=error_message, response=response, details=details,

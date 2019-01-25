@@ -12,8 +12,8 @@
 
 import six
 
-from openstack import exceptions
-from openstack.tests.functional import base
+from SDK.openstack import exceptions
+from SDK.openstack.tests.functional import base
 
 
 class TestFlavor(base.BaseFunctionalTest):

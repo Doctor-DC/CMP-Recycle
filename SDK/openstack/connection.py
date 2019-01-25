@@ -11,71 +11,71 @@
 # under the License.
 
 """
-The :class:`~openstack.connection.Connection` class is the primary interface
+The :class:`~SDK.openstack.connection.Connection` class is the primary interface
 to the Python SDK. It maintains a context for a connection to a region of
-a cloud provider. The :class:`~openstack.connection.Connection` has an
+a cloud provider. The :class:`~SDK.openstack.connection.Connection` has an
 attribute to access each OpenStack service.
 
-At a minimum, the :class:`~openstack.connection.Connection` class needs to be
+At a minimum, the :class:`~SDK.openstack.connection.Connection` class needs to be
 created with a config or the parameters to build one.
 
 While the overall system is very flexible, there are four main use cases
-for different ways to create a :class:`~openstack.connection.Connection`.
+for different ways to create a :class:`~SDK.openstack.connection.Connection`.
 
 * Using config settings and keyword arguments as described in
-  :ref:`openstack-config`
+  :ref:`SDK.openstack-config`
 * Using only keyword arguments passed to the constructor ignoring config files
   and environment variables.
 * Using an existing authenticated `keystoneauth1.session.Session`, such as
   might exist inside of an OpenStack service operational context.
-* Using an existing :class:`~openstack.config.cloud_region.CloudRegion`.
+* Using an existing :class:`~SDK.openstack.config.cloud_region.CloudRegion`.
 
 Using config settings
 ---------------------
 
-For users who want to create a :class:`~openstack.connection.Connection` making
+For users who want to create a :class:`~SDK.openstack.connection.Connection` making
 use of named clouds in ``clouds.yaml`` files, ``OS_`` environment variables
-and python keyword arguments, the :func:`openstack.connect` factory function
+and python keyword arguments, the :func:`SDK.openstack.connect` factory function
 is the recommended way to go:
 
 .. code-block:: python
 
-    import openstack
+    import SDK.openstack
 
-    conn = openstack.connect(cloud='example', region_name='earth1')
+    conn = SDK.openstack.connect(cloud='example', region_name='earth1')
 
 If the application in question is a command line application that should also
 accept command line arguments, an `argparse.Namespace` can be passed to
-:func:`openstack.connect` that will have relevant arguments added to it and
+:func:`SDK.openstack.connect` that will have relevant arguments added to it and
 then subsequently consumed by the constructor:
 
 .. code-block:: python
 
     import argparse
-    import openstack
+    import SDK.openstack
 
     options = argparse.ArgumentParser(description='Awesome OpenStack App')
-    conn = openstack.connect(options=options)
+    conn = SDK.openstack.connect(options=options)
 
 Using Only Keyword Arguments
 ----------------------------
 
 If the application wants to avoid loading any settings from ``clouds.yaml`` or
-environment variables, use the :class:`~openstack.connection.Connection`
+environment variables, use the :class:`~SDK.openstack.connection.Connection`
 constructor directly. As long as the ``cloud`` argument is omitted or ``None``,
-the :class:`~openstack.connection.Connection` constructor will not load
+the :class:`~SDK.openstack.connection.Connection` constructor will not load
 settings from files or the environment.
 
 .. note::
 
-    This is a different default behavior than the :func:`~openstack.connect`
-    factory function. In :func:`~openstack.connect` if ``cloud`` is omitted
+    This is a different default behavior than the :func:`~SDK.openstack.connect`
+    factory function. In :func:`~SDK.openstack.connect` if ``cloud`` is omitted
     or ``None``, a default cloud will be loaded, defaulting to the ``envvars``
     cloud if it exists.
 
 .. code-block:: python
 
-    from openstack import connection
+    from SDK.openstack import connection
 
     conn = connection.Connection(
         region_name='example-region',
@@ -92,19 +92,19 @@ Per-service settings as needed by `keystoneauth1.adapter.Adapter` such as
 ``api_version``, ``service_name``, and ``interface`` can be set, as seen
 above, by prefixing them with the official ``service-type`` name of the
 service. ``region_name`` is a setting for the entire
-:class:`~openstack.config.cloud_region.CloudRegion` and cannot be set per
+:class:`~SDK.openstack.config.cloud_region.CloudRegion` and cannot be set per
 service.
 
 From existing authenticated Session
 -----------------------------------
 
 For applications that already have an authenticated Session, simply passing
-it to the :class:`~openstack.connection.Connection` constructor is all that
+it to the :class:`~SDK.openstack.connection.Connection` constructor is all that
 is needed:
 
 .. code-block:: python
 
-    from openstack import connection
+    from SDK.openstack import connection
 
     conn = connection.Connection(
         session=session,
@@ -115,15 +115,15 @@ is needed:
 From existing CloudRegion
 -------------------------
 
-If you already have an :class:`~openstack.config.cloud_region.CloudRegion`
+If you already have an :class:`~SDK.openstack.config.cloud_region.CloudRegion`
 you can pass it in instead:
 
 .. code-block:: python
 
-    from openstack import connection
-    import openstack.config
+    from SDK.openstack import connection
+    import SDK.openstack.config
 
-    config = openstack.config.get_cloud_region(
+    config = SDK.openstack.config.get_cloud_region(
         cloud='example', region_name='earth')
     conn = connection.Connection(config=config)
 
@@ -161,14 +161,14 @@ import keystoneauth1.exceptions
 import requestsexceptions
 import six
 
-from openstack import _log
-from openstack._meta import connection as _meta
-from openstack.cloud import openstackcloud as _cloud
-from openstack import config as _config
-from openstack.config import cloud_region
-from openstack import exceptions
-from openstack import service_description
-from openstack import task_manager as _task_manager
+from SDK.openstack import _log
+from SDK.openstack._meta import connection as _meta
+from SDK.openstack.cloud import openstackcloud as _cloud
+from SDK.openstack import config as _config
+from SDK.openstack.config import cloud_region
+from SDK.openstack import exceptions
+from SDK.openstack import service_description
+from SDK.openstack import task_manager as _task_manager
 
 __all__ = [
     'from_config',
@@ -179,27 +179,27 @@ if requestsexceptions.SubjectAltNameWarning:
     warnings.filterwarnings(
         'ignore', category=requestsexceptions.SubjectAltNameWarning)
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 
 
 def from_config(cloud=None, config=None, options=None, **kwargs):
-    """Create a Connection using openstack.config
+    """Create a Connection using SDK.openstack.config
 
     :param str cloud:
         Use the `cloud` configuration details when creating the Connection.
-    :param openstack.config.cloud_region.CloudRegion config:
+    :param SDK.openstack.config.cloud_region.CloudRegion config:
         An existing CloudRegion configuration. If no `config` is provided,
-        `openstack.config.OpenStackConfig` will be called, and the provided
+        `SDK.openstack.config.OpenStackConfig` will be called, and the provided
         `name` will be used in determining which cloud's configuration
         details will be used in creation of the `Connection` instance.
     :param argparse.Namespace options:
         Allows direct passing in of options to be added to the cloud config.
         This does not have to be an actual instance of argparse.Namespace,
         despite the naming of the
-        `openstack.config.loader.OpenStackConfig.get_one` argument to which
+        `SDK.openstack.config.loader.OpenStackConfig.get_one` argument to which
         it is passed.
 
-    :rtype: :class:`~openstack.connection.Connection`
+    :rtype: :class:`~SDK.openstack.connection.Connection`
     """
     # TODO(mordred) Backwards compat while we transition
     cloud = kwargs.pop('cloud_name', cloud)
@@ -232,7 +232,7 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
         name ``envvars`` may be used to consume a cloud configured via ``OS_``
         environment variables.
 
-        A pre-existing :class:`~openstack.config.cloud_region.CloudRegion`
+        A pre-existing :class:`~SDK.openstack.config.cloud_region.CloudRegion`
         object can be passed in lieu of a cloud name, for cases where the user
         already has a fully formed CloudRegion and just wants to use it.
 
@@ -243,7 +243,7 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
         :param str cloud: Name of the cloud from config to use.
         :param config: CloudRegion object representing the config for the
             region of the cloud in question.
-        :type config: :class:`~openstack.config.cloud_region.CloudRegion`
+        :type config: :class:`~SDK.openstack.config.cloud_region.CloudRegion`
         :param session: A session object compatible with
             :class:`~keystoneauth1.session.Session`.
         :type session: :class:`~keystoneauth1.session.Session`
@@ -251,7 +251,7 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
         :param str app_version: Version of the application to be added to
             User Agent.
         :param extra_services: List of
-            :class:`~openstack.service_description.ServiceDescription`
+            :class:`~SDK.openstack.service_description.ServiceDescription`
             objects describing services that openstacksdk otherwise does not
             know about.
         :param bool use_direct_get:
@@ -262,7 +262,7 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
             Task Manager to handle the execution of remote REST calls.
             Defaults to None which causes a direct-action Task Manager to be
             used.
-        :type manager: :class:`~openstack.task_manager.TaskManager`
+        :type manager: :class:`~SDK.openstack.task_manager.TaskManager`
         :param rate_limit:
             Client-side rate limit, expressed in calls per second. The
             parameter can either be a single float, or it can be a dict with
@@ -326,18 +326,18 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
     def add_service(self, service):
         """Add a service to the Connection.
 
-        Attaches an instance of the :class:`~openstack.proxy.Proxy`
+        Attaches an instance of the :class:`~SDK.openstack.proxy.Proxy`
         class contained in
-        :class:`~openstack.service_description.ServiceDescription`.
-        The :class:`~openstack.proxy.Proxy` will be attached to the
+        :class:`~SDK.openstack.service_description.ServiceDescription`.
+        The :class:`~SDK.openstack.proxy.Proxy` will be attached to the
         `Connection` by its ``service_type`` and by any ``aliases`` that
         may be specified.
 
-        :param openstack.service_description.ServiceDescription service:
+        :param SDK.openstack.service_description.ServiceDescription service:
             Object describing the service to be attached. As a convenience,
             if ``service`` is a string it will be treated as a ``service_type``
             and a basic
-            :class:`~openstack.service_description.ServiceDescription`
+            :class:`~SDK.openstack.service_description.ServiceDescription`
             will be created.
         """
         # If we don't have a proxy, just instantiate Proxy so that
@@ -359,7 +359,7 @@ class Connection(six.with_metaclass(_meta.ConnectionMeta,
 
         :returns: A string token.
 
-        :raises: :class:`~openstack.exceptions.HttpException` if the
+        :raises: :class:`~SDK.openstack.exceptions.HttpException` if the
                  authorization fails due to reasons like the credentials
                  provided are unable to be authorized or the `auth_type`
                  argument is missing, etc.

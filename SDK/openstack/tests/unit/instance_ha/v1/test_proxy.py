@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack.instance_ha.v1 import _proxy
-from openstack.instance_ha.v1 import host
-from openstack.instance_ha.v1 import notification
-from openstack.instance_ha.v1 import segment
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.instance_ha.v1 import _proxy
+from SDK.openstack.instance_ha.v1 import host
+from SDK.openstack.instance_ha.v1 import notification
+from SDK.openstack.instance_ha.v1 import segment
+from SDK.openstack.tests.unit import test_proxy_base
 
 SEGMENT_ID = "c50b96eb-2a66-40f8-bca8-c5fa90d595c0"
 HOST_ID = "52d05e43-d08e-42b8-ae33-e47c8ea2ad47"

@@ -11,15 +11,15 @@
 # under the License.
 
 """
-The :class:`~openstack.resource.Resource` class is a base
+The :class:`~SDK.openstack.resource.Resource` class is a base
 class that represent a remote resource. The attributes that
 comprise a request or response for this resource are specified
 as class members on the Resource subclass where their values
-are of a component type, including :class:`~openstack.resource.Body`,
-:class:`~openstack.resource.Header`, and :class:`~openstack.resource.URI`.
+are of a component type, including :class:`~SDK.openstack.resource.Body`,
+:class:`~SDK.openstack.resource.Header`, and :class:`~SDK.openstack.resource.URI`.
 
-For update management, :class:`~openstack.resource.Resource` employs
-a series of :class:`~openstack.resource._ComponentManager` instances
+For update management, :class:`~SDK.openstack.resource.Resource` employs
+a series of :class:`~SDK.openstack.resource._ComponentManager` instances
 to look after the attributes of that particular component type. This is
 particularly useful for Body and Header types, so that only the values
 necessary are sent in requests to the server.
@@ -41,17 +41,17 @@ import munch
 from requests import structures
 import six
 
-from openstack import _log
-from openstack import exceptions
-from openstack import format
-from openstack import utils
+from SDK.openstack import _log
+from SDK.openstack import exceptions
+from SDK.openstack import format
+from SDK.openstack import utils
 
 _SEEN_FORMAT = '{name}_seen'
 
 
 def _convert_type(value, data_type, list_type=None):
     # This should allow handling list of dicts that have their own
-    # Component type directly. See openstack/compute/v2/limits.py
+    # Component type directly. See SDK.openstack/compute/v2/limits.py
     # and the RateLimit type for an example.
     if not data_type:
         return value
@@ -73,7 +73,7 @@ def _convert_type(value, data_type, list_type=None):
         if issubclass(data_type, format.Formatter):
             return data_type.deserialize(value)
         # This should allow handling sub-dicts that have their own
-        # Component type directly. See openstack/compute/v2/limits.py
+        # Component type directly. See SDK.openstack/compute/v2/limits.py
         # and the AbsoluteLimits type for an example.
         if isinstance(value, dict):
             return data_type(**value)
@@ -421,9 +421,9 @@ class Resource(dict):
 
         :param bool _synchronized:
             This is not intended to be used directly. See
-            :meth:`~openstack.resource.Resource.new` and
-            :meth:`~openstack.resource.Resource.existing`.
-        :param openstack.connection.Connection connection:
+            :meth:`~SDK.openstack.resource.Resource.new` and
+            :meth:`~SDK.openstack.resource.Resource.existing`.
+        :param SDK.openstack.connection.Connection connection:
             Reference to the Connection being used. Defaults to None to allow
             Resource objects to be used without an active Connection, such as
             in unit tests. Use of ``self._connection`` in Resource code should
@@ -788,11 +788,11 @@ class Resource(dict):
                 ignore_none=False, original_names=False, _to_munch=False):
         """Return a dictionary of this resource's contents
 
-        :param bool body: Include the :class:`~openstack.resource.Body`
+        :param bool body: Include the :class:`~SDK.openstack.resource.Body`
                           attributes in the returned dictionary.
-        :param bool headers: Include the :class:`~openstack.resource.Header`
+        :param bool headers: Include the :class:`~SDK.openstack.resource.Header`
                              attributes in the returned dictionary.
-        :param bool computed: Include the :class:`~openstack.resource.Computed`
+        :param bool computed: Include the :class:`~SDK.openstack.resource.Computed`
                               attributes in the returned dictionary.
         :param bool ignore_none: When True, exclude key/value pairs where
                                  the value is None. This will exclude
@@ -970,7 +970,7 @@ class Resource(dict):
             return getattr(session._sdk_connection, service_type)
         raise ValueError(
             "The session argument to Resource methods requires either an"
-            " instance of an openstack.proxy.Proxy object or at the very least"
+            " instance of an SDK.openstack.proxy.Proxy object or at the very least"
             " a raw keystoneauth1.adapter.Adapter.")
 
     @classmethod
@@ -1021,7 +1021,7 @@ class Resource(dict):
         :param error_message: Optional error message with details. Will be
             prepended to the message generated here.
         :return: resulting microversion as string.
-        :raises: :exc:`~openstack.exceptions.NotSupported` if the version
+        :raises: :exc:`~SDK.openstack.exceptions.NotSupported` if the version
             used for the action is lower than the expected one.
         """
         def _raise(message):
@@ -1057,7 +1057,7 @@ class Resource(dict):
                             request. Default to True.
 
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_create` is not set to ``True``.
         """
         if not self.allow_create:
@@ -1093,9 +1093,9 @@ class Resource(dict):
         :param boolean requires_id: A boolean indicating whether resource ID
                                     should be part of the requested URI.
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_fetch` is not set to ``True``.
-        :raises: :exc:`~openstack.exceptions.ResourceNotFound` if
+        :raises: :exc:`~SDK.openstack.exceptions.ResourceNotFound` if
                  the resource was not found.
         """
         if not self.allow_fetch:
@@ -1120,9 +1120,9 @@ class Resource(dict):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
 
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_head` is not set to ``True``.
-        :raises: :exc:`~openstack.exceptions.ResourceNotFound` if
+        :raises: :exc:`~SDK.openstack.exceptions.ResourceNotFound` if
                  the resource was not found.
         """
         if not self.allow_head:
@@ -1154,7 +1154,7 @@ class Resource(dict):
                                        the `Adapter` defaults.
 
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_commit` is not set to ``True``.
         """
         # The id cannot be dirty for an commit
@@ -1214,9 +1214,9 @@ class Resource(dict):
         :type session: :class:`~keystoneauth1.adapter.Adapter`
 
         :return: This :class:`Resource` instance.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_commit` is not set to ``True``.
-        :raises: :exc:`~openstack.exceptions.ResourceNotFound` if
+        :raises: :exc:`~SDK.openstack.exceptions.ResourceNotFound` if
                  the resource was not found.
         """
         if not self.allow_delete:
@@ -1253,21 +1253,21 @@ class Resource(dict):
                                of the API's support of pagination.**
         :param str base_path: Base part of the URI for listing resources, if
                               different from
-                              :data:`~openstack.resource.Resource.base_path`.
+                              :data:`~SDK.openstack.resource.Resource.base_path`.
         :param dict params: These keyword arguments are passed through the
-            :meth:`~openstack.resource.QueryParamter._transpose` method
+            :meth:`~SDK.openstack.resource.QueryParamter._transpose` method
             to find if any of them match expected query parameters to be
             sent in the *params* argument to
             :meth:`~keystoneauth1.adapter.Adapter.get`. They are additionally
             checked against the
-            :data:`~openstack.resource.Resource.base_path` format string
+            :data:`~SDK.openstack.resource.Resource.base_path` format string
             to see if any path fragments need to be filled in by the contents
             of this argument.
 
         :return: A generator of :class:`Resource` objects.
-        :raises: :exc:`~openstack.exceptions.MethodNotSupported` if
+        :raises: :exc:`~SDK.openstack.exceptions.MethodNotSupported` if
                  :data:`Resource.allow_list` is not set to ``True``.
-        :raises: :exc:`~openstack.exceptions.InvalidResourceQuery` if query
+        :raises: :exc:`~SDK.openstack.exceptions.InvalidResourceQuery` if query
                  contains invalid params.
         """
         if not cls.allow_list:
@@ -1410,20 +1410,20 @@ class Resource(dict):
         :param name_or_id: This resource's identifier, if needed by
                            the request. The default is ``None``.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
         :param dict params: Any additional parameters to be passed into
                             underlying methods, such as to
-                            :meth:`~openstack.resource.Resource.existing`
+                            :meth:`~SDK.openstack.resource.Resource.existing`
                             in order to pass on URI parameters.
 
         :return: The :class:`Resource` object matching the given name or id
                  or None if nothing matches.
-        :raises: :class:`openstack.exceptions.DuplicateResource` if more
+        :raises: :class:`SDK.openstack.exceptions.DuplicateResource` if more
                  than one resource is found for this request.
-        :raises: :class:`openstack.exceptions.ResourceNotFound` if nothing
+        :raises: :class:`SDK.openstack.exceptions.ResourceNotFound` if nothing
                  is found and ignore_missing is ``False``.
         """
         # Try to short-circuit by looking directly for a matching ID.
@@ -1576,7 +1576,7 @@ def wait_for_status(session, resource, status, failures, interval=None,
     :type session: :class:`~keystoneauth1.adapter.Adapter`
     :param resource: The resource to wait on to reach the status. The resource
                      must have a status attribute specified via ``attribute``.
-    :type resource: :class:`~openstack.resource.Resource`
+    :type resource: :class:`~SDK.openstack.resource.Resource`
     :param status: Desired status of the resource.
     :param list failures: Statuses that would indicate the transition
                           failed such as 'ERROR'. Defaults to ['ERROR'].
@@ -1587,9 +1587,9 @@ def wait_for_status(session, resource, status, failures, interval=None,
     :param attribute: Name of the resource attribute that contains the status.
 
     :return: The updated resource.
-    :raises: :class:`~openstack.exceptions.ResourceTimeout` transition
+    :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` transition
              to status failed to occur in wait seconds.
-    :raises: :class:`~openstack.exceptions.ResourceFailure` resource
+    :raises: :class:`~SDK.openstack.exceptions.ResourceFailure` resource
              transitioned to one of the failure states.
     :raises: :class:`~AttributeError` if the resource does not have a status
              attribute
@@ -1638,12 +1638,12 @@ def wait_for_delete(session, resource, interval, wait):
     :param session: The session to use for making this request.
     :type session: :class:`~keystoneauth1.adapter.Adapter`
     :param resource: The resource to wait on to be deleted.
-    :type resource: :class:`~openstack.resource.Resource`
+    :type resource: :class:`~SDK.openstack.resource.Resource`
     :param interval: Number of seconds to wait between checks.
     :param wait: Maximum number of seconds to wait for the delete.
 
     :return: Method returns self on success.
-    :raises: :class:`~openstack.exceptions.ResourceTimeout` transition
+    :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` transition
              to status failed to occur in wait seconds.
     """
     orig_resource = resource

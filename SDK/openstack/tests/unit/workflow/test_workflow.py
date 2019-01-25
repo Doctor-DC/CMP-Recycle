@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.workflow.v2 import workflow
+from SDK.openstack.workflow.v2 import workflow
 
 
 FAKE = {

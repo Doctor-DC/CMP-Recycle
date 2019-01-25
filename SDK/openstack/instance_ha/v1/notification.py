@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Notification(resource.Resource):
@@ -31,8 +31,8 @@ class Notification(resource.Resource):
     allow_delete = False
 
     # Properties
-    # Refer "https://github.com/openstack/masakari/tree/
-    # master/masakari/api/openstack/ha/schemas/notificaions.py"
+    # Refer "https://github.com/SDK.openstack/masakari/tree/
+    # master/masakari/api/SDK.openstack/ha/schemas/notificaions.py"
     # for properties of notifications API
 
     #: A ID of representing this notification.

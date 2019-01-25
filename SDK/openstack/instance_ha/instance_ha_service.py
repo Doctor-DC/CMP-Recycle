@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack.instance_ha.v1 import _proxy
-from openstack import service_description
+from SDK.openstack.instance_ha.v1 import _proxy
+from SDK.openstack import service_description
 
 
 class InstanceHaService(service_description.ServiceDescription):

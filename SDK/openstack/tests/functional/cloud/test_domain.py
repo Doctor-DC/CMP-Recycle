@@ -17,8 +17,8 @@ test_domain
 Functional tests for `shade` keystone domain resource.
 """
 
-import openstack.cloud
-from openstack.tests.functional import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.functional import base
 
 
 class TestDomain(base.BaseFunctionalTest):
@@ -44,7 +44,7 @@ class TestDomain(base.BaseFunctionalTest):
         if exception_list:
             # Raise an error: we must make users aware that something went
             # wrong
-            raise openstack.cloud.OpenStackCloudException(
+            raise SDK.openstack.cloud.OpenStackCloudException(
                 '\n'.join(exception_list))
 
     def test_search_domains(self):

@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 class TestOpenStackCloudOperatorNoAuth(base.TestCase):
@@ -56,7 +56,7 @@ class TestOpenStackCloudOperatorNoAuth(base.TestCase):
         # with 'v1'. As such, since we are overriding the endpoint,
         # we must explicitly do the same as we move away from the
         # client library.
-        self.cloud_noauth = openstack.connect(
+        self.cloud_noauth = SDK.openstack.connect(
             auth_type='none',
             baremetal_endpoint_override="https://bare-metal.example.com/v1")
 
@@ -75,7 +75,7 @@ class TestOpenStackCloudOperatorNoAuth(base.TestCase):
               auth_type: "none"
               endpoint: https://bare-metal.example.com
         """
-        self.cloud_noauth = openstack.connect(
+        self.cloud_noauth = SDK.openstack.connect(
             auth_type='none',
             endpoint='https://bare-metal.example.com/v1',
         )
@@ -89,7 +89,7 @@ class TestOpenStackCloudOperatorNoAuth(base.TestCase):
 
         The old way of doing this was to abuse admin_token.
         """
-        self.cloud_noauth = openstack.connect(
+        self.cloud_noauth = SDK.openstack.connect(
             auth_type='admin_token',
             auth=dict(
                 endpoint='https://bare-metal.example.com/v1',
@@ -147,7 +147,7 @@ class TestOpenStackCloudOperatorNoAuthUnversioned(base.TestCase):
                  json={
                      "media_types": [{
                          "base": "application/json",
-                         "type": "application/vnd.openstack.ironic.v1+json"
+                         "type": "application/vnd.SDK.openstack.ironic.v1+json"
                      }],
                      "links": [{
                          "href": "https://bare-metal.example.com/v1",
@@ -186,7 +186,7 @@ class TestOpenStackCloudOperatorNoAuthUnversioned(base.TestCase):
         # with 'v1'. As such, since we are overriding the endpoint,
         # we must explicitly do the same as we move away from the
         # client library.
-        self.cloud_noauth = openstack.connect(
+        self.cloud_noauth = SDK.openstack.connect(
             auth_type='none',
             baremetal_endpoint_override="https://bare-metal.example.com")
 
@@ -205,7 +205,7 @@ class TestOpenStackCloudOperatorNoAuthUnversioned(base.TestCase):
               auth_type: "none"
               endpoint: https://bare-metal.example.com
         """
-        self.cloud_noauth = openstack.connect(
+        self.cloud_noauth = SDK.openstack.connect(
             auth_type='none',
             endpoint='https://bare-metal.example.com/',
         )

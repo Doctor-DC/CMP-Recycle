@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.block_storage.v2 import type as _type
-from openstack.tests.functional.block_storage.v2 import base
+from SDK.openstack.block_storage.v2 import type as _type
+from SDK.openstack.tests.functional.block_storage.v2 import base
 
 
 class TestType(base.BaseBlockStorageTest):

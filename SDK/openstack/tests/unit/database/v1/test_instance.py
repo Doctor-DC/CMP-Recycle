@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.database.v1 import instance
+from SDK.openstack.database.v1 import instance
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

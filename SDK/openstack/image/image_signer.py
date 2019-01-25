@@ -18,7 +18,7 @@ from cryptography.hazmat.primitives.asymmetric import utils
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 
-from openstack.image.iterable_chunked_file import IterableChunkedFile
+from SDK.openstack.image.iterable_chunked_file import IterableChunkedFile
 
 HASH_METHODS = {
     'SHA-224': hashes.SHA224(),

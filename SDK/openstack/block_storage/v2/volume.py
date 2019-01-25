@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import format
-from openstack import resource
-from openstack import utils
+from SDK.openstack import format
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class Volume(resource.Resource):

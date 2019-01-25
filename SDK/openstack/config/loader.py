@@ -28,20 +28,20 @@ from keystoneauth1 import adapter
 from keystoneauth1 import loading
 import yaml
 
-from openstack import _log
-from openstack.config import _util
-from openstack.config import cloud_region
-from openstack.config import defaults
-from openstack.config import vendors
-from openstack import exceptions
+from SDK.openstack import _log
+from SDK.openstack.config import _util
+from SDK.openstack.config import cloud_region
+from SDK.openstack.config import defaults
+from SDK.openstack.config import vendors
+from SDK.openstack import exceptions
 
-APPDIRS = appdirs.AppDirs('openstack', 'OpenStack', multipath='/etc')
+APPDIRS = appdirs.AppDirs('SDK.openstack', 'OpenStack', multipath='/etc')
 CONFIG_HOME = APPDIRS.user_config_dir
 CACHE_PATH = APPDIRS.user_cache_dir
 
 UNIX_CONFIG_HOME = os.path.join(
-    os.path.expanduser(os.path.join('~', '.config')), 'openstack')
-UNIX_SITE_CONFIG_HOME = '/etc/openstack'
+    os.path.expanduser(os.path.join('~', '.config')), 'SDK.openstack')
+UNIX_SITE_CONFIG_HOME = '/etc/SDK.openstack'
 
 SITE_CONFIG_HOME = APPDIRS.site_config_dir
 
@@ -141,7 +141,7 @@ class OpenStackConfig(object):
                  pw_func=None, session_constructor=None,
                  app_name=None, app_version=None,
                  load_yaml_config=True, load_envvars=True):
-        self.log = _log.setup_logging('openstack.config')
+        self.log = _log.setup_logging('SDK.openstack.config')
         self._session_constructor = session_constructor
         self._app_name = app_name
         self._app_version = app_version
@@ -690,7 +690,7 @@ class OpenStackConfig(object):
         # config AND a cloud set, so that we know which command line
         # arguments to register and show to the user (the user may want
         # to say something like:
-        #   openstack --os-cloud=foo --os-oidctoken=bar
+        #   SDK.openstack --os-cloud=foo --os-oidctoken=bar
         # although I think that user is the cause of my personal pain
         options, _args = local_parser.parse_known_args(argv)
         if options.timeout:
@@ -1009,7 +1009,7 @@ class OpenStackConfig(object):
         :param region_name: Name of the region of the cloud.
         :param kwargs: Additional configuration options
 
-        :returns: openstack.config.cloud_region.CloudRegion
+        :returns: SDK.openstack.config.cloud_region.CloudRegion
         :raises: keystoneauth1.exceptions.MissingRequiredOptions
             on missing required auth parameters
         """

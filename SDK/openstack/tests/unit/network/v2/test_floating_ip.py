@@ -12,9 +12,9 @@
 
 from keystoneauth1 import adapter
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.network.v2 import floating_ip
+from SDK.openstack.network.v2 import floating_ip
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

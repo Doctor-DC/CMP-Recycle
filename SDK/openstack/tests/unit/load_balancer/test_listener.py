@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 import uuid
 
-from openstack.load_balancer.v2 import listener
+from SDK.openstack.load_balancer.v2 import listener
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

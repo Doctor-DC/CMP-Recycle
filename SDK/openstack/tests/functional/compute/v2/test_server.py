@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.compute.v2 import server
-from openstack.tests.functional import base
-from openstack.tests.functional.compute import base as ft_base
-from openstack.tests.functional.network.v2 import test_network
+from SDK.openstack.compute.v2 import server
+from SDK.openstack.tests.functional import base
+from SDK.openstack.tests.functional.compute import base as ft_base
+from SDK.openstack.tests.functional.network.v2 import test_network
 
 
 class TestServer(ft_base.BaseComputeTest):

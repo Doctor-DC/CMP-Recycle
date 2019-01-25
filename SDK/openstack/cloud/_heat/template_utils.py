@@ -18,10 +18,10 @@ import six
 from six.moves.urllib import parse
 from six.moves.urllib import request
 
-from openstack.cloud._heat import environment_format
-from openstack.cloud._heat import template_format
-from openstack.cloud._heat import utils
-from openstack.cloud import exc
+from SDK.openstack.cloud._heat import environment_format
+from SDK.openstack.cloud._heat import template_format
+from SDK.openstack.cloud._heat import utils
+from SDK.openstack.cloud import exc
 
 
 def get_template_contents(template_file=None, template_url=None,

@@ -20,8 +20,8 @@ Functional tests for `shade` project resource.
 """
 import pprint
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestProject(base.KeystoneBaseFunctionalTest):

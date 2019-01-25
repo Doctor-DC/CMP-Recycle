@@ -11,13 +11,13 @@
 # under the License.
 
 
-from openstack.network.v2 import floating_ip
-from openstack.network.v2 import network
-from openstack.network.v2 import port_forwarding as _port_forwarding
-from openstack.network.v2 import port
-from openstack.network.v2 import router
-from openstack.network.v2 import subnet
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import floating_ip
+from SDK.openstack.network.v2 import network
+from SDK.openstack.network.v2 import port_forwarding as _port_forwarding
+from SDK.openstack.network.v2 import port
+from SDK.openstack.network.v2 import router
+from SDK.openstack.network.v2 import subnet
+from SDK.openstack.tests.functional import base
 
 
 class TestPortForwarding(base.BaseFunctionalTest):

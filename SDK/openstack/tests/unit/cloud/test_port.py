@@ -19,8 +19,8 @@ test_port
 Test port resource (managed by neutron)
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.unit import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.unit import base
 
 
 class TestPort(base.TestCase):

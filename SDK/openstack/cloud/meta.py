@@ -18,9 +18,9 @@ import ipaddress
 import six
 import socket
 
-from openstack import _log
-from openstack import utils
-from openstack.cloud import exc
+from SDK.openstack import _log
+from SDK.openstack import utils
+from SDK.openstack.cloud import exc
 
 
 NON_CALLABLES = (six.string_types, bool, dict, int, float, list, type(None))
@@ -263,7 +263,7 @@ def find_best_address(addresses, public=False, cloud_public=True):
 
     # Give up and return the first - none work as far as we can tell
     if do_check:
-        log = _log.setup_logging('openstack')
+        log = _log.setup_logging('SDK.openstack')
         log.debug(
             "The cloud returned multiple addresses %s:, and we could not "
             "connect to port 22 on either. That might be what you wanted, "
@@ -415,7 +415,7 @@ def _get_supplemental_addresses(cloud, server):
                         filters=dict(port_id=port['id'])):
                     fixed_net = fixed_ip_mapping.get(fip['fixed_ip_address'])
                     if fixed_net is None:
-                        log = _log.setup_logging('openstack')
+                        log = _log.setup_logging('SDK.openstack')
                         log.debug(
                             "The cloud returned floating ip %(fip)s attached"
                             " to server %(server)s but the fixed ip associated"
@@ -537,7 +537,7 @@ def obj_to_munch(obj):
         return obj
     elif isinstance(obj, dict):
         # The new request-id tracking spec:
-        # https://specs.openstack.org/openstack/nova-specs/specs/juno/approved/log-request-id-mappings.html
+        # https://specs.SDK.openstack.org/SDK.openstack/nova-specs/specs/juno/approved/log-request-id-mappings.html
         # adds a request-ids attribute to returned objects. It does this even
         # with dicts, which now become dict subclasses. So we want to convert
         # the dict we get, but we also want it to fall through to object

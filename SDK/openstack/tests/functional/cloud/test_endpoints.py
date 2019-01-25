@@ -22,9 +22,9 @@ Functional tests for `shade` endpoint resource.
 import string
 import random
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.cloud.exc import OpenStackCloudUnavailableFeature
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.cloud.exc import OpenStackCloudUnavailableFeature
+from SDK.openstack.tests.functional import base
 
 
 class TestEndpoints(base.KeystoneBaseFunctionalTest):

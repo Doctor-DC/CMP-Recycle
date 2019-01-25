@@ -12,12 +12,12 @@
 
 import hashlib
 
-from openstack import _log
-from openstack import exceptions
-from openstack import resource
-from openstack import utils
+from SDK.openstack import _log
+from SDK.openstack import exceptions
+from SDK.openstack import resource
+from SDK.openstack import utils
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 
 
 class Image(resource.Resource, resource.TagMixin):
@@ -119,8 +119,8 @@ class Image(resource.Resource, resource.TagMixin):
     metadata = resource.Body('metadata', type=dict)
 
     # Additional Image Properties
-    # https://docs.openstack.org/glance/latest/user/common-image-properties.html
-    # http://docs.openstack.org/cli-reference/glance-property-keys.html
+    # https://docs.SDK.openstack.org/glance/latest/user/common-image-properties.html
+    # http://docs.SDK.openstack.org/cli-reference/glance-property-keys.html
     #: The CPU architecture that must be supported by the hypervisor.
     architecture = resource.Body("architecture")
     #: The hypervisor type. Note that qemu is used for both QEMU and
@@ -248,7 +248,7 @@ class Image(resource.Resource, resource.TagMixin):
 
         # See the following bug report for details on why the checksum
         # code may sometimes depend on a second GET call.
-        # https://storyboard.openstack.org/#!/story/1619675
+        # https://storyboard.SDK.openstack.org/#!/story/1619675
         checksum = resp.headers.get("Content-MD5")
 
         if checksum is None:
@@ -284,7 +284,7 @@ class Image(resource.Resource, resource.TagMixin):
                                                       patch=patch)
         if patch:
             headers = {
-                'Content-Type': 'application/openstack-images-v2.1-json-patch',
+                'Content-Type': 'application/SDK.openstack-images-v2.1-json-patch',
                 'Accept': ''
             }
             request.headers.update(headers)

@@ -11,8 +11,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import _base
-from openstack import resource
+from SDK.openstack.object_store.v1 import _base
+from SDK.openstack import resource
 
 
 class Account(_base.BaseResource):

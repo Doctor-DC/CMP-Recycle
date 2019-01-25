@@ -10,16 +10,16 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.load_balancer.v2 import health_monitor as _hm
-from openstack.load_balancer.v2 import l7_policy as _l7policy
-from openstack.load_balancer.v2 import l7_rule as _l7rule
-from openstack.load_balancer.v2 import listener as _listener
-from openstack.load_balancer.v2 import load_balancer as _lb
-from openstack.load_balancer.v2 import member as _member
-from openstack.load_balancer.v2 import pool as _pool
-from openstack.load_balancer.v2 import quota as _quota
-from openstack import proxy
-from openstack import resource
+from SDK.openstack.load_balancer.v2 import health_monitor as _hm
+from SDK.openstack.load_balancer.v2 import l7_policy as _l7policy
+from SDK.openstack.load_balancer.v2 import l7_rule as _l7rule
+from SDK.openstack.load_balancer.v2 import listener as _listener
+from SDK.openstack.load_balancer.v2 import load_balancer as _lb
+from SDK.openstack.load_balancer.v2 import member as _member
+from SDK.openstack.load_balancer.v2 import pool as _pool
+from SDK.openstack.load_balancer.v2 import quota as _quota
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -28,13 +28,13 @@ class Proxy(proxy.Proxy):
         """Create a new load balancer from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.load_balancer.v2.
+                           a :class:`~SDK.openstack.load_balancer.v2.
                            load_balancer.LoadBalancer`,
                            comprised of the properties on the
                            LoadBalancer class.
 
         :returns: The results of load balancer creation
-        :rtype: :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
         """
         return self._create(_lb.LoadBalancer, **attrs)
 
@@ -42,11 +42,11 @@ class Proxy(proxy.Proxy):
         """Get a load balancer
 
         :param load_balancer: The value can be the name of a load balancer
-             or :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+             or :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
              instance.
 
         :returns: One
-             :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+             :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
         """
         return self._get(_lb.LoadBalancer, *attrs)
 
@@ -62,10 +62,10 @@ class Proxy(proxy.Proxy):
         """Delete a load balancer
 
         :param load_balancer: The load_balancer can be either the name or a
-            :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+            :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
             instance
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised when
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised when
             the load balancer does not exist.
             When set to ``True``, no exception will be set when attempting to
             delete a nonexistent load balancer.
@@ -84,7 +84,7 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a load balancer
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the load balancer does not exist.
             When set to ``True``, no exception will be set when attempting
             to delete a nonexistent load balancer.
@@ -98,13 +98,13 @@ class Proxy(proxy.Proxy):
         """Update a load balancer
 
         :param load_balancer: The load_balancer can be either the name or a
-            :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+            :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
             instance
         :param dict attrs: The attributes to update on the load balancer
                            represented by ``load_balancer``.
 
         :returns: The updated load_balancer
-        :rtype: :class:`~openstack.load_balancer.v2.load_balancer.LoadBalancer`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.load_balancer.LoadBalancer`
         """
         return self._update(_lb.LoadBalancer, load_balancer, **attrs)
 
@@ -119,11 +119,11 @@ class Proxy(proxy.Proxy):
         """Create a new listener from attributes
 
         :param dict attrs: Keyword arguments which will be used to create a
-                        :class:`~openstack.load_balancer.v2.listener.Listener`,
+                        :class:`~SDK.openstack.load_balancer.v2.listener.Listener`,
                         comprised of the properties on the Listener class.
 
         :returns: The results of listener creation
-        :rtype: :class:`~openstack.load_balancer.v2.listener.Listener`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
         """
         return self._create(_listener.Listener, **attrs)
 
@@ -131,9 +131,9 @@ class Proxy(proxy.Proxy):
         """Delete a listener
 
         :param listener: The value can be either the ID of a listner or a
-               :class:`~openstack.load_balancer.v2.listener.Listener` instance.
+               :class:`~SDK.openstack.load_balancer.v2.listener.Listener` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the listner does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent listener.
@@ -148,12 +148,12 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a listener.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
 
-        :returns: One :class:`~openstack.load_balancer.v2.listener.Listener`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
          or None
         """
         return self._find(_listener.Listener, name_or_id,
@@ -163,11 +163,11 @@ class Proxy(proxy.Proxy):
         """Get a single listener
 
         :param listener: The value can be the ID of a listener or a
-               :class:`~openstack.load_balancer.v2.listener.Listener`
+               :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
                instance.
 
-        :returns: One :class:`~openstack.load_balancer.v2.listener.Listener`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_listener.Listener, listener)
@@ -178,7 +178,7 @@ class Proxy(proxy.Proxy):
         :param dict query: Optional query parameters to be sent to limit
                            the resources being returned. Valid parameters are:
         :returns: A generator of listener objects
-        :rtype: :class:`~openstack.load_balancer.v2.listener.Listener`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
         """
         return self._list(_listener.Listener, paginated=True, **query)
 
@@ -186,13 +186,13 @@ class Proxy(proxy.Proxy):
         """Update a listener
 
         :param listener: Either the id of a listener or a
-                      :class:`~openstack.load_balancer.v2.listener.Listener`
+                      :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
                       instance.
         :param dict attrs: The attributes to update on the listener
                            represented by ``listener``.
 
         :returns: The updated listener
-        :rtype: :class:`~openstack.load_balancer.v2.listener.Listener`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.listener.Listener`
         """
         return self._update(_listener.Listener, listener, **attrs)
 
@@ -200,13 +200,13 @@ class Proxy(proxy.Proxy):
         """Create a new pool from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.load_balancer.v2.
+                           a :class:`~SDK.openstack.load_balancer.v2.
                            pool.Pool`,
                            comprised of the properties on the
                            Pool class.
 
         :returns: The results of Pool creation
-        :rtype: :class:`~openstack.load_balancer.v2.pool.Pool`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
         """
         return self._create(_pool.Pool, **attrs)
 
@@ -214,11 +214,11 @@ class Proxy(proxy.Proxy):
         """Get a pool
 
         :param pool: Value is
-            :class:`~openstack.load_balancer.v2.pool.Pool`
+            :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
             instance.
 
         :returns: One
-             :class:`~openstack.load_balancer.v2.pool.Pool`
+             :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
         """
         return self._get(_pool.Pool, *attrs)
 
@@ -233,10 +233,10 @@ class Proxy(proxy.Proxy):
         """Delete a pool
 
         :param pool: The pool is a
-            :class:`~openstack.load_balancer.v2.pool.Pool`
+            :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
             instance
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised when
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised when
             the pool does not exist.
             When set to ``True``, no exception will be set when attempting to
             delete a nonexistent pool.
@@ -251,7 +251,7 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a pool
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the pool does not exist.
             When set to ``True``, no exception will be set when attempting
             to delete a nonexistent pool.
@@ -265,13 +265,13 @@ class Proxy(proxy.Proxy):
         """Update a pool
 
         :param pool: Either the id of a pool or a
-                      :class:`~openstack.load_balancer.v2.pool.Pool`
+                      :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
                       instance.
         :param dict attrs: The attributes to update on the pool
                            represented by ``pool``.
 
         :returns: The updated pool
-        :rtype: :class:`~openstack.load_balancer.v2.pool.Pool`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.pool.Pool`
         """
         return self._update(_pool.Pool, pool, **attrs)
 
@@ -279,14 +279,14 @@ class Proxy(proxy.Proxy):
         """Create a new member from attributes
 
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member will be created in.
         :param dict attrs: Keyword arguments which will be used to create
-            a :class:`~openstack.load_balancer.v2.member.Member`,
+            a :class:`~SDK.openstack.load_balancer.v2.member.Member`,
             comprised of the properties on the Member class.
 
         :returns: The results of member creation
-        :rtype: :class:`~openstack.load_balancer.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.member.Member`
         """
         poolobj = self._get_resource(_pool.Pool, pool)
         return self._create(_member.Member, pool_id=poolobj.id,
@@ -297,12 +297,12 @@ class Proxy(proxy.Proxy):
 
         :param member:
             The member can be either the ID of a member or a
-            :class:`~openstack.load_balancer.v2.member.Member` instance.
+            :class:`~SDK.openstack.load_balancer.v2.member.Member` instance.
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member belongs to.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the member does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent member.
@@ -318,15 +318,15 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a member.
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member belongs to.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
 
-        :returns: One :class:`~openstack.load_balancer.v2.member.Member`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.member.Member`
                   or None
         """
         poolobj = self._get_resource(_pool.Pool, pool)
@@ -337,14 +337,14 @@ class Proxy(proxy.Proxy):
         """Get a single member
 
         :param member: The member can be the ID of a member or a
-                       :class:`~openstack.load_balancer.v2.member.Member`
+                       :class:`~SDK.openstack.load_balancer.v2.member.Member`
                        instance.
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member belongs to.
 
-        :returns: One :class:`~openstack.load_balancer.v2.member.Member`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.member.Member`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         poolobj = self._get_resource(_pool.Pool, pool)
@@ -355,13 +355,13 @@ class Proxy(proxy.Proxy):
         """Return a generator of members
 
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member belongs to.
         :param dict query: Optional query parameters to be sent to limit
                            the resources being returned. Valid parameters are:
 
         :returns: A generator of member objects
-        :rtype: :class:`~openstack.load_balancer.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.member.Member`
         """
         poolobj = self._get_resource(_pool.Pool, pool)
         return self._list(_member.Member, paginated=True,
@@ -371,16 +371,16 @@ class Proxy(proxy.Proxy):
         """Update a member
 
         :param member: Either the ID of a member or a
-                       :class:`~openstack.load_balancer.v2.member.Member`
+                       :class:`~SDK.openstack.load_balancer.v2.member.Member`
                        instance.
         :param pool: The pool can be either the ID of a pool or a
-                     :class:`~openstack.load_balancer.v2.pool.Pool` instance
+                     :class:`~SDK.openstack.load_balancer.v2.pool.Pool` instance
                      that the member belongs to.
         :param dict attrs: The attributes to update on the member
                            represented by ``member``.
 
         :returns: The updated member
-        :rtype: :class:`~openstack.load_balancer.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.member.Member`
         """
         poolobj = self._get_resource(_pool.Pool, pool)
         return self._update(_member.Member, member,
@@ -391,18 +391,18 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a health monitor
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised
             when the health monitor does not exist.
             When set to ``True``, no exception will be set when attempting
             to find a nonexistent health monitor.
 
         :returns: The
-            :class:`openstack.load_balancer.v2.healthmonitor.HealthMonitor`
+            :class:`SDK.openstack.load_balancer.v2.healthmonitor.HealthMonitor`
             object matching the given name or id or None if nothing matches.
 
-        :raises: :class:`openstack.exceptions.DuplicateResource` if more
+        :raises: :class:`SDK.openstack.exceptions.DuplicateResource` if more
                  than one resource is found for this request.
-        :raises: :class:`openstack.exceptions.ResourceNotFound` if nothing
+        :raises: :class:`SDK.openstack.exceptions.ResourceNotFound` if nothing
                  is found and ignore_missing is ``False``.
         """
         return self._find(_hm.HealthMonitor, name_or_id,
@@ -412,13 +412,13 @@ class Proxy(proxy.Proxy):
         """Create a new health monitor from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.load_balancer.v2.
+                           a :class:`~SDK.openstack.load_balancer.v2.
                            healthmonitor.HealthMonitor`,
                            comprised of the properties on the
                            HealthMonitor class.
 
         :returns: The results of HealthMonitor creation
-        :rtype: :class:`~openstack.load_balancer.v2.
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.
             healthmonitor.HealthMonitor`
         """
 
@@ -428,11 +428,11 @@ class Proxy(proxy.Proxy):
         """Get a health monitor
 
         :param healthmonitor: The value can be the ID of a health monitor or
-            :class:`~openstack.load_balancer.v2.healthmonitor.HealthMonitor`
+            :class:`~SDK.openstack.load_balancer.v2.healthmonitor.HealthMonitor`
             instance.
 
         :returns: One health monitor
-        :rtype: :class:`~openstack.load_balancer.v2.
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.
             healthmonitor.HealthMonitor`
         """
         return self._get(_hm.HealthMonitor, healthmonitor)
@@ -458,10 +458,10 @@ class Proxy(proxy.Proxy):
 
         :param healthmonitor: The healthmonitor can be either the ID of the
             health monitor or a
-            :class:`~openstack.load_balancer.v2.healthmonitor.HealthMonitor`
+            :class:`~SDK.openstack.load_balancer.v2.healthmonitor.HealthMonitor`
             instance
         :param bool ignore_missing: When set to ``False``
-            :class:`~openstack.exceptions.ResourceNotFound` will be raised when
+            :class:`~SDK.openstack.exceptions.ResourceNotFound` will be raised when
             the healthmonitor does not exist.
             When set to ``True``, no exception will be set when attempting to
             delete a nonexistent healthmonitor.
@@ -476,13 +476,13 @@ class Proxy(proxy.Proxy):
 
         :param healthmonitor: The healthmonitor can be either the ID of the
             health monitor or a
-            :class:`~openstack.load_balancer.v2.healthmonitor.HealthMonitor`
+            :class:`~SDK.openstack.load_balancer.v2.healthmonitor.HealthMonitor`
             instance
         :param dict attrs: The attributes to update on the health monitor
                            represented by ``healthmonitor``.
 
         :returns: The updated health monitor
-        :rtype: :class:`~openstack.load_balancer.v2.
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.
             healthmonitor.HealthMonitor`
         """
         return self._update(_hm.HealthMonitor, healthmonitor,
@@ -492,11 +492,11 @@ class Proxy(proxy.Proxy):
         """Create a new l7policy from attributes
 
         :param dict attrs: Keyword arguments which will be used to create a
-                        :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`,
+                        :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`,
                         comprised of the properties on the L7Policy class.
 
         :returns: The results of l7policy creation
-        :rtype: :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
         """
         return self._create(_l7policy.L7Policy, **attrs)
 
@@ -504,9 +504,9 @@ class Proxy(proxy.Proxy):
         """Delete a l7policy
 
         :param l7_policy: The value can be either the ID of a l7policy or a
-          :class:`~openstack.load_balancer.v2.l7_policy.L7Policy` instance.
+          :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the l7policy does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent l7policy.
@@ -521,12 +521,12 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a l7policy.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
 
-        :returns: One :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
          or None
         """
         return self._find(_l7policy.L7Policy, name_or_id,
@@ -536,11 +536,11 @@ class Proxy(proxy.Proxy):
         """Get a single l7policy
 
         :param l7_policy: The value can be the ID of a l7policy or a
-               :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+               :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                instance.
 
-        :returns: One :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_l7policy.L7Policy, l7_policy)
@@ -552,7 +552,7 @@ class Proxy(proxy.Proxy):
                            the resources being returned. Valid parameters are:
 
         :returns: A generator of l7policy objects
-        :rtype: :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
         """
         return self._list(_l7policy.L7Policy, paginated=True, **query)
 
@@ -560,13 +560,13 @@ class Proxy(proxy.Proxy):
         """Update a l7policy
 
         :param l7_policy: Either the id of a l7policy or a
-                      :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                      :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                       instance.
         :param dict attrs: The attributes to update on the l7policy
                            represented by ``l7policy``.
 
         :returns: The updated l7policy
-        :rtype: :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
         """
         return self._update(_l7policy.L7Policy, l7_policy, **attrs)
 
@@ -574,14 +574,14 @@ class Proxy(proxy.Proxy):
         """Create a new l7rule from attributes
 
         :param l7_policy: The l7_policy can be either the ID of a l7policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule will be created in.
         :param dict attrs: Keyword arguments which will be used to create
-            a :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`,
+            a :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`,
             comprised of the properties on the L7Rule class.
 
         :returns: The results of l7rule creation
-        :rtype: :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
         """
         l7policyobj = self._get_resource(_l7policy.L7Policy, l7_policy)
         return self._create(_l7rule.L7Rule, l7policy_id=l7policyobj.id,
@@ -592,12 +592,12 @@ class Proxy(proxy.Proxy):
 
         :param l7rule:
             The l7rule can be either the ID of a l7rule or a
-            :class:`~openstack.load_balancer.v2.l7_rule.L7Rule` instance.
+            :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule` instance.
         :param l7_policy: The l7_policy can be either the ID of a l7policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule belongs to.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the l7rule does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent l7rule.
@@ -613,15 +613,15 @@ class Proxy(proxy.Proxy):
 
         :param str name_or_id: The name or ID of a l7rule.
         :param l7_policy: The l7_policy can be either the ID of a l7policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule belongs to.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
 
-        :returns: One :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
                   or None
         """
         l7policyobj = self._get_resource(_l7policy.L7Policy, l7_policy)
@@ -633,14 +633,14 @@ class Proxy(proxy.Proxy):
         """Get a single l7rule
 
         :param l7rule: The l7rule can be the ID of a l7rule or a
-                       :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+                       :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
                        instance.
         :param l7_policy: The l7_policy can be either the ID of a l7policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule belongs to.
 
-        :returns: One :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         l7policyobj = self._get_resource(_l7policy.L7Policy, l7_policy)
@@ -651,13 +651,13 @@ class Proxy(proxy.Proxy):
         """Return a generator of l7rules
 
         :param l7_policy: The l7_policy can be either the ID of a l7_policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule belongs to.
         :param dict query: Optional query parameters to be sent to limit
                            the resources being returned. Valid parameters are:
 
         :returns: A generator of l7rule objects
-        :rtype: :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
         """
         l7policyobj = self._get_resource(_l7policy.L7Policy, l7_policy)
         return self._list(_l7rule.L7Rule, paginated=True,
@@ -667,16 +667,16 @@ class Proxy(proxy.Proxy):
         """Update a l7rule
 
         :param l7rule: Either the ID of a l7rule or a
-                       :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+                       :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
                        instance.
         :param l7_policy: The l7_policy can be either the ID of a l7policy or
-                     :class:`~openstack.load_balancer.v2.l7_policy.L7Policy`
+                     :class:`~SDK.openstack.load_balancer.v2.l7_policy.L7Policy`
                      instance that the l7rule belongs to.
         :param dict attrs: The attributes to update on the l7rule
                            represented by ``l7rule``.
 
         :returns: The updated l7rule
-        :rtype: :class:`~openstack.load_balancer.v2.l7_rule.L7Rule`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.l7_rule.L7Rule`
         """
         l7policyobj = self._get_resource(_l7policy.L7Policy, l7_policy)
         return self._update(_l7rule.L7Rule, l7rule,
@@ -690,7 +690,7 @@ class Proxy(proxy.Proxy):
                            parameter is supported.
 
         :returns: A generator of quota objects
-        :rtype: :class:`~openstack.load_balancer.v2.quota.Quota`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
         """
         return self._list(_quota.Quota, paginated=False, **query)
 
@@ -698,12 +698,12 @@ class Proxy(proxy.Proxy):
         """Get a quota
 
         :param quota: The value can be the ID of a quota or a
-                      :class:`~openstack.load_balancer.v2.quota.Quota`
+                      :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
                       instance. The ID of a quota is the same as the project
                       ID for the quota.
 
-        :returns: One :class:`~openstack.load_balancer.v2.quota.Quota`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_quota.Quota, quota)
@@ -712,21 +712,21 @@ class Proxy(proxy.Proxy):
         """Update a quota
 
         :param quota: Either the ID of a quota or a
-                      :class:`~openstack.load_balancer.v2.quota.Quota`
+                      :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
                       instance. The ID of a quota is the same as the
                       project ID for the quota.
         :param dict attrs: The attributes to update on the quota represented
                            by ``quota``.
 
         :returns: The updated quota
-        :rtype: :class:`~openstack.load_balancer.v2.quota.Quota`
+        :rtype: :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
         """
         return self._update(_quota.Quota, quota, **attrs)
 
     def get_quota_default(self):
         """Get a default quota
 
-        :returns: One :class:`~openstack.load_balancer.v2.quota.QuotaDefault`
+        :returns: One :class:`~SDK.openstack.load_balancer.v2.quota.QuotaDefault`
         """
         return self._get(_quota.QuotaDefault, requires_id=False)
 
@@ -734,11 +734,11 @@ class Proxy(proxy.Proxy):
         """Delete a quota (i.e. reset to the default quota)
 
         :param quota: The value can be either the ID of a quota or a
-                      :class:`~openstack.load_balancer.v2.quota.Quota`
+                      :class:`~SDK.openstack.load_balancer.v2.quota.Quota`
                       instance. The ID of a quota is the same as the
                       project ID for the quota.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when quota does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent quota.

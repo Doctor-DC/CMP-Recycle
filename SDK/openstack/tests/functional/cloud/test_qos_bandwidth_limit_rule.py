@@ -18,8 +18,8 @@ test_qos_bandwidth_limit_rule
 Functional tests for `shade`QoS bandwidth limit methods.
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestQosBandwidthLimitRule(base.BaseFunctionalTest):

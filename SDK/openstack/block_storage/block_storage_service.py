@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.block_storage.v2 import _proxy
-from openstack import service_description
+from SDK.openstack.block_storage.v2 import _proxy
+from SDK.openstack import service_description
 
 
 class BlockStorageService(service_description.ServiceDescription):

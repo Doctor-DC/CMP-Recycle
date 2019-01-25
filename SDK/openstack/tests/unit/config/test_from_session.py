@@ -15,10 +15,10 @@ from testscenarios import load_tests_apply_scenarios as load_tests  # noqa
 
 import uuid
 
-from openstack.config import cloud_region
-from openstack import connection
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.config import cloud_region
+from SDK.openstack import connection
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestFromSession(base.TestCase):

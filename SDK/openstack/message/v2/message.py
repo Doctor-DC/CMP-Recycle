@@ -12,7 +12,7 @@
 
 import uuid
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Message(resource.Resource):

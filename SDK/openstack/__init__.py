@@ -11,7 +11,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 from SDK.openstack._log import enable_logging  # noqa
 import SDK.openstack.config
 import SDK.openstack.connection
@@ -28,7 +32,7 @@ def connect(
         options=None,
         load_yaml_config=True, load_envvars=True,
         **kwargs):
-    """Create a :class:`~openstack.connection.Connection`
+    """Create a :class:`~SDK.openstack.connection.Connection`
 
     :param string cloud:
         The name of the configuration to load from clouds.yaml. Defaults
@@ -47,14 +51,14 @@ def connect(
     :param kwargs:
         Additional configuration options.
 
-    :returns: openstack.connnection.Connection
+    :returns: SDK.openstack.connnection.Connection
     :raises: keystoneauth1.exceptions.MissingRequiredOptions
         on missing required auth parameters
     """
-    cloud_region = openstack.config.get_cloud_region(
+    cloud_region = SDK.openstack.config.get_cloud_region(
         cloud=cloud,
         app_name=app_name, app_version=app_version,
         load_yaml_config=load_yaml_config,
         load_envvars=load_envvars,
         options=options, **kwargs)
-    return openstack.connection.Connection(config=cloud_region)
+    return SDK.openstack.connection.Connection(config=cloud_region)

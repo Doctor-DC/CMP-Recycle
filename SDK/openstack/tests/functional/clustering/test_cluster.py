@@ -13,9 +13,9 @@
 import os
 import time
 
-from openstack.clustering.v1 import cluster
-from openstack.tests.functional import base
-from openstack.tests.functional.network.v2 import test_network
+from SDK.openstack.clustering.v1 import cluster
+from SDK.openstack.tests.functional import base
+from SDK.openstack.tests.functional.network.v2 import test_network
 
 
 class TestCluster(base.BaseFunctionalTest):

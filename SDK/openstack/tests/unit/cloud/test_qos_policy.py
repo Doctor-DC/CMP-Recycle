@@ -15,8 +15,8 @@
 
 import copy
 
-from openstack.cloud import exc
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.unit import base
 
 
 class TestQosPolicy(base.TestCase):

@@ -21,8 +21,8 @@ import time
 
 from six.moves import queue
 
-from openstack import task_manager
-from openstack.tests.unit import base
+from SDK.openstack import task_manager
+from SDK.openstack.tests.unit import base
 
 
 class TestException(Exception):

@@ -19,9 +19,9 @@ Tests for the `set_server_metadata` command.
 
 import uuid
 
-from openstack.cloud.exc import OpenStackCloudBadRequest
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud.exc import OpenStackCloudBadRequest
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestServerSetMetadata(base.TestCase):

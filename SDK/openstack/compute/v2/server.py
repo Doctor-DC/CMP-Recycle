@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.compute.v2 import metadata
-from openstack import resource
-from openstack import utils
+from SDK.openstack.compute.v2 import metadata
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class Server(resource.Resource, metadata.MetadataMixin, resource.TagMixin):

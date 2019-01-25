@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack import resource
-from openstack import utils
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class Aggregate(resource.Resource):

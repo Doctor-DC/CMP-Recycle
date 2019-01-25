@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import service_description
-from openstack.compute.v2 import _proxy
+from SDK.openstack import service_description
+from SDK.openstack.compute.v2 import _proxy
 
 
 class ComputeService(service_description.ServiceDescription):

@@ -17,7 +17,7 @@ test_quotas
 Functional tests for `shade` quotas methods.
 """
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestComputeQuotas(base.BaseFunctionalTest):

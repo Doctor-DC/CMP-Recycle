@@ -19,15 +19,15 @@ import uuid
 
 import fixtures
 import os
-import openstack.config as occ
+import SDK.openstack.config as occ
 from requests import structures
 from requests_mock.contrib import fixture as rm_fixture
 from six.moves import urllib
 import tempfile
 
-import openstack.cloud
-import openstack.connection
-from openstack.tests import base
+import SDK.openstack.cloud
+import SDK.openstack.connection
+from SDK.openstack.tests import base
 
 
 _ProjectData = collections.namedtuple(
@@ -96,9 +96,9 @@ class TestCase(base.TestCase):
         self.sleep_fixture = self.useFixture(fixtures.MonkeyPatch(
                                              'time.sleep',
                                              _nosleep))
-        self.fixtures_directory = 'openstack/tests/unit/fixtures'
+        self.fixtures_directory = 'SDK.openstack/tests/unit/fixtures'
 
-        # Isolate openstack.config from test environment
+        # Isolate SDK.openstack.config from test environment
         config = tempfile.NamedTemporaryFile(delete=False)
         cloud_path = '%s/clouds/%s' % (self.fixtures_directory,
                                        cloud_config_fixture)
@@ -118,10 +118,10 @@ class TestCase(base.TestCase):
             secure_files=['non-existant'])
         self.cloud_config = self.config.get_one(
             cloud=test_cloud, validate=False)
-        self.cloud = openstack.connection.Connection(
+        self.cloud = SDK.openstack.connection.Connection(
             config=self.cloud_config,
             strict=False)
-        self.strict_cloud = openstack.connection.Connection(
+        self.strict_cloud = SDK.openstack.connection.Connection(
             config=self.cloud_config,
             strict=True)
         self.addCleanup(self.cloud.task_manager.stop)
@@ -134,7 +134,7 @@ class TestCase(base.TestCase):
         # assert_calls (and calling assert_calls every test case that uses
         # it on cleanup). Subclassing here could be 100% eliminated in the
         # future allowing any class to simply
-        # self.useFixture(openstack.cloud.RequestsMockFixture) and get all
+        # self.useFixture(SDK.openstack.cloud.RequestsMockFixture) and get all
         # the benefits.
 
         # NOTE(notmorgan): use an ordered dict here to ensure we preserve the
@@ -445,7 +445,7 @@ class TestCase(base.TestCase):
         test_cloud = os.environ.get('OPENSTACKSDK_OS_CLOUD', cloud_name)
         self.cloud_config = self.config.get_one(
             cloud=test_cloud, validate=True, **kwargs)
-        self.conn = openstack.connection.Connection(
+        self.conn = SDK.openstack.connection.Connection(
             config=self.cloud_config)
         self.cloud = self.conn
 

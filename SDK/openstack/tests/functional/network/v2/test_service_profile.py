@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.network.v2 import service_profile as _service_profile
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import service_profile as _service_profile
+from SDK.openstack.tests.functional import base
 
 
 class TestServiceProfile(base.BaseFunctionalTest):

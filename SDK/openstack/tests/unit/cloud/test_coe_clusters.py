@@ -13,7 +13,7 @@
 
 import munch
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
 coe_cluster_obj = munch.Munch(
     status="CREATE_IN_PROGRESS",

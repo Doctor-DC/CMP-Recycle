@@ -19,8 +19,8 @@ test_flavor
 Functional tests for `shade` flavor resource.
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestFlavor(base.BaseFunctionalTest):

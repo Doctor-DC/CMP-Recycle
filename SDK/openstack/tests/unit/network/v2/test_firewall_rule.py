@@ -15,7 +15,7 @@
 
 import testtools
 
-from openstack.network.v2 import firewall_rule
+from SDK.openstack.network.v2 import firewall_rule
 
 EXAMPLE = {
     'action': 'allow',

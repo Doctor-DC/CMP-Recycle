@@ -10,12 +10,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.message.v2 import claim as _claim
-from openstack.message.v2 import message as _message
-from openstack.message.v2 import queue as _queue
-from openstack.message.v2 import subscription as _subscription
-from openstack import proxy
-from openstack import resource
+from SDK.openstack.message.v2 import claim as _claim
+from SDK.openstack.message.v2 import message as _message
+from SDK.openstack.message.v2 import queue as _queue
+from SDK.openstack.message.v2 import subscription as _subscription
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -24,11 +24,11 @@ class Proxy(proxy.Proxy):
         """Create a new queue from attributes
 
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.message.v2.queue.Queue`,
+                           a :class:`~SDK.openstack.message.v2.queue.Queue`,
                            comprised of the properties on the Queue class.
 
         :returns: The results of queue creation
-        :rtype: :class:`~openstack.message.v2.queue.Queue`
+        :rtype: :class:`~SDK.openstack.message.v2.queue.Queue`
         """
         return self._create(_queue.Queue, **attrs)
 
@@ -36,10 +36,10 @@ class Proxy(proxy.Proxy):
         """Get a queue
 
         :param queue: The value can be the name of a queue or a
-            :class:`~openstack.message.v2.queue.Queue` instance.
+            :class:`~SDK.openstack.message.v2.queue.Queue` instance.
 
-        :returns: One :class:`~openstack.message.v2.queue.Queue`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.message.v2.queue.Queue`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             queue matching the name could be found.
         """
         return self._get(_queue.Queue, queue)
@@ -65,9 +65,9 @@ class Proxy(proxy.Proxy):
         """Delete a queue
 
         :param value: The value can be either the name of a queue or a
-                      :class:`~openstack.message.v2.queue.Queue` instance.
+                      :class:`~SDK.openstack.message.v2.queue.Queue` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the queue does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent queue.
@@ -117,10 +117,10 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to get message from.
         :param message: The value can be the name of a message or a
-            :class:`~openstack.message.v2.message.Message` instance.
+            :class:`~SDK.openstack.message.v2.message.Message` instance.
 
-        :returns: One :class:`~openstack.message.v2.message.Message`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.message.v2.message.Message`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             message matching the criteria could be found.
         """
         message = self._get_resource(_message.Message, message,
@@ -133,13 +133,13 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to delete message from.
         :param value: The value can be either the name of a message or a
-                      :class:`~openstack.message.v2.message.Message` instance.
+                      :class:`~SDK.openstack.message.v2.message.Message` instance.
         :param claim: The value can be the ID or a
-                      :class:`~openstack.message.v2.claim.Claim` instance of
+                      :class:`~SDK.openstack.message.v2.claim.Claim` instance of
                       the claim seizing the message. If None, the message has
                       not been claimed.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the message does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent message.
@@ -157,11 +157,11 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to subscribe on.
         :param dict attrs: Keyword arguments which will be used to create a
-            :class:`~openstack.message.v2.subscription.Subscription`,
+            :class:`~SDK.openstack.message.v2.subscription.Subscription`,
             comprised of the properties on the Subscription class.
 
         :returns: The results of subscription creation
-        :rtype: :class:`~openstack.message.v2.subscription.Subscription`
+        :rtype: :class:`~SDK.openstack.message.v2.subscription.Subscription`
         """
         return self._create(_subscription.Subscription, queue_name=queue_name,
                             **attrs)
@@ -191,10 +191,10 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue of subscription.
         :param message: The value can be the ID of a subscription or a
-            :class:`~openstack.message.v2.subscription.Subscription` instance.
+            :class:`~SDK.openstack.message.v2.subscription.Subscription` instance.
 
-        :returns: One :class:`~openstack.message.v2.subscription.Subscription`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.message.v2.subscription.Subscription`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             subscription matching the criteria could be found.
         """
         subscription = self._get_resource(_subscription.Subscription,
@@ -208,10 +208,10 @@ class Proxy(proxy.Proxy):
         :param queue_name: The name of target queue to delete subscription
                            from.
         :param value: The value can be either the name of a subscription or a
-                      :class:`~openstack.message.v2.subscription.Subscription`
+                      :class:`~SDK.openstack.message.v2.subscription.Subscription`
                       instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the subscription does not exist.
                     When set to ``True``, no exception will be thrown when
                     attempting to delete a nonexistent subscription.
@@ -228,11 +228,11 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to claim message from.
         :param dict attrs: Keyword arguments which will be used to create a
-            :class:`~openstack.message.v2.claim.Claim`,
+            :class:`~SDK.openstack.message.v2.claim.Claim`,
             comprised of the properties on the Claim class.
 
         :returns: The results of claim creation
-        :rtype: :class:`~openstack.message.v2.claim.Claim`
+        :rtype: :class:`~SDK.openstack.message.v2.claim.Claim`
         """
         return self._create(_claim.Claim, queue_name=queue_name, **attrs)
 
@@ -241,10 +241,10 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to claim message from.
         :param claim: The value can be either the ID of a claim or a
-            :class:`~openstack.message.v2.claim.Claim` instance.
+            :class:`~SDK.openstack.message.v2.claim.Claim` instance.
 
-        :returns: One :class:`~openstack.message.v2.claim.Claim`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :returns: One :class:`~SDK.openstack.message.v2.claim.Claim`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
             claim matching the criteria could be found.
         """
         return self._get(_claim.Claim, claim, queue_name=queue_name)
@@ -254,13 +254,13 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to claim message from.
         :param claim: The value can be either the ID of a claim or a
-            :class:`~openstack.message.v2.claim.Claim` instance.
+            :class:`~SDK.openstack.message.v2.claim.Claim` instance.
         :param dict attrs: Keyword arguments which will be used to update a
-            :class:`~openstack.message.v2.claim.Claim`,
+            :class:`~SDK.openstack.message.v2.claim.Claim`,
             comprised of the properties on the Claim class.
 
         :returns: The results of claim update
-        :rtype: :class:`~openstack.message.v2.claim.Claim`
+        :rtype: :class:`~SDK.openstack.message.v2.claim.Claim`
         """
         return self._update(_claim.Claim, claim, queue_name=queue_name,
                             **attrs)
@@ -270,9 +270,9 @@ class Proxy(proxy.Proxy):
 
         :param queue_name: The name of target queue to claim messages from.
         :param claim: The value can be either the ID of a claim or a
-                      :class:`~openstack.message.v2.claim.Claim` instance.
+                      :class:`~SDK.openstack.message.v2.claim.Claim` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the claim does not exist.
                     When set to ``True``, no exception will be thrown when
                     attempting to delete a nonexistent claim.

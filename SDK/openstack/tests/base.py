@@ -66,7 +66,7 @@ class TestCase(base.BaseTestCase):
         formatter = logging.Formatter('%(asctime)s %(name)-32s %(message)s')
         handler.setFormatter(formatter)
 
-        logger = logging.getLogger('openstack')
+        logger = logging.getLogger('SDK.openstack')
         logger.setLevel(logging.DEBUG)
         logger.addHandler(handler)
 

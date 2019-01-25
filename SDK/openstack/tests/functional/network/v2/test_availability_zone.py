@@ -12,7 +12,7 @@
 
 import six
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestAvailabilityZone(base.BaseFunctionalTest):

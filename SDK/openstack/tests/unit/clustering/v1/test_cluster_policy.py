@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.clustering.v1 import cluster_policy
+from SDK.openstack.clustering.v1 import cluster_policy
 
 
 FAKE = {

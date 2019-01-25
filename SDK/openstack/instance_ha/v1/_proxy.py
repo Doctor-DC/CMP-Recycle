@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack import exceptions
-from openstack.instance_ha.v1 import host as _host
-from openstack.instance_ha.v1 import notification as _notification
-from openstack.instance_ha.v1 import segment as _segment
-from openstack import proxy
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack.instance_ha.v1 import host as _host
+from SDK.openstack.instance_ha.v1 import notification as _notification
+from SDK.openstack.instance_ha.v1 import segment as _segment
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -44,7 +44,7 @@ class Proxy(proxy.Proxy):
                             .notification.Notification` instance.
         :returns: One :class:`~masakariclient.sdk.ha.v1
                              .notification.Notification`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_notification.Notification, notification)
@@ -80,7 +80,7 @@ class Proxy(proxy.Proxy):
                       :class:
                       `~masakariclient.sdk.ha.v1.segment.Segment` instance.
         :returns: One :class:`~masakariclient.sdk.ha.v1.segment.Segment`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_segment.Segment, segment)
@@ -119,7 +119,7 @@ class Proxy(proxy.Proxy):
             The value can be either the ID of a segment or a
             :class:`~masakariclient.sdk.ha.v1.segment.Segment` instance.
         :param bool ignore_missing: When set to ``False``
-                       :class:`~openstack.exceptions.ResourceNotFound` will be
+                       :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                        raised when the segment does not exist.
                        When set to ``True``, no exception will be set when
                        attempting to delete a nonexistent segment.
@@ -160,9 +160,9 @@ class Proxy(proxy.Proxy):
                      `~masakariclient.sdk.ha.v1.host.Host` instance.
 
         :returns: One :class:`~masakariclient.sdk.ha.v1.host.Host`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
-        :raises: :class:`~openstack.exceptions.InvalidRequest`
+        :raises: :class:`~SDK.openstack.exceptions.InvalidRequest`
                  when segment_id is None.
         """
         if segment_id is None:
@@ -180,9 +180,9 @@ class Proxy(proxy.Proxy):
         :param dict attrs: The attributes to update on the host represented.
 
         :returns: The updated host
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
-        :raises: :class:`~openstack.exceptions.InvalidRequest`
+        :raises: :class:`~SDK.openstack.exceptions.InvalidRequest`
                  when segment_id is None.
         """
         host_id = resource.Resource._get_id(host)
@@ -196,15 +196,15 @@ class Proxy(proxy.Proxy):
         :param host: The value can be the ID of a host or a :class:
                      `~masakariclient.sdk.ha.v1.host.Host` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the host does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent host.
 
         :returns: ``None``
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
-        :raises: :class:`~openstack.exceptions.InvalidRequest`
+        :raises: :class:`~SDK.openstack.exceptions.InvalidRequest`
                  when segment_id is None.
 
         """

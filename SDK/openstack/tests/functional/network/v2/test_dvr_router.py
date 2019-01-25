@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.network.v2 import router
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import router
+from SDK.openstack.tests.functional import base
 
 
 class TestDVRRouter(base.BaseFunctionalTest):

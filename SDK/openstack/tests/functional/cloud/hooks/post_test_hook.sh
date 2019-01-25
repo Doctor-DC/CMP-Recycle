@@ -19,14 +19,14 @@ export OPENSTACKSDK_DIR="$BASE/new/shade"
 cd $OPENSTACKSDK_DIR
 sudo chown -R jenkins:stack $OPENSTACKSDK_DIR
 
-CLOUDS_YAML=/etc/openstack/clouds.yaml
+CLOUDS_YAML=/etc/SDK.openstack/clouds.yaml
 
 if [ ! -e ${CLOUDS_YAML} ]
 then
     # stable/liberty had clouds.yaml in the home/base directory
-    sudo mkdir -p /etc/openstack
-    sudo cp $BASE/new/.config/openstack/clouds.yaml ${CLOUDS_YAML}
-    sudo chown -R jenkins:stack /etc/openstack
+    sudo mkdir -p /etc/SDK.openstack
+    sudo cp $BASE/new/.config/SDK.openstack/clouds.yaml ${CLOUDS_YAML}
+    sudo chown -R jenkins:stack /etc/SDK.openstack
 fi
 
 # Devstack runs both keystone v2 and v3. An environment variable is set

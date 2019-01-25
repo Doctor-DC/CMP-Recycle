@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.block_storage.v2 import snapshot
+from SDK.openstack.block_storage.v2 import snapshot
 
 FAKE_ID = "ffa9bc5e-1172-4021-acaf-cdcd78a9584d"
 

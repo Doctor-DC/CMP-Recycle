@@ -12,8 +12,8 @@
 
 import six
 
-from openstack import exceptions
-from openstack import utils
+from SDK.openstack import exceptions
+from SDK.openstack import utils
 
 
 class MetadataMixin(object):

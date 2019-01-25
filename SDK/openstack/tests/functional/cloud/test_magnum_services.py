@@ -17,7 +17,7 @@ test_magnum_services
 Functional tests for `shade` services method.
 """
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestMagnumServices(base.BaseFunctionalTest):

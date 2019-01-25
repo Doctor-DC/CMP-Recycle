@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import obj
-from openstack.tests.unit.cloud import test_object as base_test_object
+from SDK.openstack.object_store.v1 import obj
+from SDK.openstack.tests.unit.cloud import test_object as base_test_object
 
 # Object can receive both last-modified in headers and last_modified in
 # the body. However, originally, only last-modified was handled as an

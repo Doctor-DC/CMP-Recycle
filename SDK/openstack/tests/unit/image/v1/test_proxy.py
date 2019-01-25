@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.image.v1 import _proxy
-from openstack.image.v1 import image
-from openstack.tests.unit import test_proxy_base as test_proxy_base
+from SDK.openstack.image.v1 import _proxy
+from SDK.openstack.image.v1 import image
+from SDK.openstack.tests.unit import test_proxy_base as test_proxy_base
 
 
 class TestImageProxy(test_proxy_base.TestProxyBase):

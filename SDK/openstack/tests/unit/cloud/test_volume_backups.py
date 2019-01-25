@@ -9,8 +9,8 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from openstack.cloud import meta
-from openstack.tests.unit import base
+from SDK.openstack.cloud import meta
+from SDK.openstack.tests.unit import base
 
 
 class TestVolumeBackups(base.TestCase):

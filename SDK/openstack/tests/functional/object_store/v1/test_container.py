@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import container as _container
-from openstack.tests.functional import base
+from SDK.openstack.object_store.v1 import container as _container
+from SDK.openstack.tests.functional import base
 
 
 class TestContainer(base.BaseFunctionalTest):

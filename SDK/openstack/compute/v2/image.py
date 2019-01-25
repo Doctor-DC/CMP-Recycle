@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.compute.v2 import metadata
-from openstack import resource
+from SDK.openstack.compute.v2 import metadata
+from SDK.openstack import resource
 
 
 class Image(resource.Resource, metadata.MetadataMixin):

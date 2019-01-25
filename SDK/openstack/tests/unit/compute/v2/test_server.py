@@ -12,9 +12,9 @@
 
 import mock
 import six
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.compute.v2 import server
+from SDK.openstack.compute.v2 import server
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

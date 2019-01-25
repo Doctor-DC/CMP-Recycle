@@ -18,8 +18,8 @@ test_qos_dscp_marking_rule
 Functional tests for `shade`QoS DSCP marking rule methods.
 """
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestQosDscpMarkingRule(base.BaseFunctionalTest):

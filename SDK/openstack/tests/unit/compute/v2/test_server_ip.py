@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.compute.v2 import server_ip
+from SDK.openstack.compute.v2 import server_ip
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

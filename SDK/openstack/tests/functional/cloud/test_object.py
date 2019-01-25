@@ -23,8 +23,8 @@ import tempfile
 
 from testtools import content
 
-from openstack.cloud import exc
-from openstack.tests.functional import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.functional import base
 
 
 class TestObject(base.BaseFunctionalTest):

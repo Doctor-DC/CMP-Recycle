@@ -21,7 +21,7 @@ import string
 
 from testtools import content
 
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestRecordset(base.BaseFunctionalTest):

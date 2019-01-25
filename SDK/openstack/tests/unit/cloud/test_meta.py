@@ -14,10 +14,10 @@
 
 import mock
 
-from openstack.cloud import openstackcloud
-from openstack.cloud import meta
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud import openstackcloud
+from SDK.openstack.cloud import meta
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 PRIVATE_V4 = '198.51.100.3'
 PUBLIC_V4 = '192.0.2.99'

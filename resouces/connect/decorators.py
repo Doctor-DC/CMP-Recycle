@@ -1,11 +1,11 @@
 import jwt
-from SDK import openstack
+import SDK.openstack
 from django.http import JsonResponse
 from jwt import DecodeError
 
 from resouces.connect.config_para import qing_zone, qing_host, qing_port, os_auth_url, os_project_name, os_region_name, \
     os_domain_id
-from resouces.openstack.ostack_conn import create_connection
+# from resouces.SDK.openstack.ostack_conn import create_connection
 from resouces.qingcloud.qingcloud_conn import new_connect_to_zone, connect_qing
 from resouces.connect.valut import connect_valut
 
@@ -64,7 +64,7 @@ def token_certify_decorator(func):  # 验证token，zone，获取conn实例
         
 
         else:
-            conn = openstack.connect(
+            conn = SDK.openstack.connect(
                 auth_url=os_auth_url,
                 project_name=os_project_name,
                 username=ak,

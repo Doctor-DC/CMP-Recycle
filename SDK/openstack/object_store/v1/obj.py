@@ -13,9 +13,9 @@
 
 import copy
 
-from openstack import exceptions
-from openstack.object_store.v1 import _base
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack.object_store.v1 import _base
+from SDK.openstack import resource
 
 
 class Object(_base.BaseResource):

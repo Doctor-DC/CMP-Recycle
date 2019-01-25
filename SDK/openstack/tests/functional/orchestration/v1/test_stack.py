@@ -13,10 +13,10 @@
 import os
 import yaml
 
-from openstack import exceptions
-from openstack.orchestration.v1 import stack
-from openstack.tests.functional import base
-from openstack.tests.functional.network.v2 import test_network
+from SDK.openstack import exceptions
+from SDK.openstack.orchestration.v1 import stack
+from SDK.openstack.tests.functional import base
+from SDK.openstack.tests.functional.network.v2 import test_network
 
 
 class TestStack(base.BaseFunctionalTest):
@@ -41,7 +41,7 @@ class TestStack(base.BaseFunctionalTest):
         if self.conn.compute.find_keypair(self.NAME) is None:
             self.conn.compute.create_keypair(name=self.NAME)
         image = next(self.conn.image.images())
-        tname = "openstack/tests/functional/orchestration/v1/hello_world.yaml"
+        tname = "SDK.openstack/tests/functional/orchestration/v1/hello_world.yaml"
         with open(tname) as f:
             template = yaml.safe_load(f)
         # TODO(mordred) Fix the need for this. We have better support in

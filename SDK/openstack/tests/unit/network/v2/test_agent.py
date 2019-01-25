@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.network.v2 import agent
+from SDK.openstack.network.v2 import agent
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

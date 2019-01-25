@@ -19,8 +19,8 @@ test_volume
 Functional tests for `shade` block storage methods.
 """
 import testtools
-from openstack.cloud import exc
-from openstack.tests.functional import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.functional import base
 
 
 class TestVolumeType(base.BaseFunctionalTest):

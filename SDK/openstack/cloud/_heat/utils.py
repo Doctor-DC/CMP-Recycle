@@ -20,7 +20,7 @@ from six.moves.urllib import error
 from six.moves.urllib import parse
 from six.moves.urllib import request
 
-from openstack.cloud import exc
+from SDK.openstack.cloud import exc
 
 
 def base_url_for_url(url):

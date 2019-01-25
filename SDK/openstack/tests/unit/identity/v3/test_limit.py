@@ -9,9 +9,9 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.identity.v3 import limit
+from SDK.openstack.identity.v3 import limit
 
 EXAMPLE = {
     "service_id": "8ac43bb0926245cead88676a96c750d3",

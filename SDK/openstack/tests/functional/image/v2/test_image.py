@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import connection
-from openstack.tests.functional import base
+from SDK.openstack import connection
+from SDK.openstack.tests.functional import base
 
 TEST_IMAGE_NAME = 'Test Image'
 

@@ -17,10 +17,10 @@ import warnings
 
 import os_service_types
 
-from openstack import _log
-from openstack import service_description
+from SDK.openstack import _log
+from SDK.openstack import service_description
 
-_logger = _log.setup_logging('openstack')
+_logger = _log.setup_logging('SDK.openstack')
 _service_type_manager = os_service_types.ServiceTypes()
 _DOC_TEMPLATE = (
     ":class:`{class_name}` for {service_type} aka {project}")
@@ -103,7 +103,7 @@ def _get_aliases(service_type, aliases=None):
 
 
 def _find_service_description_class(service_type):
-    package_name = 'openstack.{service_type}'.format(
+    package_name = 'SDK.openstack.{service_type}'.format(
         service_type=service_type).replace('-', '_')
     module_name = service_type.replace('-', '_') + '_service'
     class_name = ''.join(

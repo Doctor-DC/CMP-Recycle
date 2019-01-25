@@ -10,11 +10,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import exceptions
-from openstack.image.v2 import image as _image
-from openstack.image.v2 import member as _member
-from openstack import proxy
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack.image.v2 import image as _image
+from SDK.openstack.image.v2 import member as _member
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -30,11 +30,11 @@ class Proxy(proxy.Proxy):
                             ari, aki, vhd, vmdk, raw, qcow2, vdi, or iso.
         :param data: The data to be uploaded as an image.
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.image.v2.image.Image`,
+                           a :class:`~SDK.openstack.image.v2.image.Image`,
                            comprised of the properties on the Image class.
 
         :returns: The results of image creation
-        :rtype: :class:`~openstack.image.v2.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v2.image.Image`
         """
         # container_format and disk_format are required to be set
         # on the image by the time upload_image is called, but they're not
@@ -69,7 +69,7 @@ class Proxy(proxy.Proxy):
         :ref:`download_image-stream-true`.
 
         :param image: The value can be either the ID of an image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
 
         :param bool stream: When ``True``, return a :class:`requests.Response`
                             instance allowing you to iterate over the
@@ -98,9 +98,9 @@ class Proxy(proxy.Proxy):
         """Delete an image
 
         :param image: The value can be either the ID of an image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the image does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent image.
@@ -114,11 +114,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a image.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.image.v2.image.Image` or None
+        :returns: One :class:`~SDK.openstack.image.v2.image.Image` or None
         """
         return self._find(_image.Image, name_or_id,
                           ignore_missing=ignore_missing)
@@ -127,10 +127,10 @@ class Proxy(proxy.Proxy):
         """Get a single image
 
         :param image: The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
 
-        :returns: One :class:`~openstack.image.v2.image.Image`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.image.v2.image.Image`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_image.Image, image)
@@ -142,7 +142,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :returns: A generator of image objects
-        :rtype: :class:`~openstack.image.v2.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v2.image.Image`
         """
         return self._list(_image.Image, paginated=True, **query)
 
@@ -150,12 +150,12 @@ class Proxy(proxy.Proxy):
         """Update a image
 
         :param image: Either the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
         :attrs kwargs: The attributes to update on the image represented
                        by ``value``.
 
         :returns: The updated image
-        :rtype: :class:`~openstack.image.v2.image.Image`
+        :rtype: :class:`~SDK.openstack.image.v2.image.Image`
         """
         return self._update(_image.Image, image, **attrs)
 
@@ -163,7 +163,7 @@ class Proxy(proxy.Proxy):
         """Deactivate an image
 
         :param image: Either the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
 
         :returns: None
         """
@@ -174,7 +174,7 @@ class Proxy(proxy.Proxy):
         """Deactivate an image
 
         :param image: Either the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
 
         :returns: None
         """
@@ -185,7 +185,7 @@ class Proxy(proxy.Proxy):
         """Add a tag to an image
 
         :param image: The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance
+                      :class:`~SDK.openstack.image.v2.image.Image` instance
                       that the member will be created for.
         :param str tag: The tag to be added
 
@@ -198,7 +198,7 @@ class Proxy(proxy.Proxy):
         """Remove a tag to an image
 
         :param image: The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance
+                      :class:`~SDK.openstack.image.v2.image.Image` instance
                       that the member will be created for.
         :param str tag: The tag to be removed
 
@@ -211,14 +211,14 @@ class Proxy(proxy.Proxy):
         """Create a new member from attributes
 
         :param image: The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance
+                      :class:`~SDK.openstack.image.v2.image.Image` instance
                       that the member will be created for.
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.image.v2.member.Member`,
+                           a :class:`~SDK.openstack.image.v2.member.Member`,
                            comprised of the properties on the Member class.
 
         :returns: The results of member creation
-        :rtype: :class:`~openstack.image.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.image.v2.member.Member`
         """
         image_id = resource.Resource._get_id(image)
         return self._create(_member.Member, image_id=image_id, **attrs)
@@ -227,9 +227,9 @@ class Proxy(proxy.Proxy):
         """Delete a member
 
         :param member: The value can be either the ID of a member or a
-                       :class:`~openstack.image.v2.member.Member` instance.
+                       :class:`~SDK.openstack.image.v2.member.Member` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the member does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent member.
@@ -247,13 +247,13 @@ class Proxy(proxy.Proxy):
         :param name_or_id: The name or ID of a member.
         :param image: This is the image that the member belongs to,
                       the value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.image.v2.member.Member` or None
+        :returns: One :class:`~SDK.openstack.image.v2.member.Member` or None
         """
         image_id = resource.Resource._get_id(image)
         return self._find(_member.Member, name_or_id, image_id=image_id,
@@ -263,12 +263,12 @@ class Proxy(proxy.Proxy):
         """Get a single member on an image
 
         :param member: The value can be the ID of a member or a
-                       :class:`~openstack.image.v2.member.Member` instance.
+                       :class:`~SDK.openstack.image.v2.member.Member` instance.
         :param image: This is the image that the member belongs to.
                       The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
-        :returns: One :class:`~openstack.image.v2.member.Member`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
+        :returns: One :class:`~SDK.openstack.image.v2.member.Member`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         member_id = resource.Resource._get_id(member)
@@ -281,10 +281,10 @@ class Proxy(proxy.Proxy):
 
         :param image: This is the image that the member belongs to,
                       the value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
 
         :returns: A generator of member objects
-        :rtype: :class:`~openstack.image.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.image.v2.member.Member`
         """
         image_id = resource.Resource._get_id(image)
         return self._list(_member.Member, paginated=False,
@@ -294,15 +294,15 @@ class Proxy(proxy.Proxy):
         """Update the member of an image
 
         :param member: Either the ID of a member or a
-                       :class:`~openstack.image.v2.member.Member` instance.
+                       :class:`~SDK.openstack.image.v2.member.Member` instance.
         :param image: This is the image that the member belongs to.
                       The value can be the ID of a image or a
-                      :class:`~openstack.image.v2.image.Image` instance.
+                      :class:`~SDK.openstack.image.v2.image.Image` instance.
         :attrs kwargs: The attributes to update on the member represented
                        by ``value``.
 
         :returns: The updated member
-        :rtype: :class:`~openstack.image.v2.member.Member`
+        :rtype: :class:`~SDK.openstack.image.v2.member.Member`
         """
         member_id = resource.Resource._get_id(member)
         image_id = resource.Resource._get_id(image)

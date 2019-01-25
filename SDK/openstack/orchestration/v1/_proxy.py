@@ -10,17 +10,17 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import exceptions
-from openstack.orchestration.v1 import resource as _resource
-from openstack.orchestration.v1 import software_config as _sc
-from openstack.orchestration.v1 import software_deployment as _sd
-from openstack.orchestration.v1 import stack as _stack
-from openstack.orchestration.v1 import stack_environment as _stack_environment
-from openstack.orchestration.v1 import stack_files as _stack_files
-from openstack.orchestration.v1 import stack_template as _stack_template
-from openstack.orchestration.v1 import template as _template
-from openstack import proxy
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack.orchestration.v1 import resource as _resource
+from SDK.openstack.orchestration.v1 import software_config as _sc
+from SDK.openstack.orchestration.v1 import software_deployment as _sd
+from SDK.openstack.orchestration.v1 import stack as _stack
+from SDK.openstack.orchestration.v1 import stack_environment as _stack_environment
+from SDK.openstack.orchestration.v1 import stack_files as _stack_files
+from SDK.openstack.orchestration.v1 import stack_template as _stack_template
+from SDK.openstack.orchestration.v1 import template as _template
+from SDK.openstack import proxy
+from SDK.openstack import resource
 
 
 class Proxy(proxy.Proxy):
@@ -29,16 +29,16 @@ class Proxy(proxy.Proxy):
         """Create a new stack from attributes
 
         :param bool preview: When ``True``, returns
-            an :class:`~openstack.orchestration.v1.stack.StackPreview` object,
-            otherwise an :class:`~openstack.orchestration.v1.stack.Stack`
+            an :class:`~SDK.openstack.orchestration.v1.stack.StackPreview` object,
+            otherwise an :class:`~SDK.openstack.orchestration.v1.stack.Stack`
             object.
             *Default: ``False``*
         :param dict attrs: Keyword arguments which will be used to create
-                           a :class:`~openstack.orchestration.v1.stack.Stack`,
+                           a :class:`~SDK.openstack.orchestration.v1.stack.Stack`,
                            comprised of the properties on the Stack class.
 
         :returns: The results of stack creation
-        :rtype: :class:`~openstack.orchestration.v1.stack.Stack`
+        :rtype: :class:`~SDK.openstack.orchestration.v1.stack.Stack`
         """
         res_type = _stack.StackPreview if preview else _stack.Stack
         return self._create(res_type, **attrs)
@@ -48,11 +48,11 @@ class Proxy(proxy.Proxy):
 
         :param name_or_id: The name or ID of a stack.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the resource does not exist.
                     When set to ``True``, None will be returned when
                     attempting to find a nonexistent resource.
-        :returns: One :class:`~openstack.orchestration.v1.stack.Stack` or None
+        :returns: One :class:`~SDK.openstack.orchestration.v1.stack.Stack` or None
         """
         return self._find(_stack.Stack, name_or_id,
                           ignore_missing=ignore_missing)
@@ -64,7 +64,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :returns: A generator of stack objects
-        :rtype: :class:`~openstack.orchestration.v1.stack.Stack`
+        :rtype: :class:`~SDK.openstack.orchestration.v1.stack.Stack`
         """
         return self._list(_stack.Stack, paginated=False, **query)
 
@@ -72,10 +72,10 @@ class Proxy(proxy.Proxy):
         """Get a single stack
 
         :param stack: The value can be the ID of a stack or a
-               :class:`~openstack.orchestration.v1.stack.Stack` instance.
+               :class:`~SDK.openstack.orchestration.v1.stack.Stack` instance.
 
-        :returns: One :class:`~openstack.orchestration.v1.stack.Stack`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.orchestration.v1.stack.Stack`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._get(_stack.Stack, stack)
@@ -84,13 +84,13 @@ class Proxy(proxy.Proxy):
         """Update a stack
 
         :param stack: The value can be the ID of a stack or a
-               :class:`~openstack.orchestration.v1.stack.Stack` instance.
+               :class:`~SDK.openstack.orchestration.v1.stack.Stack` instance.
         :param kwargs attrs: The attributes to update on the stack
                                  represented by ``value``.
 
         :returns: The updated stack
-        :rtype: :class:`~openstack.orchestration.v1.stack.Stack`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :rtype: :class:`~SDK.openstack.orchestration.v1.stack.Stack`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._update(_stack.Stack, stack, **attrs)
@@ -99,10 +99,10 @@ class Proxy(proxy.Proxy):
         """Delete a stack
 
         :param stack: The value can be either the ID of a stack or a
-                      :class:`~openstack.orchestration.v1.stack.Stack`
+                      :class:`~SDK.openstack.orchestration.v1.stack.Stack`
                       instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the stack does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent stack.
@@ -118,7 +118,7 @@ class Proxy(proxy.Proxy):
         is to track the stack's status.
 
         :param stack: The value can be either the ID of a stack or an instance
-                      of :class:`~openstack.orchestration.v1.stack.Stack`.
+                      of :class:`~SDK.openstack.orchestration.v1.stack.Stack`.
         :returns: ``None``
         """
         if isinstance(stack, _stack.Stack):
@@ -132,11 +132,11 @@ class Proxy(proxy.Proxy):
         """Get template used by a stack
 
         :param stack: The value can be the ID of a stack or an instance of
-            :class:`~openstack.orchestration.v1.stack.Stack`
+            :class:`~SDK.openstack.orchestration.v1.stack.Stack`
 
         :returns: One object of
-            :class:`~openstack.orchestration.v1.stack_template.StackTemplate`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+            :class:`~SDK.openstack.orchestration.v1.stack_template.StackTemplate`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         if isinstance(stack, _stack.Stack):
@@ -151,12 +151,12 @@ class Proxy(proxy.Proxy):
         """Get environment used by a stack
 
         :param stack: The value can be the ID of a stack or an instance of
-            :class:`~openstack.orchestration.v1.stack.Stack`
+            :class:`~SDK.openstack.orchestration.v1.stack.Stack`
 
         :returns: One object of
-                  :class:`~openstack.orchestration.v1.stack_environment.\
+                  :class:`~SDK.openstack.orchestration.v1.stack_environment.\
                   StackEnvironment`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound` when no
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound` when no
                  resource can be found.
         """
         if isinstance(stack, _stack.Stack):
@@ -172,11 +172,11 @@ class Proxy(proxy.Proxy):
         """Get files used by a stack
 
         :param stack: The value can be the ID of a stack or an instance of
-            :class:`~openstack.orchestration.v1.stack.Stack`
+            :class:`~SDK.openstack.orchestration.v1.stack.Stack`
 
         :returns: A dictionary containing the names and contents of all files
                   used by the stack.
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when the stack cannot be found.
         """
         if isinstance(stack, _stack.Stack):
@@ -199,8 +199,8 @@ class Proxy(proxy.Proxy):
                   there are resources in it. If the stack cannot be found,
                   an exception is thrown.
         :rtype: A generator of
-            :class:`~openstack.orchestration.v1.resource.Resource`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+            :class:`~SDK.openstack.orchestration.v1.resource.Resource`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when the stack cannot be found.
         """
         # first try treat the value as a stack object or an ID
@@ -216,12 +216,12 @@ class Proxy(proxy.Proxy):
         """Create a new software config from attributes
 
         :param dict attrs: Keyword arguments which will be used to create a
-            :class:`~openstack.orchestration.v1.software_config.SoftwareConfig`,
+            :class:`~SDK.openstack.orchestration.v1.software_config.SoftwareConfig`,
             comprised of the properties on the SoftwareConfig class.
 
         :returns: The results of software config creation
         :rtype:
-            :class:`~openstack.orchestration.v1.software_config.SoftwareConfig`
+            :class:`~SDK.openstack.orchestration.v1.software_config.SoftwareConfig`
         """
         return self._create(_sc.SoftwareConfig, **attrs)
 
@@ -231,7 +231,7 @@ class Proxy(proxy.Proxy):
         :param dict query: Optional query parameters to be sent to limit the
                            software configs returned.
         :returns: A generator of software config objects.
-        :rtype: :class:`~openstack.orchestration.v1.software_config.\
+        :rtype: :class:`~SDK.openstack.orchestration.v1.software_config.\
                 SoftwareConfig`
         """
         return self._list(_sc.SoftwareConfig, paginated=True, **query)
@@ -241,10 +241,10 @@ class Proxy(proxy.Proxy):
 
         :param software_config: The value can be the ID of a software config
             or a instace of
-            :class:`~openstack.orchestration.v1.software_config.SoftwareConfig`,
+            :class:`~SDK.openstack.orchestration.v1.software_config.SoftwareConfig`,
 
         :returns: An object of type
-            :class:`~openstack.orchestration.v1.software_config.SoftwareConfig`
+            :class:`~SDK.openstack.orchestration.v1.software_config.SoftwareConfig`
         """
         return self._get(_sc.SoftwareConfig, software_config)
 
@@ -253,9 +253,9 @@ class Proxy(proxy.Proxy):
 
         :param software_config: The value can be either the ID of a software
             config or an instance of
-            :class:`~openstack.orchestration.v1.software_config.SoftwareConfig`
+            :class:`~SDK.openstack.orchestration.v1.software_config.SoftwareConfig`
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the software config does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent software config.
@@ -268,12 +268,12 @@ class Proxy(proxy.Proxy):
         """Create a new software deployment from attributes
 
         :param dict attrs: Keyword arguments which will be used to create a
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`,
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`,
             comprised of the properties on the SoftwareDeployment class.
 
         :returns: The results of software deployment creation
         :rtype:
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`
         """
         return self._create(_sd.SoftwareDeployment, **attrs)
 
@@ -283,7 +283,7 @@ class Proxy(proxy.Proxy):
         :param dict query: Optional query parameters to be sent to limit the
                            software deployments returned.
         :returns: A generator of software deployment objects.
-        :rtype: :class:`~openstack.orchestration.v1.software_deployment.\
+        :rtype: :class:`~SDK.openstack.orchestration.v1.software_deployment.\
                 SoftwareDeployment`
         """
         return self._list(_sd.SoftwareDeployment, paginated=False, **query)
@@ -293,10 +293,10 @@ class Proxy(proxy.Proxy):
 
         :param software_deployment: The value can be the ID of a software
             deployment or an instace of
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`,
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`,
 
         :returns: An object of type
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`
         """
         return self._get(_sd.SoftwareDeployment, software_deployment)
 
@@ -306,9 +306,9 @@ class Proxy(proxy.Proxy):
 
         :param software_deployment: The value can be either the ID of a
             software deployment or an instance of
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the software deployment does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent software deployment.
@@ -321,12 +321,12 @@ class Proxy(proxy.Proxy):
         """Update a software deployment
 
         :param server: Either the ID of a software deployment or an instance of
-            :class:`~openstack.orchestration.v1.software_deployment.SoftwareDeployment`
+            :class:`~SDK.openstack.orchestration.v1.software_deployment.SoftwareDeployment`
         :param dict attrs: The attributes to update on the software deployment
                            represented by ``software_deployment``.
 
         :returns: The updated software deployment
-        :rtype: :class:`~openstack.orchestration.v1.software_deployment.\
+        :rtype: :class:`~SDK.openstack.orchestration.v1.software_deployment.\
                 SoftwareDeployment`
         """
         return self._update(_sd.SoftwareDeployment, software_deployment,
@@ -348,9 +348,9 @@ class Proxy(proxy.Proxy):
                               to ignore. Currently the only valid error code
                               is '99001'.
         :returns: The result of template validation.
-        :raises: :class:`~openstack.exceptions.InvalidRequest` if neither
+        :raises: :class:`~SDK.openstack.exceptions.InvalidRequest` if neither
                  `template` not `template_url` is provided.
-        :raises: :class:`~openstack.exceptions.HttpException` if the template
+        :raises: :class:`~SDK.openstack.exceptions.HttpException` if the template
                  fails the validation.
         """
         if template is None and template_url is None:
@@ -368,7 +368,7 @@ class Proxy(proxy.Proxy):
 
         :param res: The resource to wait on to reach the specified status.
                     The resource must have a ``status`` attribute.
-        :type resource: A :class:`~openstack.resource.Resource` object.
+        :type resource: A :class:`~SDK.openstack.resource.Resource` object.
         :param status: Desired status.
         :param failures: Statuses that would be interpreted as failures.
         :type failures: :py:class:`list`
@@ -377,9 +377,9 @@ class Proxy(proxy.Proxy):
         :param wait: Maximum number of seconds to wait before the change.
                      Default to 120.
         :returns: The resource is returned on success.
-        :raises: :class:`~openstack.exceptions.ResourceTimeout` if transition
+        :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` if transition
                  to the desired status failed to occur in specified seconds.
-        :raises: :class:`~openstack.exceptions.ResourceFailure` if the resource
+        :raises: :class:`~SDK.openstack.exceptions.ResourceFailure` if the resource
                  has transited to one of the failure statuses.
         :raises: :class:`~AttributeError` if the resource does not have a
                 ``status`` attribute.
@@ -392,13 +392,13 @@ class Proxy(proxy.Proxy):
         """Wait for a resource to be deleted.
 
         :param res: The resource to wait on to be deleted.
-        :type resource: A :class:`~openstack.resource.Resource` object.
+        :type resource: A :class:`~SDK.openstack.resource.Resource` object.
         :param interval: Number of seconds to wait before to consecutive
                          checks. Default to 2.
         :param wait: Maximum number of seconds to wait before the change.
                      Default to 120.
         :returns: The resource is returned on success.
-        :raises: :class:`~openstack.exceptions.ResourceTimeout` if transition
+        :raises: :class:`~SDK.openstack.exceptions.ResourceTimeout` if transition
                  to delete failed to occur in the specified seconds.
         """
         return resource.wait_for_delete(self, res, interval, wait)

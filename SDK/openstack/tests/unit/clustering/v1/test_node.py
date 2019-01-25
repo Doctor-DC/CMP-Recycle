@@ -11,9 +11,9 @@
 # under the License.
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.clustering.v1 import node
+from SDK.openstack.clustering.v1 import node
 
 
 FAKE_ID = '123d0955-0099-aabb-b8fa-6a44655ceeff'

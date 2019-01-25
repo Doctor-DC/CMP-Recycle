@@ -12,24 +12,24 @@
 
 import argparse
 
-import openstack.config
-from openstack.tests.unit.config import base
+import SDK.openstack.config
+from SDK.openstack.tests.unit.config import base
 
 
 class TestInit(base.TestCase):
     def test_get_cloud_region_without_arg_parser(self):
-        cloud_region = openstack.config.get_cloud_region(
+        cloud_region = SDK.openstack.config.get_cloud_region(
             options=None, validate=False)
         self.assertIsInstance(
             cloud_region,
-            openstack.config.cloud_region.CloudRegion
+            SDK.openstack.config.cloud_region.CloudRegion
         )
 
     def test_get_cloud_region_with_arg_parser(self):
-        cloud_region = openstack.config.get_cloud_region(
+        cloud_region = SDK.openstack.config.get_cloud_region(
             options=argparse.ArgumentParser(),
             validate=False)
         self.assertIsInstance(
             cloud_region,
-            openstack.config.cloud_region.CloudRegion
+            SDK.openstack.config.cloud_region.CloudRegion
         )

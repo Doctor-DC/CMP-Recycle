@@ -19,8 +19,8 @@ test_floating_ip_nova
 Tests Floating IP resource methods for nova-network
 """
 
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 def get_fake_has_service(has_service):

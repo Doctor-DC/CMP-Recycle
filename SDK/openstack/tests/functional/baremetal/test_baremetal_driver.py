@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack import exceptions
-from openstack.tests.functional.baremetal import base
+from SDK.openstack import exceptions
+from SDK.openstack.tests.functional.baremetal import base
 
 
 class TestBareMetalDriver(base.BaseBaremetalTest):

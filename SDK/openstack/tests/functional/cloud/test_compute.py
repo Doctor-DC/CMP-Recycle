@@ -22,10 +22,10 @@ import datetime
 from fixtures import TimeoutException
 import six
 
-from openstack.cloud import exc
-from openstack.tests.functional import base
-from openstack.tests.functional.cloud.util import pick_flavor
-from openstack import utils
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.functional import base
+from SDK.openstack.tests.functional.cloud.util import pick_flavor
+from SDK.openstack import utils
 
 
 class TestCompute(base.BaseFunctionalTest):

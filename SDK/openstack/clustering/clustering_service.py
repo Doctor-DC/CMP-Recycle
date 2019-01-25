@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.clustering.v1 import _proxy
-from openstack import service_description
+from SDK.openstack.clustering.v1 import _proxy
+from SDK.openstack import service_description
 
 
 class ClusteringService(service_description.ServiceDescription):

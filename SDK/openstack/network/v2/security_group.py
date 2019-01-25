@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class SecurityGroup(resource.Resource, resource.TagMixin):
@@ -43,7 +43,7 @@ class SecurityGroup(resource.Resource, resource.TagMixin):
     #: Revision number of the security group. *Type: int*
     revision_number = resource.Body('revision_number', type=int)
     #: A list of
-    #: :class:`~openstack.network.v2.security_group_rule.SecurityGroupRule`
+    #: :class:`~SDK.openstack.network.v2.security_group_rule.SecurityGroupRule`
     #: objects. *Type: list*
     security_group_rules = resource.Body('security_group_rules', type=list)
     #: Timestamp when the security group was last updated.

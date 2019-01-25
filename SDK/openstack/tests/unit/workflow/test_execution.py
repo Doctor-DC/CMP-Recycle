@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.workflow.v2 import execution
+from SDK.openstack.workflow.v2 import execution
 
 FAKE_INPUT = {
     'cluster_id': '8c74607c-5a74-4490-9414-a3475b1926c2',

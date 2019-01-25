@@ -12,11 +12,11 @@
 
 import mock
 import six
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack import exceptions
-from openstack.orchestration.v1 import stack
-from openstack import resource
+from SDK.openstack import exceptions
+from SDK.openstack.orchestration.v1 import stack
+from SDK.openstack import resource
 
 
 FAKE_ID = 'ce8ae86c-9810-4cb1-8888-7fb53bc523bf'

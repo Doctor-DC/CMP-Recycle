@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.baremetal.v1 import _common
-from openstack import resource
+from SDK.openstack.baremetal.v1 import _common
+from SDK.openstack import resource
 
 
 class PortGroup(_common.ListMixin, resource.Resource):

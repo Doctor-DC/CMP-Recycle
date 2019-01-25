@@ -19,9 +19,9 @@ Tests for the `update_server` command.
 
 import uuid
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests import fakes
-from openstack.tests.unit import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.unit import base
 
 
 class TestUpdateServer(base.TestCase):

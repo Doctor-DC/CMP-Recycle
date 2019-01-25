@@ -13,46 +13,46 @@
 import mock
 import uuid
 
-from openstack import exceptions
-from openstack.network.v2 import _proxy
-from openstack.network.v2 import address_scope
-from openstack.network.v2 import agent
-from openstack.network.v2 import auto_allocated_topology
-from openstack.network.v2 import availability_zone
-from openstack.network.v2 import extension
-from openstack.network.v2 import firewall_group
-from openstack.network.v2 import firewall_policy
-from openstack.network.v2 import firewall_rule
-from openstack.network.v2 import flavor
-from openstack.network.v2 import floating_ip
-from openstack.network.v2 import health_monitor
-from openstack.network.v2 import listener
-from openstack.network.v2 import load_balancer
-from openstack.network.v2 import metering_label
-from openstack.network.v2 import metering_label_rule
-from openstack.network.v2 import network
-from openstack.network.v2 import network_ip_availability
-from openstack.network.v2 import pool
-from openstack.network.v2 import pool_member
-from openstack.network.v2 import port
-from openstack.network.v2 import qos_bandwidth_limit_rule
-from openstack.network.v2 import qos_dscp_marking_rule
-from openstack.network.v2 import qos_minimum_bandwidth_rule
-from openstack.network.v2 import qos_policy
-from openstack.network.v2 import qos_rule_type
-from openstack.network.v2 import quota
-from openstack.network.v2 import rbac_policy
-from openstack.network.v2 import router
-from openstack.network.v2 import security_group
-from openstack.network.v2 import security_group_rule
-from openstack.network.v2 import segment
-from openstack.network.v2 import service_profile
-from openstack.network.v2 import service_provider
-from openstack.network.v2 import subnet
-from openstack.network.v2 import subnet_pool
-from openstack.network.v2 import vpn_service
-from openstack import proxy as proxy_base
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack import exceptions
+from SDK.openstack.network.v2 import _proxy
+from SDK.openstack.network.v2 import address_scope
+from SDK.openstack.network.v2 import agent
+from SDK.openstack.network.v2 import auto_allocated_topology
+from SDK.openstack.network.v2 import availability_zone
+from SDK.openstack.network.v2 import extension
+from SDK.openstack.network.v2 import firewall_group
+from SDK.openstack.network.v2 import firewall_policy
+from SDK.openstack.network.v2 import firewall_rule
+from SDK.openstack.network.v2 import flavor
+from SDK.openstack.network.v2 import floating_ip
+from SDK.openstack.network.v2 import health_monitor
+from SDK.openstack.network.v2 import listener
+from SDK.openstack.network.v2 import load_balancer
+from SDK.openstack.network.v2 import metering_label
+from SDK.openstack.network.v2 import metering_label_rule
+from SDK.openstack.network.v2 import network
+from SDK.openstack.network.v2 import network_ip_availability
+from SDK.openstack.network.v2 import pool
+from SDK.openstack.network.v2 import pool_member
+from SDK.openstack.network.v2 import port
+from SDK.openstack.network.v2 import qos_bandwidth_limit_rule
+from SDK.openstack.network.v2 import qos_dscp_marking_rule
+from SDK.openstack.network.v2 import qos_minimum_bandwidth_rule
+from SDK.openstack.network.v2 import qos_policy
+from SDK.openstack.network.v2 import qos_rule_type
+from SDK.openstack.network.v2 import quota
+from SDK.openstack.network.v2 import rbac_policy
+from SDK.openstack.network.v2 import router
+from SDK.openstack.network.v2 import security_group
+from SDK.openstack.network.v2 import security_group_rule
+from SDK.openstack.network.v2 import segment
+from SDK.openstack.network.v2 import service_profile
+from SDK.openstack.network.v2 import service_provider
+from SDK.openstack.network.v2 import subnet
+from SDK.openstack.network.v2 import subnet_pool
+from SDK.openstack.network.v2 import vpn_service
+from SDK.openstack import proxy as proxy_base
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 QOS_POLICY_ID = 'qos-policy-id-' + uuid.uuid4().hex
@@ -318,7 +318,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         self.verify_find(self.proxy.find_network, network.Network)
 
     def test_network_find_with_filter(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_network,
                       method_args=["net1"],
                       method_kwargs={"project_id": "1"},
@@ -408,7 +408,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
                            {"pool": "test_id"}, {"pool_id": "test_id"})
 
     def test_pool_member_find(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_pool_member,
                       method_args=["MEMBER", "POOL"],
                       expected_args=[pool_member.PoolMember, "MEMBER"],
@@ -416,7 +416,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
                                        "ignore_missing": True})
 
     def test_pool_member_get(self):
-        self._verify2('openstack.proxy.Proxy._get',
+        self._verify2('SDK.openstack.proxy.Proxy._get',
                       self.proxy.get_pool_member,
                       method_args=["MEMBER", "POOL"],
                       expected_args=[pool_member.PoolMember, "MEMBER"],
@@ -428,7 +428,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
                          expected_kwargs={"pool_id": "test_id"})
 
     def test_pool_member_update(self):
-        self._verify2("openstack.proxy.Proxy._update",
+        self._verify2("SDK.openstack.proxy.Proxy._update",
                       self.proxy.update_pool_member,
                       method_args=["MEMBER", "POOL"],
                       expected_args=[pool_member.PoolMember, "MEMBER"],
@@ -499,7 +499,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_bandwidth_limit_rule_find(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_qos_bandwidth_limit_rule,
                       method_args=['rule_id', policy],
                       expected_args=[
@@ -525,7 +525,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_bandwidth_limit_rule_update(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._update',
+        self._verify2('SDK.openstack.proxy.Proxy._update',
                       self.proxy.update_qos_bandwidth_limit_rule,
                       method_args=['rule_id', policy],
                       method_kwargs={'foo': 'bar'},
@@ -558,7 +558,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_dscp_marking_rule_find(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_qos_dscp_marking_rule,
                       method_args=['rule_id', policy],
                       expected_args=[qos_dscp_marking_rule.QoSDSCPMarkingRule,
@@ -583,7 +583,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_dscp_marking_rule_update(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._update',
+        self._verify2('SDK.openstack.proxy.Proxy._update',
                       self.proxy.update_qos_dscp_marking_rule,
                       method_args=['rule_id', policy],
                       method_kwargs={'foo': 'bar'},
@@ -616,7 +616,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_minimum_bandwidth_rule_find(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_qos_minimum_bandwidth_rule,
                       method_args=['rule_id', policy],
                       expected_args=[
@@ -642,7 +642,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_qos_minimum_bandwidth_rule_update(self):
         policy = qos_policy.QoSPolicy.new(id=QOS_POLICY_ID)
-        self._verify2('openstack.proxy.Proxy._update',
+        self._verify2('SDK.openstack.proxy.Proxy._update',
                       self.proxy.update_qos_minimum_bandwidth_rule,
                       method_args=['rule_id', policy],
                       method_kwargs={'foo': 'bar'},
@@ -701,7 +701,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
     def test_quota_get_details(self, mock_get):
         fake_quota = mock.Mock(project_id='PROJECT')
         mock_get.return_value = fake_quota
-        self._verify2("openstack.proxy.Proxy._get",
+        self._verify2("SDK.openstack.proxy.Proxy._get",
                       self.proxy.get_quota,
                       method_args=['QUOTA_ID'],
                       method_kwargs={'details': True},
@@ -714,7 +714,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
     def test_quota_default_get(self, mock_get):
         fake_quota = mock.Mock(project_id='PROJECT')
         mock_get.return_value = fake_quota
-        self._verify2("openstack.proxy.Proxy._get",
+        self._verify2("SDK.openstack.proxy.Proxy._get",
                       self.proxy.get_quota_default,
                       method_args=['QUOTA_ID'],
                       expected_args=[quota.QuotaDefault],
@@ -782,7 +782,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.add_interface",
+        self._verify("SDK.openstack.network.v2.router.Router.add_interface",
                      self.proxy.add_interface_to_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"port_id": "PORT"},
@@ -796,7 +796,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.add_interface",
+        self._verify("SDK.openstack.network.v2.router.Router.add_interface",
                      self.proxy.add_interface_to_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"subnet_id": "SUBNET"},
@@ -810,7 +810,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.remove_interface",
+        self._verify("SDK.openstack.network.v2.router.Router.remove_interface",
                      self.proxy.remove_interface_from_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"port_id": "PORT"},
@@ -824,7 +824,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.remove_interface",
+        self._verify("SDK.openstack.network.v2.router.Router.remove_interface",
                      self.proxy.remove_interface_from_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"subnet_id": "SUBNET"},
@@ -837,7 +837,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.add_gateway",
+        self._verify("SDK.openstack.network.v2.router.Router.add_gateway",
                      self.proxy.add_gateway_to_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"foo": "bar"},
@@ -850,7 +850,7 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
         x_router = router.Router.new(id="ROUTER_ID")
         mock_get.return_value = x_router
 
-        self._verify("openstack.network.v2.router.Router.remove_gateway",
+        self._verify("SDK.openstack.network.v2.router.Router.remove_gateway",
                      self.proxy.remove_gateway_from_router,
                      method_args=["FAKE_ROUTER"],
                      method_kwargs={"foo": "bar"},
@@ -1144,13 +1144,13 @@ class TestNetworkProxy(test_proxy_base.TestProxyBase):
 
     def test_set_tags(self):
         x_network = network.Network.new(id='NETWORK_ID')
-        self._verify('openstack.network.v2.network.Network.set_tags',
+        self._verify('SDK.openstack.network.v2.network.Network.set_tags',
                      self.proxy.set_tags,
                      method_args=[x_network, ['TAG1', 'TAG2']],
                      expected_args=[['TAG1', 'TAG2']],
                      expected_result=mock.sentinel.result_set_tags)
 
-    @mock.patch('openstack.network.v2.network.Network.set_tags')
+    @mock.patch('SDK.openstack.network.v2.network.Network.set_tags')
     def test_set_tags_resource_without_tag_suport(self, mock_set_tags):
         no_tag_resource = object()
         self.assertRaises(exceptions.InvalidRequest,

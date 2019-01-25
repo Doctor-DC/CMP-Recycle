@@ -12,10 +12,10 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-from openstack.exceptions import HttpException
+from SDK.openstack.exceptions import HttpException
 
-from openstack import resource
-from openstack import utils
+from SDK.openstack import resource
+from SDK.openstack import utils
 
 
 class FirewallPolicy(resource.Resource):
@@ -56,13 +56,13 @@ class FirewallPolicy(resource.Resource):
         """Insert a firewall_rule into a firewall_policy in order.
 
         :param session: The session to communicate through.
-        :type session: :class:`~openstack.session.Session`
+        :type session: :class:`~SDK.openstack.session.Session`
         :param dict body: The body requested to be updated on the router
 
         :returns: The updated firewall policy
-        :rtype: :class:`~openstack.network.v2.firewall_policy.FirewallPolicy`
+        :rtype: :class:`~SDK.openstack.network.v2.firewall_policy.FirewallPolicy`
 
-        :raises: :class:`~openstack.exceptions.HttpException` on error.
+        :raises: :class:`~SDK.openstack.exceptions.HttpException` on error.
         """
         url = utils.urljoin(self.base_path, self.id, 'insert_rule')
         return self._put_request(session, url, body)
@@ -71,13 +71,13 @@ class FirewallPolicy(resource.Resource):
         """Remove a firewall_rule from a firewall_policy.
 
         :param session: The session to communicate through.
-        :type session: :class:`~openstack.session.Session`
+        :type session: :class:`~SDK.openstack.session.Session`
         :param dict body: The body requested to be updated on the router
 
         :returns: The updated firewall policy
-        :rtype: :class:`~openstack.network.v2.firewall_policy.FirewallPolicy`
+        :rtype: :class:`~SDK.openstack.network.v2.firewall_policy.FirewallPolicy`
 
-        :raises: :class:`~openstack.exceptions.HttpException` on error.
+        :raises: :class:`~SDK.openstack.exceptions.HttpException` on error.
         """
         url = utils.urljoin(self.base_path, self.id, 'remove_rule')
         return self._put_request(session, url, body)

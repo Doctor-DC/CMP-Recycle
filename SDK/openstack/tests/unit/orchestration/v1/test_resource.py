@@ -10,9 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.orchestration.v1 import resource
+from SDK.openstack.orchestration.v1 import resource
 
 
 FAKE_ID = '32e39358-2422-4ad0-a1b5-dd60696bf564'

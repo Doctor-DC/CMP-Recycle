@@ -12,15 +12,15 @@
 
 import os
 
-from openstack.load_balancer.v2 import health_monitor
-from openstack.load_balancer.v2 import l7_policy
-from openstack.load_balancer.v2 import l7_rule
-from openstack.load_balancer.v2 import listener
-from openstack.load_balancer.v2 import load_balancer
-from openstack.load_balancer.v2 import member
-from openstack.load_balancer.v2 import pool
-from openstack.load_balancer.v2 import quota
-from openstack.tests.functional import base
+from SDK.openstack.load_balancer.v2 import health_monitor
+from SDK.openstack.load_balancer.v2 import l7_policy
+from SDK.openstack.load_balancer.v2 import l7_rule
+from SDK.openstack.load_balancer.v2 import listener
+from SDK.openstack.load_balancer.v2 import load_balancer
+from SDK.openstack.load_balancer.v2 import member
+from SDK.openstack.load_balancer.v2 import pool
+from SDK.openstack.load_balancer.v2 import quota
+from SDK.openstack.tests.functional import base
 
 
 class TestLoadBalancer(base.BaseFunctionalTest):

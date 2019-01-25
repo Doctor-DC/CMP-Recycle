@@ -18,8 +18,8 @@ import uuid
 import testtools
 from testtools import matchers
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 class TestDomains(base.TestCase):
@@ -94,7 +94,7 @@ class TestDomains(base.TestCase):
         domain_data = self._get_domain_data(domain_name='domain_name',
                                             enabled=True)
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudBadRequest,
+            SDK.openstack.cloud.OpenStackCloudBadRequest,
             "Failed to create domain domain_name"
         ):
             self.register_uris([
@@ -149,7 +149,7 @@ class TestDomains(base.TestCase):
                  validate=dict(json={'domain': {'enabled': False}})),
             dict(method='DELETE', uri=domain_resource_uri, status_code=404)])
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudURINotFound,
+            SDK.openstack.cloud.OpenStackCloudURINotFound,
             "Failed to delete domain %s" % domain_data.domain_id
         ):
             self.cloud.delete_domain(domain_data.domain_id)
@@ -203,7 +203,7 @@ class TestDomains(base.TestCase):
                  json=domain_data.json_response,
                  validate=dict(json={'domain': {'enabled': False}}))])
         with testtools.ExpectedException(
-            openstack.exceptions.ConflictException,
+            SDK.openstack.exceptions.ConflictException,
             "Error in updating domain %s" % domain_data.domain_id
         ):
             self.cloud.delete_domain(domain_data.domain_id)

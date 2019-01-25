@@ -14,8 +14,8 @@
 import copy
 import testtools
 
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 zone = {
@@ -95,7 +95,7 @@ class TestRecordset(base.TestCase):
                      'type': 'A'})),
         ])
         with testtools.ExpectedException(
-            openstack.cloud.exc.OpenStackCloudHTTPError,
+            SDK.openstack.cloud.exc.OpenStackCloudHTTPError,
             "Error creating recordset www2.example.net."
         ):
             self.cloud.create_recordset('1', 'www2.example.net.',

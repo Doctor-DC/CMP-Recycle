@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.database.v1 import _proxy
-from openstack import service_description
+from SDK.openstack.database.v1 import _proxy
+from SDK.openstack import service_description
 
 
 class DatabaseService(service_description.ServiceDescription):

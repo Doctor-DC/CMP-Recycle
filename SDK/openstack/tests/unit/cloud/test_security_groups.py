@@ -13,9 +13,9 @@
 
 import copy
 
-import openstack.cloud
-from openstack.tests.unit import base
-from openstack.tests import fakes
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
+from SDK.openstack.tests import fakes
 
 # TODO(mordred): Move id and name to using a getUniqueString() value
 
@@ -83,7 +83,7 @@ class TestSecurityGroups(base.TestCase):
 
         self.cloud.secgroup_source = None
         self.has_neutron = False
-        self.assertRaises(openstack.cloud.OpenStackCloudUnavailableFeature,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudUnavailableFeature,
                           self.cloud.list_security_groups)
 
     def test_delete_security_group_neutron(self):
@@ -146,7 +146,7 @@ class TestSecurityGroups(base.TestCase):
 
     def test_delete_security_group_none(self):
         self.cloud.secgroup_source = None
-        self.assertRaises(openstack.cloud.OpenStackCloudUnavailableFeature,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudUnavailableFeature,
                           self.cloud.delete_security_group,
                           'doesNotExist')
 
@@ -246,7 +246,7 @@ class TestSecurityGroups(base.TestCase):
     def test_create_security_group_none(self):
         self.cloud.secgroup_source = None
         self.has_neutron = False
-        self.assertRaises(openstack.cloud.OpenStackCloudUnavailableFeature,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudUnavailableFeature,
                           self.cloud.create_security_group,
                           '', '')
 
@@ -465,7 +465,7 @@ class TestSecurityGroups(base.TestCase):
     def test_create_security_group_rule_none(self):
         self.has_neutron = False
         self.cloud.secgroup_source = None
-        self.assertRaises(openstack.cloud.OpenStackCloudUnavailableFeature,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudUnavailableFeature,
                           self.cloud.create_security_group_rule,
                           '')
 
@@ -498,7 +498,7 @@ class TestSecurityGroups(base.TestCase):
     def test_delete_security_group_rule_none(self):
         self.has_neutron = False
         self.cloud.secgroup_source = None
-        self.assertRaises(openstack.cloud.OpenStackCloudUnavailableFeature,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudUnavailableFeature,
                           self.cloud.delete_security_group_rule,
                           '')
 
@@ -538,7 +538,7 @@ class TestSecurityGroups(base.TestCase):
                      endpoint=fakes.COMPUTE_ENDPOINT),
                  json={'security_groups': [nova_grp_dict]}),
         ])
-        self.assertRaises(openstack.cloud.OpenStackCloudException,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudException,
                           self.cloud.create_security_group_rule,
                           secgroup_name_or_id='nova-sec-group',
                           direction='egress')

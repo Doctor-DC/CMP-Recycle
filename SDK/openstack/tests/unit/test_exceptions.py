@@ -13,17 +13,17 @@
 import json
 
 import mock
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 import uuid
 
-from openstack import exceptions
+from SDK.openstack import exceptions
 
 
 class Test_Exception(base.TestCase):
     def test_method_not_supported(self):
         exc = exceptions.MethodNotSupported(self.__class__, 'list')
         expected = ('The list method is not supported for '
-                    + 'openstack.tests.unit.test_exceptions.Test_Exception')
+                    + 'SDK.openstack.tests.unit.test_exceptions.Test_Exception')
         self.assertEqual(expected, str(exc))
 
 
@@ -80,7 +80,7 @@ class TestRaiseFromResponse(base.TestCase):
         response.status_code = 404
         response.headers = {
             'content-type': 'application/json',
-            'x-openstack-request-id': uuid.uuid4().hex,
+            'x-SDK.openstack-request-id': uuid.uuid4().hex,
         }
         exc = self.assertRaises(exceptions.NotFoundException,
                                 self._do_raise, response,
@@ -88,7 +88,7 @@ class TestRaiseFromResponse(base.TestCase):
         self.assertEqual(self.message, exc.message)
         self.assertEqual(response.status_code, exc.status_code)
         self.assertEqual(
-            response.headers.get('x-openstack-request-id'),
+            response.headers.get('x-SDK.openstack-request-id'),
             exc.request_id
         )
 
@@ -97,7 +97,7 @@ class TestRaiseFromResponse(base.TestCase):
         response.status_code = 400
         response.headers = {
             'content-type': 'application/json',
-            'x-openstack-request-id': uuid.uuid4().hex,
+            'x-SDK.openstack-request-id': uuid.uuid4().hex,
         }
         exc = self.assertRaises(exceptions.BadRequestException,
                                 self._do_raise, response,
@@ -105,7 +105,7 @@ class TestRaiseFromResponse(base.TestCase):
         self.assertEqual(self.message, exc.message)
         self.assertEqual(response.status_code, exc.status_code)
         self.assertEqual(
-            response.headers.get('x-openstack-request-id'),
+            response.headers.get('x-SDK.openstack-request-id'),
             exc.request_id
         )
 
@@ -114,7 +114,7 @@ class TestRaiseFromResponse(base.TestCase):
         response.status_code = 403
         response.headers = {
             'content-type': 'application/json',
-            'x-openstack-request-id': uuid.uuid4().hex,
+            'x-SDK.openstack-request-id': uuid.uuid4().hex,
         }
         exc = self.assertRaises(exceptions.HttpException,
                                 self._do_raise, response,
@@ -122,7 +122,7 @@ class TestRaiseFromResponse(base.TestCase):
         self.assertEqual(self.message, exc.message)
         self.assertEqual(response.status_code, exc.status_code)
         self.assertEqual(
-            response.headers.get('x-openstack-request-id'),
+            response.headers.get('x-SDK.openstack-request-id'),
             exc.request_id
         )
 
