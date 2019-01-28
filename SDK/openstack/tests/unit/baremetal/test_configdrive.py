@@ -18,19 +18,19 @@ import os
 
 import testtools
 
-from openstack.baremetal import configdrive
+from SDK.openstack.baremetal import configdrive
 
 
 class TestPopulateDirectory(testtools.TestCase):
     def _check(self, metadata, user_data=None):
         with configdrive.populate_directory(metadata, user_data) as d:
             for version in ('2012-08-10', 'latest'):
-                with open(os.path.join(d, 'openstack', version,
+                with open(os.path.join(d, 'SDK.openstack', version,
                                        'meta_data.json')) as fp:
                     actual_metadata = json.load(fp)
 
                 self.assertEqual(metadata, actual_metadata)
-                user_data_file = os.path.join(d, 'openstack', version,
+                user_data_file = os.path.join(d, 'SDK.openstack', version,
                                               'user_data')
                 if user_data is None:
                     self.assertFalse(os.path.exists(user_data_file))

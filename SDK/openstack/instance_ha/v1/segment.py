@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Segment(resource.Resource):
@@ -33,8 +33,8 @@ class Segment(resource.Resource):
     allow_delete = True
 
     # Properties
-    # Refer "https://github.com/openstack/masakari/tree/
-    # master/masakari/api/openstack/ha/schemas"
+    # Refer "https://github.com/SDK.openstack/masakari/tree/
+    # master/masakari/api/SDK.openstack/ha/schemas"
     # for properties of each API
 
     #: A ID of representing this segment.

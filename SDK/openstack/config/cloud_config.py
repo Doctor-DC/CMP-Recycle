@@ -14,7 +14,7 @@
 
 # TODO(mordred) This is only here to ease the OSC transition
 
-from openstack.config import cloud_region
+from SDK.openstack.config import cloud_region
 
 
 class CloudConfig(cloud_region.CloudRegion):

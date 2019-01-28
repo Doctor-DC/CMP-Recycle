@@ -12,8 +12,8 @@
 
 import six
 
-from openstack.tests.functional import base
-from openstack.tests.functional.image.v2.test_image import TEST_IMAGE_NAME
+from SDK.openstack.tests.functional import base
+from SDK.openstack.tests.functional.image.v2.test_image import TEST_IMAGE_NAME
 
 
 class TestImage(base.BaseFunctionalTest):

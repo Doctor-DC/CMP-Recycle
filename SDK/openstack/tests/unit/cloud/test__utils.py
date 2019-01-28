@@ -20,9 +20,9 @@ from uuid import uuid4
 import mock
 import testtools
 
-from openstack.cloud import _utils
-from openstack.cloud import exc
-from openstack.tests.unit import base
+from SDK.openstack.cloud import _utils
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.unit import base
 
 
 RANGE_DATA = [

@@ -1,7 +1,11 @@
 from urllib import parse, request
 import json
-
-from django.core.paginator import Paginator
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+print(curPath)
+print(rootPath)
 
 from resouces.qingcloud.qingcloud_conn import new_connect_to_zone
 

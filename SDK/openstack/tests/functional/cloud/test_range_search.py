@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack.cloud import exc
-from openstack.tests.functional import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.functional import base
 
 
 class TestRangeSearch(base.BaseFunctionalTest):

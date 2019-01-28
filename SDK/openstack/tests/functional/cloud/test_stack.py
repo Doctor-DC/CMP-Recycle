@@ -19,9 +19,9 @@ Functional tests for `shade` stack methods.
 
 import tempfile
 
-from openstack.cloud import exc
-from openstack.tests import fakes
-from openstack.tests.functional import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests import fakes
+from SDK.openstack.tests.functional import base
 
 simple_template = '''heat_template_version: 2014-10-16
 parameters:

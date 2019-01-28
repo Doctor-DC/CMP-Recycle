@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://git.openstack.org/cgit/openstack/cloud-data/plain/vendor-schema.json#",
+  "id": "https://git.SDK.openstack.org/cgit/SDK.openstack/cloud-data/plain/vendor-schema.json#",
   "type": "object",
   "properties": {
     "name": {

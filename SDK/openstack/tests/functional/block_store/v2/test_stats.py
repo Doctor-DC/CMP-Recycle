@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.block_storage.v2 import stats as _stats
-from openstack.tests.functional import base
+from SDK.openstack.block_storage.v2 import stats as _stats
+from SDK.openstack.tests.functional import base
 
 
 class TestStats(base.BaseFunctionalTest):

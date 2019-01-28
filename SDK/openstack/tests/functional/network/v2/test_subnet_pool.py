@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.network.v2 import subnet_pool as _subnet_pool
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import subnet_pool as _subnet_pool
+from SDK.openstack.tests.functional import base
 
 
 class TestSubnetPool(base.BaseFunctionalTest):

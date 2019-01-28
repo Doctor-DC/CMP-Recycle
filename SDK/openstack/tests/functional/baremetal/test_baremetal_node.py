@@ -12,8 +12,8 @@
 
 import uuid
 
-from openstack import exceptions
-from openstack.tests.functional.baremetal import base
+from SDK.openstack import exceptions
+from SDK.openstack.tests.functional.baremetal import base
 
 
 class TestBareMetalNode(base.BaseBaremetalTest):

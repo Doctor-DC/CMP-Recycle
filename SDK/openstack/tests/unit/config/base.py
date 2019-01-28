@@ -23,8 +23,8 @@ import extras
 import fixtures
 import yaml
 
-from openstack.config import cloud_region
-from openstack.tests.unit import base
+from SDK.openstack.config import cloud_region
+from SDK.openstack.tests.unit import base
 
 VENDOR_CONF = {
     'public-clouds': {

@@ -11,7 +11,7 @@
 # under the License.
 
 
-from openstack import resource
+from SDK.openstack import resource
 
 
 class Action(resource.Resource):

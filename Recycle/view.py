@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from resouces.connect.select_conn import snapshot_unity, ins_unity, end_response, image_unity, volume_unity, \
     rdb_unity, conn_describe_ins, conn_cease_instanses
 from resouces.connect.decorators import token_certify_decorator
+from resouces.fields_schema import RecycleSchema
 
 conn = None
 
@@ -18,8 +19,10 @@ class InstancesList(APIView):
     """
     get:
         获取回收站instances列表
+    delete:
+        彻底删除instance
     """
-    schema = AutoSchema(
+    schema = RecycleSchema(
         manual_fields=[
             coreapi.Field(
                 name='Authorization',
@@ -31,7 +34,18 @@ class InstancesList(APIView):
                 name='DcCode',
                 required='True',
                 location='header',
-                description='dccode header')])
+                description='dccode header')],
+        delete_fields=[
+            coreapi.Field(
+                name='instance',
+                required=True,
+                location="query",
+                description='主机id'),
+            coreapi.Field(
+                name='images',
+                required=False,
+                location="query",
+                description='镜像')])
 
     @method_decorator(token_certify_decorator)
     def get(self, request, conn):
@@ -41,33 +55,7 @@ class InstancesList(APIView):
         end = end_response(ins, '获取回收站列表成功')
         print(type(end))
         return JsonResponse(end, safe=False)
-
-
-class CeaseInstances(APIView):
-    """
-    delete:
-    彻底删除instances
-    """
-    schema = AutoSchema(
-        manual_fields=[
-            coreapi.Field(
-                name='Authorization',
-                required='True',
-                location='header',
-                description='Authentication header',
-                type='string'),
-            coreapi.Field(
-                name='DcCode',
-                required='True',
-                location='header',
-                description='dccode header'),
-            coreapi.Field(
-                name='instances',
-                required=True,
-                location="query",
-                description='主机id')])
-    # schema.get_link(method='delete')
-
+    
     @method_decorator(token_certify_decorator)
     def delete(self, request, conn):
         instances = request.GET.get('instances')
@@ -78,6 +66,43 @@ class CeaseInstances(APIView):
         res = conn_cease_instanses(request, conn, instances)
         end = end_response(res, '彻底删除成功')
         return JsonResponse(end)
+
+#
+# class CeaseInstances(APIView):
+#     """
+#     delete:
+#     彻底删除instances
+#     """
+#     schema = AutoSchema(
+#         manual_fields=[
+#             coreapi.Field(
+#                 name='Authorization',
+#                 required='True',
+#                 location='header',
+#                 description='Authentication header',
+#                 type='string'),
+#             coreapi.Field(
+#                 name='DcCode',
+#                 required='True',
+#                 location='header',
+#                 description='dccode header'),
+#             coreapi.Field(
+#                 name='instances',
+#                 required=True,
+#                 location="query",
+#                 description='主机id')])
+#     # schema.get_link(method='delete')
+#
+#     @method_decorator(token_certify_decorator)
+#     def delete(self, request, conn):
+#         instances = request.GET.get('instances')
+#         print(instances)
+#         # str 分割成列表 如hello world -》  ["hello","world"]
+#         instances = instances.split()
+#         # print(type(instances))
+#         res = conn_cease_instanses(request, conn, instances)
+#         end = end_response(res, '彻底删除成功')
+#         return JsonResponse(end)
 
 
 class ImagesList(APIView):

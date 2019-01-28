@@ -20,8 +20,8 @@ Functional tests for `shade` identity methods.
 import random
 import string
 
-from openstack.cloud.exc import OpenStackCloudException
-from openstack.tests.functional import base
+from SDK.openstack.cloud.exc import OpenStackCloudException
+from SDK.openstack.tests.functional import base
 
 
 class TestIdentity(base.KeystoneBaseFunctionalTest):

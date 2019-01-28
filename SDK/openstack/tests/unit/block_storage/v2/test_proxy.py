@@ -11,15 +11,15 @@
 # under the License.
 import mock
 
-from openstack import exceptions
+from SDK.openstack import exceptions
 
-from openstack.block_storage.v2 import _proxy
-from openstack.block_storage.v2 import backup
-from openstack.block_storage.v2 import snapshot
-from openstack.block_storage.v2 import stats
-from openstack.block_storage.v2 import type
-from openstack.block_storage.v2 import volume
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.block_storage.v2 import _proxy
+from SDK.openstack.block_storage.v2 import backup
+from SDK.openstack.block_storage.v2 import snapshot
+from SDK.openstack.block_storage.v2 import stats
+from SDK.openstack.block_storage.v2 import type
+from SDK.openstack.block_storage.v2 import volume
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestVolumeProxy(test_proxy_base.TestProxyBase):
@@ -93,7 +93,7 @@ class TestVolumeProxy(test_proxy_base.TestProxyBase):
         self.verify_delete(self.proxy.delete_volume, volume.Volume, True)
 
     def test_volume_extend(self):
-        self._verify("openstack.block_storage.v2.volume.Volume.extend",
+        self._verify("SDK.openstack.block_storage.v2.volume.Volume.extend",
                      self.proxy.extend_volume,
                      method_args=["value", "new-size"],
                      expected_args=["new-size"])
@@ -149,7 +149,7 @@ class TestVolumeProxy(test_proxy_base.TestProxyBase):
         self.proxy._connection = mock.Mock()
         self.proxy._connection.has_service = mock.Mock(return_value=True)
         self._verify2(
-            'openstack.block_storage.v2.backup.Backup.restore',
+            'SDK.openstack.block_storage.v2.backup.Backup.restore',
             self.proxy.restore_backup,
             method_args=['volume_id'],
             method_kwargs={'volume_id': 'vol_id', 'name': 'name'},

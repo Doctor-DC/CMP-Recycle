@@ -12,8 +12,8 @@
 
 import uuid
 
-from openstack.network.v2 import agent
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import agent
+from SDK.openstack.tests.functional import base
 
 
 class TestAgent(base.BaseFunctionalTest):

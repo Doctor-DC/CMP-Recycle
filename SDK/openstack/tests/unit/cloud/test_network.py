@@ -13,9 +13,9 @@
 import copy
 import testtools
 
-import openstack
-import openstack.cloud
-from openstack.tests.unit import base
+import SDK.openstack
+import SDK.openstack.cloud
+from SDK.openstack.tests.unit import base
 
 
 class TestNetwork(base.TestCase):
@@ -215,7 +215,7 @@ class TestNetwork(base.TestCase):
     def test_create_network_wrong_availability_zone_hints_type(self):
         azh_opts = "invalid"
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Parameter 'availability_zone_hints' must be a list"
         ):
             self.cloud.create_network("netname",
@@ -224,7 +224,7 @@ class TestNetwork(base.TestCase):
     def test_create_network_provider_wrong_type(self):
         provider_opts = "invalid"
         with testtools.ExpectedException(
-            openstack.cloud.OpenStackCloudException,
+            SDK.openstack.cloud.OpenStackCloudException,
             "Parameter 'provider' must be a dict"
         ):
             self.cloud.create_network("netname", provider=provider_opts)
@@ -274,14 +274,14 @@ class TestNetwork(base.TestCase):
 
     def test_create_network_with_wrong_mtu_size(self):
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "Parameter 'mtu_size' must be greater than 67."
         ):
             self.cloud.create_network("netname", mtu_size=42)
 
     def test_create_network_with_wrong_mtu_type(self):
         with testtools.ExpectedException(
-                openstack.cloud.OpenStackCloudException,
+                SDK.openstack.cloud.OpenStackCloudException,
                 "Parameter 'mtu_size' must be an integer."
         ):
             self.cloud.create_network("netname", mtu_size="fourty_two")
@@ -329,7 +329,7 @@ class TestNetwork(base.TestCase):
                      append=['v2.0', 'networks', "%s.json" % network_id]),
                  status_code=503)
         ])
-        self.assertRaises(openstack.cloud.OpenStackCloudException,
+        self.assertRaises(SDK.openstack.cloud.OpenStackCloudException,
                           self.cloud.delete_network, network_name)
         self.assert_calls()
 

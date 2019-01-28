@@ -15,7 +15,7 @@
 
 import testtools
 
-from openstack.network.v2 import firewall_policy
+from SDK.openstack.network.v2 import firewall_policy
 
 
 EXAMPLE = {

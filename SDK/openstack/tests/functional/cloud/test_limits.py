@@ -16,7 +16,7 @@ test_limits
 
 Functional tests for `shade` limits method
 """
-from openstack.tests.functional import base
+from SDK.openstack.tests.functional import base
 
 
 class TestUsage(base.BaseFunctionalTest):

@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.tests.unit import base
+from SDK.openstack.tests.unit import base
 
-from openstack.network.v2 import quota
-from openstack import resource
+from SDK.openstack.network.v2 import quota
+from SDK.openstack import resource
 
 IDENTIFIER = 'IDENTIFIER'
 EXAMPLE = {

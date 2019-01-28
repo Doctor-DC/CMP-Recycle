@@ -37,7 +37,7 @@ def populate_directory(metadata, user_data, versions=None):
     versions = versions or ('2012-08-10', 'latest')
     try:
         for version in versions:
-            subdir = os.path.join(d, 'openstack', version)
+            subdir = os.path.join(d, 'SDK.openstack', version)
             if not os.path.exists(subdir):
                 os.makedirs(subdir)
 

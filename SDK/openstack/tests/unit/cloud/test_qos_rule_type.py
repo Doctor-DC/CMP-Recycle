@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from openstack.cloud import exc
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.unit import base
 
 
 class TestQosRuleType(base.TestCase):

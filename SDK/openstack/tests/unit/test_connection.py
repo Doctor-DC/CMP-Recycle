@@ -16,9 +16,9 @@ import fixtures
 from keystoneauth1 import session
 import mock
 
-from openstack import connection
-import openstack.config
-from openstack.tests.unit import base
+from SDK.openstack import connection
+import SDK.openstack.config
+from SDK.openstack.tests.unit import base
 
 
 CONFIG_AUTH_URL = "https://identity.example.com/"
@@ -112,45 +112,45 @@ class TestConnection(base.TestCase):
         self.assertIsNotNone(conn)
         # TODO(mordred) Rework this - we need to provide requests-mock
         # entries for each of the proxies below
-        # self.assertEqual('openstack.proxy',
+        # self.assertEqual('SDK.openstack.proxy',
         #                  conn.alarm.__class__.__module__)
-        # self.assertEqual('openstack.clustering.v1._proxy',
+        # self.assertEqual('SDK.openstack.clustering.v1._proxy',
         #                  conn.clustering.__class__.__module__)
-        # self.assertEqual('openstack.compute.v2._proxy',
+        # self.assertEqual('SDK.openstack.compute.v2._proxy',
         #                  conn.compute.__class__.__module__)
-        # self.assertEqual('openstack.database.v1._proxy',
+        # self.assertEqual('SDK.openstack.database.v1._proxy',
         #                  conn.database.__class__.__module__)
-        # self.assertEqual('openstack.identity.v2._proxy',
+        # self.assertEqual('SDK.openstack.identity.v2._proxy',
         #                  conn.identity.__class__.__module__)
-        # self.assertEqual('openstack.image.v2._proxy',
+        # self.assertEqual('SDK.openstack.image.v2._proxy',
         #                  conn.image.__class__.__module__)
-        # self.assertEqual('openstack.object_store.v1._proxy',
+        # self.assertEqual('SDK.openstack.object_store.v1._proxy',
         #                  conn.object_store.__class__.__module__)
-        # self.assertEqual('openstack.load_balancer.v2._proxy',
+        # self.assertEqual('SDK.openstack.load_balancer.v2._proxy',
         #                  conn.load_balancer.__class__.__module__)
-        # self.assertEqual('openstack.orchestration.v1._proxy',
+        # self.assertEqual('SDK.openstack.orchestration.v1._proxy',
         #                  conn.orchestration.__class__.__module__)
-        # self.assertEqual('openstack.workflow.v2._proxy',
+        # self.assertEqual('SDK.openstack.workflow.v2._proxy',
         #                  conn.workflow.__class__.__module__)
 
     def test_create_connection_version_param_default(self):
         c1 = connection.Connection(cloud='sample-cloud')
         conn = connection.Connection(session=c1.session)
-        self.assertEqual('openstack.identity.v3._proxy',
+        self.assertEqual('SDK.openstack.identity.v3._proxy',
                          conn.identity.__class__.__module__)
 
     def test_create_connection_version_param_string(self):
         c1 = connection.Connection(cloud='sample-cloud')
         conn = connection.Connection(
             session=c1.session, identity_api_version='2')
-        self.assertEqual('openstack.identity.v2._proxy',
+        self.assertEqual('SDK.openstack.identity.v2._proxy',
                          conn.identity.__class__.__module__)
 
     def test_create_connection_version_param_int(self):
         c1 = connection.Connection(cloud='sample-cloud')
         conn = connection.Connection(
             session=c1.session, identity_api_version=3)
-        self.assertEqual('openstack.identity.v3._proxy',
+        self.assertEqual('SDK.openstack.identity.v3._proxy',
                          conn.identity.__class__.__module__)
 
     def test_create_connection_version_param_bogus(self):
@@ -158,11 +158,11 @@ class TestConnection(base.TestCase):
         conn = connection.Connection(
             session=c1.session, identity_api_version='red')
         # TODO(mordred) This is obviously silly behavior
-        self.assertEqual('openstack.identity.v3._proxy',
+        self.assertEqual('SDK.openstack.identity.v3._proxy',
                          conn.identity.__class__.__module__)
 
     def test_from_config_given_config(self):
-        cloud_region = (openstack.config.OpenStackConfig().
+        cloud_region = (SDK.openstack.config.OpenStackConfig().
                         get_one("sample-cloud"))
 
         sot = connection.from_config(config=cloud_region)
@@ -189,7 +189,7 @@ class TestConnection(base.TestCase):
                          sot.config.config['auth']['project_name'])
 
     def test_from_config_given_cloud_config(self):
-        cloud_region = (openstack.config.OpenStackConfig().
+        cloud_region = (SDK.openstack.config.OpenStackConfig().
                         get_one("sample-cloud"))
 
         sot = connection.from_config(cloud_config=cloud_region)
@@ -234,7 +234,7 @@ class TestNetworkConnection(base.TestCase):
     def test_network_proxy(self):
         self.use_keystone_v3(catalog='catalog-v3-suffix.json')
         self.assertEqual(
-            'openstack.network.v2._proxy',
+            'SDK.openstack.network.v2._proxy',
             self.conn.network.__class__.__module__)
         self.assert_calls()
         self.assertEqual(
@@ -248,7 +248,7 @@ class TestNetworkConnectionSuffix(base.TestCase):
 
     def test_network_proxy(self):
         self.assertEqual(
-            'openstack.network.v2._proxy',
+            'SDK.openstack.network.v2._proxy',
             self.conn.network.__class__.__module__)
         self.assert_calls()
         self.assertEqual(
@@ -265,5 +265,5 @@ class TestAuthorize(base.TestCase):
     def test_authorize_failure(self):
         self.use_broken_keystone()
 
-        self.assertRaises(openstack.exceptions.HttpException,
+        self.assertRaises(SDK.openstack.exceptions.HttpException,
                           self.conn.authorize)

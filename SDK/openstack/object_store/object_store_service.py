@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import _proxy
-from openstack import service_description
+from SDK.openstack.object_store.v1 import _proxy
+from SDK.openstack import service_description
 
 
 class ObjectStoreService(service_description.ServiceDescription):

@@ -15,9 +15,9 @@
 
 import uuid
 
-from openstack.network.v2 import firewall_policy
-from openstack.network.v2 import firewall_rule
-from openstack.tests.functional import base
+from SDK.openstack.network.v2 import firewall_policy
+from SDK.openstack.network.v2 import firewall_rule
+from SDK.openstack.tests.functional import base
 
 
 class TestFirewallPolicyRuleAssociations(base.BaseFunctionalTest):

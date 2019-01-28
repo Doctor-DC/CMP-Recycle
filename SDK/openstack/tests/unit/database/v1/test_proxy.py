@@ -10,12 +10,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.database.v1 import _proxy
-from openstack.database.v1 import database
-from openstack.database.v1 import flavor
-from openstack.database.v1 import instance
-from openstack.database.v1 import user
-from openstack.tests.unit import test_proxy_base
+from SDK.openstack.database.v1 import _proxy
+from SDK.openstack.database.v1 import database
+from SDK.openstack.database.v1 import flavor
+from SDK.openstack.database.v1 import instance
+from SDK.openstack.database.v1 import user
+from SDK.openstack.tests.unit import test_proxy_base
 
 
 class TestDatabaseProxy(test_proxy_base.TestProxyBase):
@@ -41,7 +41,7 @@ class TestDatabaseProxy(test_proxy_base.TestProxyBase):
                            expected_path_args={"instance_id": "test_id"})
 
     def test_database_find(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_database,
                       method_args=["db", "instance"],
                       expected_args=[database.Database, "db"],
@@ -106,7 +106,7 @@ class TestDatabaseProxy(test_proxy_base.TestProxyBase):
                            expected_path_args={"instance_id": "id"})
 
     def test_user_find(self):
-        self._verify2('openstack.proxy.Proxy._find',
+        self._verify2('SDK.openstack.proxy.Proxy._find',
                       self.proxy.find_user,
                       method_args=["user", "instance"],
                       expected_args=[user.User, "user"],

@@ -12,17 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import sys
-<<<<<<< HEAD
 # import os
 # curPath = os.path.abspath(os.path.dirname(__file__))
 # rootPath = os.path.split(curPath)[0]
 # sys.path.append(rootPath)
-=======
-import os
-curPath = os.path.abspath(os.path.dirname(__file__))
-rootPath = os.path.split(curPath)[0]
-sys.path.append(rootPath)
->>>>>>> d8ffa97e209b6cfc6a49b980e02e20ff03c40e1c
 from SDK.openstack._log import enable_logging  # noqa
 import SDK.openstack.config
 import SDK.openstack.connection

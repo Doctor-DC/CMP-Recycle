@@ -13,8 +13,8 @@
 import mock
 import fixtures
 
-from openstack.compute.v2 import server as server_resource
-from openstack.tests.unit import base
+from SDK.openstack.compute.v2 import server as server_resource
+from SDK.openstack.tests.unit import base
 
 RAW_SERVER_DICT = {
     'HUMAN_ID': True,
@@ -126,7 +126,7 @@ RAW_NOVA_IMAGE_DICT = {
     }, {
         u'href': u'https://example.com/images/f2868d7c',
         u'rel': u'alternate',
-        u'type': u'application/vnd.openstack.image'}],
+        u'type': u'application/vnd.SDK.openstack.image'}],
     'metadata': {
         u'auto_disk_config': u'False',
         u'com.rackspace__1__build_core': u'1',
@@ -187,7 +187,7 @@ class TestUtils(base.TestCase):
 
         super(TestUtils, self).setUp()
         self.session_fixture = self.useFixture(fixtures.MonkeyPatch(
-            'openstack.config.cloud_region.CloudRegion.get_session',
+            'SDK.openstack.config.cloud_region.CloudRegion.get_session',
             mock.Mock()))
 
     def test_normalize_flavors(self):

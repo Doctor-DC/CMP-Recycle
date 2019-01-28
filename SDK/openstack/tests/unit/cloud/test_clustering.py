@@ -13,8 +13,8 @@
 import copy
 import testtools
 
-from openstack.cloud import exc
-from openstack.tests.unit import base
+from SDK.openstack.cloud import exc
+from SDK.openstack.tests.unit import base
 
 
 CLUSTERING_DICT = {

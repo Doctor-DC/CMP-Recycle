@@ -1,4 +1,6 @@
+# import SDK.openstack
 from SDK import openstack
+
 from resouces.connect.config_para import os_auth_url, os_project_name, os_region_name, os_domain_id
 
 

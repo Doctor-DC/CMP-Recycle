@@ -14,9 +14,9 @@
 #    under the License.
 # import unittest
 
-from openstack import connection
-from openstack.cloud.openstackcloud import _OpenStackCloudMixin
-from openstack.tests.functional import base
+from SDK.openstack import connection
+from SDK.openstack.cloud.openstackcloud import _OpenStackCloudMixin
+from SDK.openstack.tests.functional import base
 
 HYPERVISORS = []
 

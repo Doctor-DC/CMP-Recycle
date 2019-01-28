@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.network.v2 import _proxy
-from openstack import service_description
+from SDK.openstack.network.v2 import _proxy
+from SDK.openstack import service_description
 
 
 class NetworkService(service_description.ServiceDescription):

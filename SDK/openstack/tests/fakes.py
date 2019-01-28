@@ -21,8 +21,8 @@ import datetime
 import json
 import uuid
 
-from openstack.cloud._heat import template_format
-from openstack.cloud import meta
+from SDK.openstack.cloud._heat import template_format
+from SDK.openstack.cloud import meta
 
 PROJECT_ID = '1c36b64c840a42cd9e9b931a369337f0'
 FLAVOR_ID = u'0c1d9008-f546-4608-9e8f-f8bdaec8dddd'
@@ -158,7 +158,7 @@ def make_fake_server(
 
 def make_fake_keypair(name):
     # Note: this is literally taken from:
-    # https://developer.openstack.org/api-ref/compute/
+    # https://developer.SDK.openstack.org/api-ref/compute/
     return {
         "fingerprint": "7e:eb:ab:24:ba:d1:e1:88:ae:9a:fb:66:53:df:d3:bd",
         "name": name,
@@ -244,9 +244,9 @@ def make_fake_image(
         u'name': image_name,
         u'checksum': u'ee36e35a297980dee1b514de9803ec6d',
         u'created_at': u'2016-02-10T05:03:11Z',
-        u'owner_specified.openstack.md5': NO_MD5,
-        u'owner_specified.openstack.sha256': NO_SHA256,
-        u'owner_specified.openstack.object': 'images/{name}'.format(
+        u'owner_specified.SDK.openstack.md5': NO_MD5,
+        u'owner_specified.SDK.openstack.sha256': NO_SHA256,
+        u'owner_specified.SDK.openstack.object': 'images/{name}'.format(
             name=image_name),
         u'protected': False}
 

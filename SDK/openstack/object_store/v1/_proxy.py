@@ -10,10 +10,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from openstack.object_store.v1 import account as _account
-from openstack.object_store.v1 import container as _container
-from openstack.object_store.v1 import obj as _obj
-from openstack import proxy
+from SDK.openstack.object_store.v1 import account as _account
+from SDK.openstack.object_store.v1 import container as _container
+from SDK.openstack.object_store.v1 import obj as _obj
+from SDK.openstack import proxy
 
 
 class Proxy(proxy.Proxy):
@@ -28,7 +28,7 @@ class Proxy(proxy.Proxy):
         """Get metadata for this account.
 
         :rtype:
-            :class:`~openstack.object_store.v1.account.Account`
+            :class:`~SDK.openstack.object_store.v1.account.Account`
         """
         return self._head(_account.Account)
 
@@ -58,7 +58,7 @@ class Proxy(proxy.Proxy):
                                  the resources being returned.
 
         :rtype: A generator of
-            :class:`~openstack.object_store.v1.container.Container` objects.
+            :class:`~SDK.openstack.object_store.v1.container.Container` objects.
         """
         return self._list(_container.Container, paginated=True, **query)
 
@@ -67,11 +67,11 @@ class Proxy(proxy.Proxy):
 
         :param container: Name of the container to create.
         :param dict attrs: Keyword arguments which will be used to create
-               a :class:`~openstack.object_store.v1.container.Container`,
+               a :class:`~SDK.openstack.object_store.v1.container.Container`,
                comprised of the properties on the Container class.
 
         :returns: The results of container creation
-        :rtype: :class:`~openstack.object_store.v1.container.Container`
+        :rtype: :class:`~SDK.openstack.object_store.v1.container.Container`
         """
         return self._create(_container.Container, name=name, **attrs)
 
@@ -79,10 +79,10 @@ class Proxy(proxy.Proxy):
         """Delete a container
 
         :param container: The value can be either the name of a container or a
-                      :class:`~openstack.object_store.v1.container.Container`
+                      :class:`~SDK.openstack.object_store.v1.container.Container`
                       instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the container does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent server.
@@ -96,11 +96,11 @@ class Proxy(proxy.Proxy):
         """Get metadata for a container
 
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
 
-        :returns: One :class:`~openstack.object_store.v1.container.Container`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.object_store.v1.container.Container`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         return self._head(_container.Container, container)
@@ -109,7 +109,7 @@ class Proxy(proxy.Proxy):
         """Set metadata for a container.
 
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param kwargs metadata: Key/value pairs to be set as metadata
                                 on the container. Both custom and system
@@ -135,7 +135,7 @@ class Proxy(proxy.Proxy):
         """Delete metadata for a container.
 
         :param container: The value can be the ID of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param keys: The keys of metadata to be deleted.
         """
@@ -149,12 +149,12 @@ class Proxy(proxy.Proxy):
         :param container: A container object or the name of a container
             that you want to retrieve objects from.
         :type container:
-            :class:`~openstack.object_store.v1.container.Container`
+            :class:`~SDK.openstack.object_store.v1.container.Container`
         :param kwargs query: Optional query parameters to be sent to limit
                                  the resources being returned.
 
         :rtype: A generator of
-            :class:`~openstack.object_store.v1.obj.Object` objects.
+            :class:`~SDK.openstack.object_store.v1.obj.Object` objects.
         """
         container = self._get_container_name(container=container)
 
@@ -179,15 +179,15 @@ class Proxy(proxy.Proxy):
         """Get the data associated with an object
 
         :param obj: The value can be the name of an object or a
-                       :class:`~openstack.object_store.v1.obj.Object` instance.
+                       :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
 
         :returns: The contents of the object.  Use the
                   :func:`~get_object_metadata`
                   method if you want an object resource.
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         container_name = self._get_container_name(
@@ -198,12 +198,12 @@ class Proxy(proxy.Proxy):
         """Download the data contained inside an object.
 
         :param obj: The value can be the name of an object or a
-                       :class:`~openstack.object_store.v1.obj.Object` instance.
+                       :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
 
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         container_name = self._get_container_name(
@@ -216,12 +216,12 @@ class Proxy(proxy.Proxy):
         """Stream the data contained inside an object.
 
         :param obj: The value can be the name of an object or a
-                       :class:`~openstack.object_store.v1.obj.Object` instance.
+                       :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
 
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         :returns: An iterator that iterates over chunk_size bytes
         """
@@ -236,15 +236,15 @@ class Proxy(proxy.Proxy):
         """Upload a new object from attributes
 
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param name: Name of the object to create.
         :param dict attrs: Keyword arguments which will be used to create
-               a :class:`~openstack.object_store.v1.obj.Object`,
+               a :class:`~SDK.openstack.object_store.v1.obj.Object`,
                comprised of the properties on the Object class.
 
         :returns: The results of object creation
-        :rtype: :class:`~openstack.object_store.v1.container.Container`
+        :rtype: :class:`~SDK.openstack.object_store.v1.container.Container`
         """
         # TODO(mordred) Add ability to stream data from a file
         # TODO(mordred) Use create_object from OpenStackCloud
@@ -262,13 +262,13 @@ class Proxy(proxy.Proxy):
         """Delete an object
 
         :param obj: The value can be either the name of an object or a
-                       :class:`~openstack.object_store.v1.container.Container`
+                       :class:`~SDK.openstack.object_store.v1.container.Container`
                        instance.
         :param container: The value can be the ID of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param bool ignore_missing: When set to ``False``
-                    :class:`~openstack.exceptions.ResourceNotFound` will be
+                    :class:`~SDK.openstack.exceptions.ResourceNotFound` will be
                     raised when the object does not exist.
                     When set to ``True``, no exception will be set when
                     attempting to delete a nonexistent server.
@@ -284,13 +284,13 @@ class Proxy(proxy.Proxy):
         """Get metadata for an object.
 
         :param obj: The value can be the name of an object or a
-                    :class:`~openstack.object_store.v1.obj.Object` instance.
+                    :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the ID of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
 
-        :returns: One :class:`~openstack.object_store.v1.obj.Object`
-        :raises: :class:`~openstack.exceptions.ResourceNotFound`
+        :returns: One :class:`~SDK.openstack.object_store.v1.obj.Object`
+        :raises: :class:`~SDK.openstack.exceptions.ResourceNotFound`
                  when no resource can be found.
         """
         container_name = self._get_container_name(obj, container)
@@ -303,9 +303,9 @@ class Proxy(proxy.Proxy):
         Note: This method will do an extra HEAD call.
 
         :param obj: The value can be the name of an object or a
-                    :class:`~openstack.object_store.v1.obj.Object` instance.
+                    :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the name of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param kwargs metadata: Key/value pairs to be set as metadata
                                 on the container. Both custom and system
@@ -331,9 +331,9 @@ class Proxy(proxy.Proxy):
         """Delete metadata for an object.
 
         :param obj: The value can be the name of an object or a
-                    :class:`~openstack.object_store.v1.obj.Object` instance.
+                    :class:`~SDK.openstack.object_store.v1.obj.Object` instance.
         :param container: The value can be the ID of a container or a
-               :class:`~openstack.object_store.v1.container.Container`
+               :class:`~SDK.openstack.object_store.v1.container.Container`
                instance.
         :param keys: The keys of metadata to be deleted.
         """

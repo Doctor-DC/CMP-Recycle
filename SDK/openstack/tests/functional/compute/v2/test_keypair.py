@@ -11,8 +11,8 @@
 # under the License.
 
 
-from openstack.compute.v2 import keypair
-from openstack.tests.functional import base
+from SDK.openstack.compute.v2 import keypair
+from SDK.openstack.tests.functional import base
 
 
 class TestKeypair(base.BaseFunctionalTest):
