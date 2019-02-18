@@ -53,7 +53,7 @@ def quota_list():
                 pass
     return(list)
 
-
+quota_list()
 # 输出内容:user=admin&password=admin
 # header = {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbXBfYWRtaW4iLCJwaG9uZSI6IiIsIm9yZ0NvZGUiOjEwMDAwMSwiZXhwIjoxNTM2ODMzNzgyLCJ1dWlkIjoiNDI3YWIwMDgtZTk4Zi00ZjUzLWIzZDctOTJkZTFhNGQ4OTNkIiwiZW1haWwiOiIiLCJhdXRob3JpdGllcyI6WyJST0xFX1NZUyIsIkNNUF9DTVBfQURNSU4iLCJCTVNfU1lTIl0sInJlc291cmNlQ29kZXMiOltdLCJ1c2VybmFtZSI6ImNtcF9hZG1pbiJ9.Qopxx0-ELTaRUjGwGuHGmhuAdmgwVR18hnqBGHXN1Yw-HxNtyDREkRQn1W3yWNpxLudlgaNkPQUJTHxpP6XFoA',
 #           'DcCode': 'S03-HB-002'}

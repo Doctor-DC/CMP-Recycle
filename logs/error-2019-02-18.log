@@ -1,0 +1,355 @@
+[2019-02-18 10:08:42,535] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 73, in delete
+    instances = instances.split()
+AttributeError: 'NoneType' object has no attribute 'split'
+[2019-02-18 10:08:42,541] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "DELETE /instances/list?instance=i-b57wk6g HTTP/1.1" 500 19811 [django.server]
+[2019-02-18 10:26:07,551] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 73, in delete
+    instances = instances.split()
+AttributeError: 'NoneType' object has no attribute 'split'
+[2019-02-18 10:26:07,554] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "DELETE /instances/list?instance=i-b57wk6g HTTP/1.1" 500 19811 [django.server]
+[2019-02-18 11:30:15,075] [D:\MyDownloads\Recycle\Recycle\view.py:63] [view:get] [ERROR]- 这是一个错误信息1.... [log]
+[2019-02-18 14:47:12,623] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 73, in delete
+    instances = instances.split()
+AttributeError: 'NoneType' object has no attribute 'split'
+[2019-02-18 14:47:12,631] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "DELETE /instances/list?instance=1 HTTP/1.1" 500 19787 [django.server]
+[2019-02-18 14:54:56,822] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Program Files\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000025BBA5BD0F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA5BD0F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 903, in _send_request
+    resp = self.session.request(method, url, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA5BD0F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 138, in _do_create_plugin
+    authenticated=False)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 610, in get_discovery
+    authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 1442, in get_discovery
+    disc = Discover(session, url, authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 526, in __init__
+    authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 101, in get_version_data
+    resp = session.get(url, headers=headers, authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 1011, in get
+    return self.request(url, 'GET', **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 814, in request
+    resp = send(**kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 919, in _send_request
+    raise exceptions.ConnectFailure(msg)
+keystoneauth1.exceptions.connection.ConnectFailure: Unable to establish connection to http://10.19.137.110:20001/keystone/v3: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA5BD0F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 56, in get
+    ins = conn_describe_ins(request, conn)
+  File "D:\MyDownloads\Recycle\resouces\connect\select_conn.py", line 30, in conn_describe_ins
+    for server in conn.compute.servers(status='SOFT_DELETED'):
+  File "D:\MyDownloads\Recycle\SDK\openstack\service_description.py", line 80, in __get__
+    instance._proxies[self.service_type] = self._make_proxy(instance)
+  File "D:\MyDownloads\Recycle\SDK\openstack\service_description.py", line 189, in _make_proxy
+    found_version = temp_adapter.get_api_major_version()
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\adapter.py", line 310, in get_api_major_version
+    return self.session.get_api_major_version(auth or self.auth, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 1146, in get_api_major_version
+    return auth.get_api_major_version(self, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 500, in get_api_major_version
+    data = get_endpoint_data(discover_versions=discover_versions)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 271, in get_endpoint_data
+    service_catalog = self.get_access(session).service_catalog
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 134, in get_access
+    self.auth_ref = self.get_auth_ref(session)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 206, in get_auth_ref
+    self._plugin = self._do_create_plugin(session)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 161, in _do_create_plugin
+    'auth_url is correct. %s' % e)
+keystoneauth1.exceptions.discovery.DiscoveryFailure: Could not find versioned identity endpoints when attempting to authenticate. Please check that your auth_url is correct. Unable to establish connection to http://10.19.137.110:20001/keystone/v3: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA5BD0F0>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+[2019-02-18 14:54:56,840] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "GET /instances/list HTTP/1.1" 500 28573 [django.server]
+[2019-02-18 14:57:00,796] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python36\lib\http\client.py", line 1026, in _send_output
+    self.send(msg)
+  File "C:\Program Files\Python36\lib\http\client.py", line 964, in send
+    self.connect()
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000025BBA628CF8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Program Files\Python36\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Program Files\Python36\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA628CF8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 903, in _send_request
+    resp = self.session.request(method, url, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA628CF8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 138, in _do_create_plugin
+    authenticated=False)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 610, in get_discovery
+    authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 1442, in get_discovery
+    disc = Discover(session, url, authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 526, in __init__
+    authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\discover.py", line 101, in get_version_data
+    resp = session.get(url, headers=headers, authenticated=authenticated)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 1011, in get
+    return self.request(url, 'GET', **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 814, in request
+    resp = send(**kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 919, in _send_request
+    raise exceptions.ConnectFailure(msg)
+keystoneauth1.exceptions.connection.ConnectFailure: Unable to establish connection to http://10.19.137.110:20001/keystone/v3: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA628CF8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 56, in get
+    ins = conn_describe_ins(request, conn)
+  File "D:\MyDownloads\Recycle\resouces\connect\select_conn.py", line 30, in conn_describe_ins
+    for server in conn.compute.servers(status='SOFT_DELETED'):
+  File "D:\MyDownloads\Recycle\SDK\openstack\service_description.py", line 80, in __get__
+    instance._proxies[self.service_type] = self._make_proxy(instance)
+  File "D:\MyDownloads\Recycle\SDK\openstack\service_description.py", line 189, in _make_proxy
+    found_version = temp_adapter.get_api_major_version()
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\adapter.py", line 310, in get_api_major_version
+    return self.session.get_api_major_version(auth or self.auth, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\session.py", line 1146, in get_api_major_version
+    return auth.get_api_major_version(self, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 500, in get_api_major_version
+    data = get_endpoint_data(discover_versions=discover_versions)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 271, in get_endpoint_data
+    service_catalog = self.get_access(session).service_catalog
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\base.py", line 134, in get_access
+    self.auth_ref = self.get_auth_ref(session)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 206, in get_auth_ref
+    self._plugin = self._do_create_plugin(session)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\keystoneauth1\identity\generic\base.py", line 161, in _do_create_plugin
+    'auth_url is correct. %s' % e)
+keystoneauth1.exceptions.discovery.DiscoveryFailure: Could not find versioned identity endpoints when attempting to authenticate. Please check that your auth_url is correct. Unable to establish connection to http://10.19.137.110:20001/keystone/v3: HTTPConnectionPool(host='10.19.137.110', port=20001): Max retries exceeded with url: /keystone/v3 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025BBA628CF8>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+[2019-02-18 14:57:00,806] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "GET /instances/list HTTP/1.1" 500 28573 [django.server]
+[2019-02-18 14:57:24,099] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\log.py:228] [log:log_response] [ERROR]- Internal Server Error: /instances/list [django.request]
+Traceback (most recent call last):
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\handlers\base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\views\generic\base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Program Files\Python36\lib\site-packages\rest_framework\views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\utils\decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\MyDownloads\Recycle\resouces\connect\decorators.py", line 83, in wrapper
+    return func(request, *args, **kwargs)
+  File "D:\MyDownloads\Recycle\Recycle\view.py", line 73, in delete
+    instances = instances.split()
+AttributeError: 'NoneType' object has no attribute 'split'
+[2019-02-18 14:57:24,102] [C:\Users\admin\AppData\Roaming\Python\Python36\site-packages\django\core\servers\basehttp.py:124] [basehttp:log_message] [ERROR]- "DELETE /instances/list?instance=1 HTTP/1.1" 500 19787 [django.server]

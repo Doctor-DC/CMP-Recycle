@@ -14,7 +14,7 @@ def connect_valut(orgCode, dc_code):
     pool_id = getparams(orgCode, dc_code)
     # pool_id = 9
     id = str(pool_id)
-    print(client.read('secret/iaasbroker-service/pool/' + id))
+    # print(client.read('secret/iaasbroker-service/pool/' + id))
     pool = client.read('secret/iaasbroker-service/pool/' + id)
     data = pool['data']
 
@@ -24,7 +24,7 @@ def connect_valut(orgCode, dc_code):
     else:
         ak = data['username']
         sk = data['password']
-    print(ak, sk)
+    # print(ak, sk)
     return(ak, sk)
 
 # ak,sk = connect_valut(100001,"S03-HB-002")

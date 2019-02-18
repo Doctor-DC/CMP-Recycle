@@ -6,7 +6,7 @@ from resouces.connect.config_para import sql_host ,sql_user,sql_password,sql_db,
 
 
 def getparams(orgCode,dc_code):
-    print(sql_host)
+    # print(sql_host)
     db = pymysql.connect(
         host=sql_host,
         user=sql_user,

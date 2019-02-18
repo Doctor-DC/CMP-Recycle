@@ -27,7 +27,7 @@ def token_certify_decorator(func):  # 验证token，zone，获取conn实例
         try:
             decoded = jwt.decode(auth[1], None, False)
             orgCode = decoded['orgCode']
-            print(orgCode)
+            # print(orgCode)
 
         except DecodeError:
             msg = ('token无效')

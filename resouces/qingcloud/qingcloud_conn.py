@@ -36,7 +36,7 @@ def connect_qing(ak, sk):
         port=qing_port,
         lowercase=False,
     )
-    print (type (conn))
+    # print (type (conn))
     return (conn)
 
 # conn = connect_qing("XJBTKEUYJWEQIRFTAGLH","9dCGFkYEqAnYuxQdfklNj3hyAQoNVzriIClLcNV6")

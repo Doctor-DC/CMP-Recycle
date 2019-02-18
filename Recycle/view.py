@@ -12,7 +12,11 @@ from resouces.connect.select_conn import snapshot_unity, ins_unity, end_response
 from resouces.connect.decorators import token_certify_decorator
 from resouces.fields_schema import RecycleSchema
 
-conn = None
+import logging
+
+# 生成一个以当前文件名为名字的logger实例
+loggers = logging.getLogger('log')
+# conn = None
 
 
 class InstancesList(APIView):
@@ -53,13 +57,18 @@ class InstancesList(APIView):
         # ins = conn.describe_instances(status=["terminated"],owner="usr-zHHGDyko")
         # res = InsUnity(request,ins)
         end = end_response(ins, '获取回收站列表成功')
-        print(type(end))
+        # print(type(end))
+        # loggers.info ("成功")
+        # loggers.warning ("这是一个警告信息1....")
+        # loggers.error ("这是一个错误信息1....")
+        
+
         return JsonResponse(end, safe=False)
     
     @method_decorator(token_certify_decorator)
     def delete(self, request, conn):
         instances = request.GET.get('instances')
-        print(instances)
+        # print(instances)
         # str 分割成列表 如hello world -》  ["hello","world"]
         instances = instances.split()
         # print(type(instances))
