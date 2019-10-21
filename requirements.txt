@@ -105,7 +105,7 @@ uritemplate==3.0.0
 urllib3==1.23
 vine==1.1.4
 virtualenv==16.0.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 wrapt==1.10.11
 yagmail==0.11.214
 yarg==0.1.9
