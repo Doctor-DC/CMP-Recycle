@@ -16,7 +16,7 @@ configparser==3.5.0
 connection==2018.11.19
 coreapi==2.3.3
 coreschema==0.0.4
-cryptography==2.3
+cryptography==3.2
 dataclasses==0.6
 decorator==4.3.0
 Django==2.1
