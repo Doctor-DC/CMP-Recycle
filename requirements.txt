@@ -19,7 +19,7 @@ coreschema==0.0.4
 cryptography==2.3
 dataclasses==0.6
 decorator==4.3.0
-Django==2.1
+Django==2.2.24
 django-celery==3.2.2
 django-nameko==0.1
 django-rest-framework-mongoengine==3.3.1
