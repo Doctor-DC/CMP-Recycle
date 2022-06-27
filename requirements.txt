@@ -61,7 +61,7 @@ mock==2.0.0
 mongoengine==0.15.3
 monotonic==1.5
 munch==2.3.2
-mysql-connector-python==8.0.13
+mysql-connector-python==8.0.14
 nameko==2.11.0
 nameko-sqlalchemy==1.4.0
 netifaces==0.10.9
