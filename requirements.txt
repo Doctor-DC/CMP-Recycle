@@ -74,7 +74,7 @@ Paginator==0.5.1
 path.py==11.0.1
 pbr==4.2.0
 pika==0.12.0
-protobuf==3.6.1
+protobuf==3.18.3
 public==2018.11.20
 pycparser==2.18
 pycryptodome==3.6.4
